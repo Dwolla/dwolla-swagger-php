@@ -1,8 +1,7 @@
 {
-  "name": "DwollaSwagger/DwollaSwagger-php",
+  "name": "dwolla-swagger/dwolla-swagger-php",
   "description": "",
   "keywords": [
-    "dwolla",
     "swagger",
     "php",
     "sdk",
