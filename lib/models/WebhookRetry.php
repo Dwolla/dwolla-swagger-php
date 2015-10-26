@@ -31,31 +31,27 @@ class WebhookRetry implements ArrayAccess {
       '_links' => 'map[string,HalLink]',
       '_embedded' => 'object',
       'id' => 'string',
-      'time_stamp' => 'DateTime',
-      'hook_id' => 'string'
+      'timestamp' => 'DateTime'
   );
 
   static $attributeMap = array(
       '_links' => '_links',
       '_embedded' => '_embedded',
       'id' => 'id',
-      'time_stamp' => 'timeStamp',
-      'hook_id' => 'hookId'
+      'timestamp' => 'timestamp'
   );
 
   
   public $_links; /* map[string,HalLink] */
   public $_embedded; /* object */
   public $id; /* string */
-  public $time_stamp; /* DateTime */
-  public $hook_id; /* string */
+  public $timestamp; /* DateTime */
 
   public function __construct(array $data = null) {
     $this->_links = $data["_links"];
     $this->_embedded = $data["_embedded"];
     $this->id = $data["id"];
-    $this->time_stamp = $data["time_stamp"];
-    $this->hook_id = $data["hook_id"];
+    $this->timestamp = $data["timestamp"];
   }
 
   public function offsetExists($offset) {

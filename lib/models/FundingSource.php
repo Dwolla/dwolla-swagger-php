@@ -31,43 +31,43 @@ class FundingSource implements ArrayAccess {
       '_links' => 'map[string,HalLink]',
       '_embedded' => 'array[map[string,object]]',
       'id' => 'string',
-      'account_id' => 'string',
       'status' => 'string',
       'type' => 'string',
       'name' => 'string',
-      'created' => 'DateTime'
+      'created' => 'DateTime',
+      'balance' => 'object'
   );
 
   static $attributeMap = array(
       '_links' => '_links',
       '_embedded' => '_embedded',
       'id' => 'id',
-      'account_id' => 'accountId',
       'status' => 'status',
       'type' => 'type',
       'name' => 'name',
-      'created' => 'created'
+      'created' => 'created',
+      'balance' => 'balance'
   );
 
   
   public $_links; /* map[string,HalLink] */
   public $_embedded; /* array[map[string,object]] */
   public $id; /* string */
-  public $account_id; /* string */
   public $status; /* string */
   public $type; /* string */
   public $name; /* string */
   public $created; /* DateTime */
+  public $balance; /* object */
 
   public function __construct(array $data = null) {
     $this->_links = $data["_links"];
     $this->_embedded = $data["_embedded"];
     $this->id = $data["id"];
-    $this->account_id = $data["account_id"];
     $this->status = $data["status"];
     $this->type = $data["type"];
     $this->name = $data["name"];
     $this->created = $data["created"];
+    $this->balance = $data["balance"];
   }
 
   public function offsetExists($offset) {

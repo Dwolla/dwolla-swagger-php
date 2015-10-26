@@ -26,13 +26,14 @@ namespace DwollaSwagger\models;
 
 use \ArrayAccess;
 
-class CreateCustomer implements ArrayAccess {
+class UpdateCustomer implements ArrayAccess {
   static $swaggerTypes = array(
       'first_name' => 'string',
       'last_name' => 'string',
       'email' => 'string',
       'ip_address' => 'string',
       'type' => 'string',
+      'status' => 'string',
       'address1' => 'string',
       'address2' => 'string',
       'city' => 'string',
@@ -49,6 +50,7 @@ class CreateCustomer implements ArrayAccess {
       'email' => 'email',
       'ip_address' => 'ipAddress',
       'type' => 'type',
+      'status' => 'status',
       'address1' => 'address1',
       'address2' => 'address2',
       'city' => 'city',
@@ -65,6 +67,7 @@ class CreateCustomer implements ArrayAccess {
   public $email; /* string */
   public $ip_address; /* string */
   public $type; /* string */
+  public $status; /* string */
   public $address1; /* string */
   public $address2; /* string */
   public $city; /* string */
@@ -80,6 +83,7 @@ class CreateCustomer implements ArrayAccess {
     $this->email = $data["email"];
     $this->ip_address = $data["ip_address"];
     $this->type = $data["type"];
+    $this->status = $data["status"];
     $this->address1 = $data["address1"];
     $this->address2 = $data["address2"];
     $this->city = $data["city"];

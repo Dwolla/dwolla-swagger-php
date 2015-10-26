@@ -97,6 +97,12 @@ class WebhooksApi {
         $queryParams['offset'] = $this->apiClient->toQueryValue($offset);
       }
       
+      
+      // Entire URL for ID
+      if (filter_var($id, FILTER_VALIDATE_URL)) {
+        $split = explode('/', $id);
+        $id = end($split);
+      }
       // path params
       if($id !== null) {
         $resourcePath = str_replace("{" . "id" . "}",
@@ -118,11 +124,11 @@ class WebhooksApi {
                                             $queryParams, $httpBody,
                                             $headerParams, $this->authSettings);
 
-      if(! $response) {
+      if(!$response[1]) {
         return null;
       }
 
-      return ($method == "POST") ? $response : $this->apiClient->deserialize($response,'WebhookEventListResponse');
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'WebhookEventListResponse');
   }
   
   /**
@@ -157,6 +163,12 @@ class WebhooksApi {
 
       
       
+      
+      // Entire URL for ID
+      if (filter_var($id, FILTER_VALIDATE_URL)) {
+        $split = explode('/', $id);
+        $id = end($split);
+      }
       // path params
       if($id !== null) {
         $resourcePath = str_replace("{" . "id" . "}",
@@ -178,11 +190,11 @@ class WebhooksApi {
                                             $queryParams, $httpBody,
                                             $headerParams, $this->authSettings);
 
-      if(! $response) {
+      if(!$response[1]) {
         return null;
       }
 
-      return ($method == "POST") ? $response : $this->apiClient->deserialize($response,'Webhook');
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Webhook');
   }
   
   /**
@@ -217,6 +229,12 @@ class WebhooksApi {
 
       
       
+      
+      // Entire URL for ID
+      if (filter_var($id, FILTER_VALIDATE_URL)) {
+        $split = explode('/', $id);
+        $id = end($split);
+      }
       // path params
       if($id !== null) {
         $resourcePath = str_replace("{" . "id" . "}",
@@ -238,11 +256,11 @@ class WebhooksApi {
                                             $queryParams, $httpBody,
                                             $headerParams, $this->authSettings);
 
-      if(! $response) {
+      if(!$response[1]) {
         return null;
       }
 
-      return ($method == "POST") ? $response : $this->apiClient->deserialize($response,'WebhookRetryRequestListResponse');
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'WebhookRetryRequestListResponse');
   }
   
   /**
@@ -277,6 +295,12 @@ class WebhooksApi {
 
       
       
+      
+      // Entire URL for ID
+      if (filter_var($id, FILTER_VALIDATE_URL)) {
+        $split = explode('/', $id);
+        $id = end($split);
+      }
       // path params
       if($id !== null) {
         $resourcePath = str_replace("{" . "id" . "}",
@@ -298,11 +322,11 @@ class WebhooksApi {
                                             $queryParams, $httpBody,
                                             $headerParams, $this->authSettings);
 
-      if(! $response) {
+      if(!$response[1]) {
         return null;
       }
 
-      return ($method == "POST") ? $response : $this->apiClient->deserialize($response,'WebhookRetry');
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'WebhookRetry');
   }
   
 

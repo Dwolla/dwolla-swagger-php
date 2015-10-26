@@ -89,6 +89,12 @@ class FundingsourcesApi {
 
       
       
+      
+      // Entire URL for ID
+      if (filter_var($id, FILTER_VALIDATE_URL)) {
+        $split = explode('/', $id);
+        $id = end($split);
+      }
       // path params
       if($id !== null) {
         $resourcePath = str_replace("{" . "id" . "}",
@@ -110,11 +116,11 @@ class FundingsourcesApi {
                                             $queryParams, $httpBody,
                                             $headerParams, $this->authSettings);
 
-      if(! $response) {
+      if(!$response[1]) {
         return null;
       }
 
-      return ($method == "POST") ? $response : $this->apiClient->deserialize($response,'FundingSourceListResponse');
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'FundingSourceListResponse');
   }
   
   /**
@@ -149,6 +155,12 @@ class FundingsourcesApi {
 
       
       
+      
+      // Entire URL for ID
+      if (filter_var($id, FILTER_VALIDATE_URL)) {
+        $split = explode('/', $id);
+        $id = end($split);
+      }
       // path params
       if($id !== null) {
         $resourcePath = str_replace("{" . "id" . "}",
@@ -170,11 +182,11 @@ class FundingsourcesApi {
                                             $queryParams, $httpBody,
                                             $headerParams, $this->authSettings);
 
-      if(! $response) {
+      if(!$response[1]) {
         return null;
       }
 
-      return ($method == "POST") ? $response : $this->apiClient->deserialize($response,'FundingSourceListResponse');
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'FundingSourceListResponse');
   }
   
   /**
@@ -210,6 +222,12 @@ class FundingsourcesApi {
 
       
       
+      
+      // Entire URL for ID
+      if (filter_var($id, FILTER_VALIDATE_URL)) {
+        $split = explode('/', $id);
+        $id = end($split);
+      }
       // path params
       if($id !== null) {
         $resourcePath = str_replace("{" . "id" . "}",
@@ -235,11 +253,11 @@ class FundingsourcesApi {
                                             $queryParams, $httpBody,
                                             $headerParams, $this->authSettings);
 
-      if(! $response) {
+      if(!$response[1]) {
         return null;
       }
 
-      return ($method == "POST") ? $response : $this->apiClient->deserialize($response,'FundingSource');
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'FundingSource');
   }
   
   /**
@@ -274,6 +292,12 @@ class FundingsourcesApi {
 
       
       
+      
+      // Entire URL for ID
+      if (filter_var($id, FILTER_VALIDATE_URL)) {
+        $split = explode('/', $id);
+        $id = end($split);
+      }
       // path params
       if($id !== null) {
         $resourcePath = str_replace("{" . "id" . "}",
@@ -295,11 +319,11 @@ class FundingsourcesApi {
                                             $queryParams, $httpBody,
                                             $headerParams, $this->authSettings);
 
-      if(! $response) {
+      if(!$response[1]) {
         return null;
       }
 
-      return ($method == "POST") ? $response : $this->apiClient->deserialize($response,'FundingSource');
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'FundingSource');
   }
   
   /**
@@ -334,6 +358,12 @@ class FundingsourcesApi {
 
       
       
+      
+      // Entire URL for ID
+      if (filter_var($id, FILTER_VALIDATE_URL)) {
+        $split = explode('/', $id);
+        $id = end($split);
+      }
       // path params
       if($id !== null) {
         $resourcePath = str_replace("{" . "id" . "}",
@@ -355,11 +385,140 @@ class FundingsourcesApi {
                                             $queryParams, $httpBody,
                                             $headerParams, $this->authSettings);
 
-      if(! $response) {
+      if(!$response[1]) {
         return null;
       }
 
-      return ($method == "POST") ? $response : $this->apiClient->deserialize($response,'FundingSource');
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'FundingSource');
+  }
+  
+  /**
+   * verifyMicroDepositsExist
+   *
+   * Verify pending verifications exist.
+   *
+   * @param string $id Funding source ID to check for pending validation deposits for. (required)
+   * @return void
+   */
+   public function verifyMicroDepositsExist($id) {
+      
+      // verify the required parameter 'id' is set
+      if ($id === null) {
+        throw new \InvalidArgumentException('Missing the required parameter $id when calling verifyMicroDepositsExist');
+      }
+      
+
+      // parse inputs
+      $resourcePath = "/funding-sources/{id}/micro-deposits";
+      $resourcePath = str_replace("{format}", "json", $resourcePath);
+      $method = "GET";
+      $httpBody = '';
+      $queryParams = array();
+      $headerParams = array();
+      $formParams = array();
+      $_header_accept = $this->apiClient->selectHeaderAccept(array('application/vnd.dwolla.v1.hal+json'));
+      if (!is_null($_header_accept)) {
+        $headerParams['Accept'] = $_header_accept;
+      }
+      $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
+
+      
+      
+      
+      // Entire URL for ID
+      if (filter_var($id, FILTER_VALIDATE_URL)) {
+        $split = explode('/', $id);
+        $id = end($split);
+      }
+      // path params
+      if($id !== null) {
+        $resourcePath = str_replace("{" . "id" . "}",
+                                    $this->apiClient->toPathValue($id), $resourcePath);
+      }
+      
+      
+
+      // for model (json/xml)
+      if (isset($_tempBody)) {
+        $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+      } else if (count($formParams) > 0) {
+        // for HTTP post (form)
+        $httpBody = $formParams;
+      }
+
+      // make the API Call
+      $response = $this->apiClient->callAPI($resourcePath, $method,
+                                            $queryParams, $httpBody,
+                                            $headerParams, $this->authSettings);
+
+      
+  }
+  
+  /**
+   * microDeposits
+   *
+   * Initiate or verify micro deposits for bank verification.
+   *
+   * @param VerifyMicroDepositsRequest $body Optional micro deposit amounts for verification (required)
+   * @param string $id Funding source ID to initiate or verify micro deposits for. (required)
+   * @return void
+   */
+   public function microDeposits($body, $id) {
+      
+      // verify the required parameter 'id' is set
+      if ($id === null) {
+        throw new \InvalidArgumentException('Missing the required parameter $id when calling microDeposits');
+      }
+      
+
+      // parse inputs
+      $resourcePath = "/funding-sources/{id}/micro-deposits";
+      $resourcePath = str_replace("{format}", "json", $resourcePath);
+      $method = "POST";
+      $httpBody = '';
+      $queryParams = array();
+      $headerParams = array();
+      $formParams = array();
+      $_header_accept = $this->apiClient->selectHeaderAccept(array('application/vnd.dwolla.v1.hal+json'));
+      if (!is_null($_header_accept)) {
+        $headerParams['Accept'] = $_header_accept;
+      }
+      $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
+
+      
+      
+      
+      // Entire URL for ID
+      if (filter_var($id, FILTER_VALIDATE_URL)) {
+        $split = explode('/', $id);
+        $id = end($split);
+      }
+      // path params
+      if($id !== null) {
+        $resourcePath = str_replace("{" . "id" . "}",
+                                    $this->apiClient->toPathValue($id), $resourcePath);
+      }
+      
+      // body params
+      $_tempBody = null;
+      if (isset($body)) {
+        $_tempBody = $body;
+      }
+
+      // for model (json/xml)
+      if (isset($_tempBody)) {
+        $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+      } else if (count($formParams) > 0) {
+        // for HTTP post (form)
+        $httpBody = $formParams;
+      }
+
+      // make the API Call
+      $response = $this->apiClient->callAPI($resourcePath, $method,
+                                            $queryParams, $httpBody,
+                                            $headerParams, $this->authSettings);
+
+      
   }
   
 

@@ -26,40 +26,24 @@ namespace DwollaSwagger\models;
 
 use \ArrayAccess;
 
-class ApplicationEvent implements ArrayAccess {
+class VerifyMicroDepositsRequest implements ArrayAccess {
   static $swaggerTypes = array(
-      '_links' => 'map[string,HalLink]',
-      '_embedded' => 'object',
-      'id' => 'string',
-      'created' => 'DateTime',
-      'topic' => 'string',
-      'resource_id' => 'string'
+      'amount1' => 'Amount',
+      'amount2' => 'Amount'
   );
 
   static $attributeMap = array(
-      '_links' => '_links',
-      '_embedded' => '_embedded',
-      'id' => 'id',
-      'created' => 'created',
-      'topic' => 'topic',
-      'resource_id' => 'resourceId'
+      'amount1' => 'amount1',
+      'amount2' => 'amount2'
   );
 
   
-  public $_links; /* map[string,HalLink] */
-  public $_embedded; /* object */
-  public $id; /* string */
-  public $created; /* DateTime */
-  public $topic; /* string */
-  public $resource_id; /* string */
+  public $amount1; /* Amount */
+  public $amount2; /* Amount */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->_embedded = $data["_embedded"];
-    $this->id = $data["id"];
-    $this->created = $data["created"];
-    $this->topic = $data["topic"];
-    $this->resource_id = $data["resource_id"];
+    $this->amount1 = $data["amount1"];
+    $this->amount2 = $data["amount2"];
   }
 
   public function offsetExists($offset) {

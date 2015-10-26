@@ -89,6 +89,12 @@ class AccountsApi {
 
       
       
+      
+      // Entire URL for ID
+      if (filter_var($id, FILTER_VALIDATE_URL)) {
+        $split = explode('/', $id);
+        $id = end($split);
+      }
       // path params
       if($id !== null) {
         $resourcePath = str_replace("{" . "id" . "}",
@@ -110,11 +116,11 @@ class AccountsApi {
                                             $queryParams, $httpBody,
                                             $headerParams, $this->authSettings);
 
-      if(! $response) {
+      if(!$response[1]) {
         return null;
       }
 
-      return ($method == "POST") ? $response : $this->apiClient->deserialize($response,'AccountInfo');
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'AccountInfo');
   }
   
 
