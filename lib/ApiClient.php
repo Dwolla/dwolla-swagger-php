@@ -192,7 +192,7 @@ class ApiClient {
         
         case 'oauth2':
           
-          $headerParams['Authorization'] = 'Bearer ' . Configuration::$auth_token; 
+          $headerParams['Authorization'] = 'Bearer ' . Configuration::$access_token; 
           break;
         
         default:
