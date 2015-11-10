@@ -58,13 +58,13 @@ class WebhooksubscriptionsApi {
 
   
   /**
-   * list
+   * _list
    *
    * Get the list of webhooks.
    *
    * @return WebhookListResponse
    */
-   public function list() {
+   public function _list() {
       
 
       // parse inputs

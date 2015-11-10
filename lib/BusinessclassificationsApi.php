@@ -58,13 +58,13 @@ class BusinessclassificationsApi {
 
   
   /**
-   * list
+   * _list
    *
    * Get a list business classifications.
    *
    * @return BusinessClassificationListResponse
    */
-   public function list() {
+   public function _list() {
       
 
       // parse inputs

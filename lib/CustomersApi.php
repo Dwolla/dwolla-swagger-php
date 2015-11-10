@@ -58,7 +58,7 @@ class CustomersApi {
 
   
   /**
-   * list
+   * _list
    *
    * Get a list of customers.
    *
@@ -66,7 +66,7 @@ class CustomersApi {
    * @param int $offset How many results to skip. (required)
    * @return CustomerListResponse
    */
-   public function list($limit, $offset) {
+   public function _list($limit, $offset) {
       
 
       // parse inputs

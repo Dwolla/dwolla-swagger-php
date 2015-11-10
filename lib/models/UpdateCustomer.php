@@ -28,9 +28,9 @@ use \ArrayAccess;
 
 class UpdateCustomer implements ArrayAccess {
   static $swaggerTypes = array(
-      'first_name' => 'string',
-      'last_name' => 'string',
-      'email' => 'string',
+      'first_name' => 'array[string]',
+      'last_name' => 'array[string]',
+      'email' => 'array[string]',
       'ip_address' => 'string',
       'type' => 'string',
       'status' => 'string',
@@ -62,9 +62,9 @@ class UpdateCustomer implements ArrayAccess {
   );
 
   
-  public $first_name; /* string */
-  public $last_name; /* string */
-  public $email; /* string */
+  public $first_name; /* array[string] */
+  public $last_name; /* array[string] */
+  public $email; /* array[string] */
   public $ip_address; /* string */
   public $type; /* string */
   public $status; /* string */
