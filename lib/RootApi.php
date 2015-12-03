@@ -125,7 +125,7 @@ class RootApi {
       $queryParams = array();
       $headerParams = array();
       $formParams = array();
-      $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+      $_header_accept = $this->apiClient->selectHeaderAccept(array('application/vnd.dwolla.v1.hal+json'));
       if (!is_null($_header_accept)) {
         $headerParams['Accept'] = $_header_accept;
       }

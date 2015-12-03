@@ -28,9 +28,9 @@ use \ArrayAccess;
 
 class UpdateCustomer implements ArrayAccess {
   static $swaggerTypes = array(
-      'first_name' => 'array[string]',
-      'last_name' => 'array[string]',
-      'email' => 'array[string]',
+      'first_name' => 'string',
+      'last_name' => 'string',
+      'email' => 'string',
       'ip_address' => 'string',
       'type' => 'string',
       'status' => 'string',
@@ -41,7 +41,13 @@ class UpdateCustomer implements ArrayAccess {
       'postal_code' => 'string',
       'date_of_birth' => 'string',
       'ssn' => 'string',
-      'phone' => 'string'
+      'phone' => 'string',
+      'business_name' => 'string',
+      'business_type' => 'string',
+      'business_classification' => 'string',
+      'ein' => 'string',
+      'doing_business_as' => 'string',
+      'website' => 'string'
   );
 
   static $attributeMap = array(
@@ -58,13 +64,19 @@ class UpdateCustomer implements ArrayAccess {
       'postal_code' => 'postalCode',
       'date_of_birth' => 'dateOfBirth',
       'ssn' => 'ssn',
-      'phone' => 'phone'
+      'phone' => 'phone',
+      'business_name' => 'businessName',
+      'business_type' => 'businessType',
+      'business_classification' => 'businessClassification',
+      'ein' => 'ein',
+      'doing_business_as' => 'doingBusinessAs',
+      'website' => 'website'
   );
 
   
-  public $first_name; /* array[string] */
-  public $last_name; /* array[string] */
-  public $email; /* array[string] */
+  public $first_name; /* string */
+  public $last_name; /* string */
+  public $email; /* string */
   public $ip_address; /* string */
   public $type; /* string */
   public $status; /* string */
@@ -76,6 +88,12 @@ class UpdateCustomer implements ArrayAccess {
   public $date_of_birth; /* string */
   public $ssn; /* string */
   public $phone; /* string */
+  public $business_name; /* string */
+  public $business_type; /* string */
+  public $business_classification; /* string */
+  public $ein; /* string */
+  public $doing_business_as; /* string */
+  public $website; /* string */
 
   public function __construct(array $data = null) {
     $this->first_name = $data["first_name"];
@@ -92,6 +110,12 @@ class UpdateCustomer implements ArrayAccess {
     $this->date_of_birth = $data["date_of_birth"];
     $this->ssn = $data["ssn"];
     $this->phone = $data["phone"];
+    $this->business_name = $data["business_name"];
+    $this->business_type = $data["business_type"];
+    $this->business_classification = $data["business_classification"];
+    $this->ein = $data["ein"];
+    $this->doing_business_as = $data["doing_business_as"];
+    $this->website = $data["website"];
   }
 
   public function offsetExists($offset) {

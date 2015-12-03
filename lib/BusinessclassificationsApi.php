@@ -113,7 +113,7 @@ class BusinessclassificationsApi {
    * Get a business classification with a list of industry classifications.
    *
    * @param string $id Id of business classification to get. (required)
-   * @return Customer
+   * @return BusinessClassification
    */
    public function getBusinessClassification($id) {
       
@@ -170,7 +170,7 @@ class BusinessclassificationsApi {
         return null;
       }
 
-      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Customer');
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'BusinessClassification');
   }
   
 

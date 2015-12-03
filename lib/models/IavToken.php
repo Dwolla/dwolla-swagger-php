@@ -26,48 +26,28 @@ namespace DwollaSwagger\models;
 
 use \ArrayAccess;
 
-class FundingSource implements ArrayAccess {
+class IavToken implements ArrayAccess {
   static $swaggerTypes = array(
       '_links' => 'map[string,HalLink]',
       '_embedded' => 'object',
-      'id' => 'string',
-      'status' => 'string',
-      'type' => 'string',
-      'name' => 'string',
-      'created' => 'DateTime',
-      'balance' => 'object'
+      'token' => 'string'
   );
 
   static $attributeMap = array(
       '_links' => '_links',
       '_embedded' => '_embedded',
-      'id' => 'id',
-      'status' => 'status',
-      'type' => 'type',
-      'name' => 'name',
-      'created' => 'created',
-      'balance' => 'balance'
+      'token' => 'token'
   );
 
   
   public $_links; /* map[string,HalLink] */
   public $_embedded; /* object */
-  public $id; /* string */
-  public $status; /* string */
-  public $type; /* string */
-  public $name; /* string */
-  public $created; /* DateTime */
-  public $balance; /* object */
+  public $token; /* string */
 
   public function __construct(array $data = null) {
     $this->_links = $data["_links"];
     $this->_embedded = $data["_embedded"];
-    $this->id = $data["id"];
-    $this->status = $data["status"];
-    $this->type = $data["type"];
-    $this->name = $data["name"];
-    $this->created = $data["created"];
-    $this->balance = $data["balance"];
+    $this->token = $data["token"];
   }
 
   public function offsetExists($offset) {

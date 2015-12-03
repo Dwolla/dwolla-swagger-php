@@ -326,5 +326,71 @@ class TransfersApi {
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Transfer');
   }
   
+  /**
+   * failureById
+   *
+   * Get a bank transfer failure by transfer id.
+   *
+   * @param string $id ID of failed bank transfer to get. (required)
+   * @return Transfer
+   */
+   public function failureById($id) {
+      
+      // verify the required parameter 'id' is set
+      if ($id === null) {
+        throw new \InvalidArgumentException('Missing the required parameter $id when calling failureById');
+      }
+      
+
+      // parse inputs
+      $resourcePath = "/transfers/{id}/failure";
+      $resourcePath = str_replace("{format}", "json", $resourcePath);
+      $method = "GET";
+      $httpBody = '';
+      $queryParams = array();
+      $headerParams = array();
+      $formParams = array();
+      $_header_accept = $this->apiClient->selectHeaderAccept(array('application/vnd.dwolla.v1.hal+json'));
+      if (!is_null($_header_accept)) {
+        $headerParams['Accept'] = $_header_accept;
+      }
+      $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
+
+      
+      
+      
+      // Entire URL for ID
+      if (filter_var($id, FILTER_VALIDATE_URL)) {
+        $split = explode('/', $id);
+        $id = end($split);
+      }
+      // path params
+      if($id !== null) {
+        $resourcePath = str_replace("{" . "id" . "}",
+                                    $this->apiClient->toPathValue($id), $resourcePath);
+      }
+      
+      
+
+      // for model (json/xml)
+      if (isset($_tempBody)) {
+        $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+      } else if (count($formParams) > 0) {
+        // for HTTP post (form)
+        $httpBody = $formParams;
+      }
+
+      // make the API Call
+      $response = $this->apiClient->callAPI($resourcePath, $method,
+                                            $queryParams, $httpBody,
+                                            $headerParams, $this->authSettings);
+
+      if(!$response[1]) {
+        return null;
+      }
+
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Transfer');
+  }
+  
 
 }

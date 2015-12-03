@@ -26,7 +26,7 @@ namespace DwollaSwagger\models;
 
 use \ArrayAccess;
 
-class VerificationToken implements ArrayAccess {
+class AccountOAuthToken implements ArrayAccess {
   static $swaggerTypes = array(
       '_links' => 'map[string,HalLink]',
       '_embedded' => 'object',
