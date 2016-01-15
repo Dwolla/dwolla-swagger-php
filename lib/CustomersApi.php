@@ -66,7 +66,7 @@ class CustomersApi {
    * @param int $offset How many results to skip. (required)
    * @return CustomerListResponse
    */
-   public function _list($limit, $offset) {
+   public function _list($limit = null, $offset = null) {
       
 
       // parse inputs
