@@ -33,6 +33,7 @@ class Document implements ArrayAccess {
       'status' => 'string',
       'type' => 'string',
       'created' => 'DateTime',
+      'failure_reason' => 'string',
       '_embedded' => 'object'
   );
 
@@ -42,6 +43,7 @@ class Document implements ArrayAccess {
       'status' => 'status',
       'type' => 'type',
       'created' => 'created',
+      'failure_reason' => 'failureReason',
       '_embedded' => '_embedded'
   );
 
@@ -51,6 +53,7 @@ class Document implements ArrayAccess {
   public $status; /* string */
   public $type; /* string */
   public $created; /* DateTime */
+  public $failure_reason; /* string */
   public $_embedded; /* object */
 
   public function __construct(array $data = null) {
@@ -59,6 +62,7 @@ class Document implements ArrayAccess {
     $this->status = $data["status"];
     $this->type = $data["type"];
     $this->created = $data["created"];
+    $this->failure_reason = $data["failure_reason"];
     $this->_embedded = $data["_embedded"];
   }
 

@@ -22,7 +22,7 @@
 
 namespace DwollaSwagger;
 
-class TransfersApi {
+class MasspaymentsApi {
 
   function __construct($apiClient = null) {
     if (null === $apiClient) {
@@ -58,25 +58,25 @@ class TransfersApi {
 
   
   /**
-   * getAccountTransfers
+   * getByAccount
    *
-   * Get an account's transfers.
+   * Get an account's mass payments.
    *
-   * @param string $id Account id to get transfers for. (required)
+   * @param string $id Account ID (required)
    * @param int $limit How many results to return. (required)
    * @param int $offset How many results to skip. (required)
-   * @return TransferListResponse
+   * @return MassPaymentListResponse
    */
-   public function getAccountTransfers($id, $limit, $offset) {
+   public function getByAccount($id, $limit, $offset) {
       
       // verify the required parameter 'id' is set
       if ($id === null) {
-        throw new \InvalidArgumentException('Missing the required parameter $id when calling getAccountTransfers');
+        throw new \InvalidArgumentException('Missing the required parameter $id when calling getByAccount');
       }
       
 
       // parse inputs
-      $resourcePath = "/accounts/{id}/transfers";
+      $resourcePath = "/accounts/{id}/mass-payments";
       $resourcePath = str_replace("{format}", "json", $resourcePath);
       $method = "GET";
       $httpBody = '';
@@ -87,7 +87,7 @@ class TransfersApi {
       if (!is_null($_header_accept)) {
         $headerParams['Accept'] = $_header_accept;
       }
-      $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
+      $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
       // query params
       if($limit !== null) {
@@ -128,29 +128,29 @@ class TransfersApi {
         return null;
       }
 
-      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'TransferListResponse');
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'MassPaymentListResponse');
   }
   
   /**
-   * getCustomerTransfers
+   * getByCustomer
    *
-   * Get a customer's transfers.
+   * Get a customer's mass payments.
    *
-   * @param string $id Customer id to get transfers for. (required)
+   * @param string $id Customer ID (required)
    * @param int $limit How many results to return. (required)
    * @param int $offset How many results to skip. (required)
-   * @return TransferListResponse
+   * @return MassPaymentListResponse
    */
-   public function getCustomerTransfers($id, $limit, $offset) {
+   public function getByCustomer($id, $limit, $offset) {
       
       // verify the required parameter 'id' is set
       if ($id === null) {
-        throw new \InvalidArgumentException('Missing the required parameter $id when calling getCustomerTransfers');
+        throw new \InvalidArgumentException('Missing the required parameter $id when calling getByCustomer');
       }
       
 
       // parse inputs
-      $resourcePath = "/customers/{id}/transfers";
+      $resourcePath = "/customers/{id}/mass-payments";
       $resourcePath = str_replace("{format}", "json", $resourcePath);
       $method = "GET";
       $httpBody = '';
@@ -161,7 +161,7 @@ class TransfersApi {
       if (!is_null($_header_accept)) {
         $headerParams['Accept'] = $_header_accept;
       }
-      $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
+      $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
       // query params
       if($limit !== null) {
@@ -202,22 +202,22 @@ class TransfersApi {
         return null;
       }
 
-      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'TransferListResponse');
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'MassPaymentListResponse');
   }
   
   /**
    * create
    *
-   * Create a new transfer.
+   * Create a new mass payment.
    *
-   * @param TransferRequestBody $body Transfer request. (required)
+   * @param MassPaymentRequestBody $body Mass payment request. (required)
    * @return Unit
    */
    public function create($body) {
       
 
       // parse inputs
-      $resourcePath = "/transfers";
+      $resourcePath = "/mass-payments";
       $resourcePath = str_replace("{format}", "json", $resourcePath);
       $method = "POST";
       $httpBody = '';
@@ -263,10 +263,10 @@ class TransfersApi {
   /**
    * byId
    *
-   * Get a transfer by id.
+   * Get a mass payment by id.
    *
-   * @param string $id ID of transfer to get. (required)
-   * @return Transfer
+   * @param string $id ID of mass payment to get. (required)
+   * @return MassPayment
    */
    public function byId($id) {
       
@@ -277,7 +277,7 @@ class TransfersApi {
       
 
       // parse inputs
-      $resourcePath = "/transfers/{id}";
+      $resourcePath = "/mass-payments/{id}";
       $resourcePath = str_replace("{format}", "json", $resourcePath);
       $method = "GET";
       $httpBody = '';
@@ -323,210 +323,7 @@ class TransfersApi {
         return null;
       }
 
-      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Transfer');
-  }
-  
-  /**
-   * update
-   *
-   * Update a transfer.
-   *
-   * @param UpdateTransfer $body Transfer to update. (required)
-   * @param string $id ID of transfer to get. (required)
-   * @return Transfer
-   */
-   public function update($body, $id) {
-      
-      // verify the required parameter 'id' is set
-      if ($id === null) {
-        throw new \InvalidArgumentException('Missing the required parameter $id when calling update');
-      }
-      
-
-      // parse inputs
-      $resourcePath = "/transfers/{id}";
-      $resourcePath = str_replace("{format}", "json", $resourcePath);
-      $method = "POST";
-      $httpBody = '';
-      $queryParams = array();
-      $headerParams = array();
-      $formParams = array();
-      $_header_accept = $this->apiClient->selectHeaderAccept(array('application/vnd.dwolla.v1.hal+json'));
-      if (!is_null($_header_accept)) {
-        $headerParams['Accept'] = $_header_accept;
-      }
-      $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
-
-      
-      
-      
-      // Entire URL for ID
-      if (filter_var($id, FILTER_VALIDATE_URL)) {
-        $split = explode('/', $id);
-        $id = end($split);
-      }
-      // path params
-      if($id !== null) {
-        $resourcePath = str_replace("{" . "id" . "}",
-                                    $this->apiClient->toPathValue($id), $resourcePath);
-      }
-      
-      // body params
-      $_tempBody = null;
-      if (isset($body)) {
-        $_tempBody = $body;
-      }
-
-      // for model (json/xml)
-      if (isset($_tempBody)) {
-        $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-      } else if (count($formParams) > 0) {
-        // for HTTP post (form)
-        $httpBody = $formParams;
-      }
-
-      // make the API Call
-      $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $httpBody,
-                                            $headerParams, $this->authSettings);
-
-      if(!$response[1]) {
-        return null;
-      }
-
-      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Transfer');
-  }
-  
-  /**
-   * failureById
-   *
-   * Get a bank transfer failure by transfer id.
-   *
-   * @param string $id ID of failed bank transfer to get. (required)
-   * @return Transfer
-   */
-   public function failureById($id) {
-      
-      // verify the required parameter 'id' is set
-      if ($id === null) {
-        throw new \InvalidArgumentException('Missing the required parameter $id when calling failureById');
-      }
-      
-
-      // parse inputs
-      $resourcePath = "/transfers/{id}/failure";
-      $resourcePath = str_replace("{format}", "json", $resourcePath);
-      $method = "GET";
-      $httpBody = '';
-      $queryParams = array();
-      $headerParams = array();
-      $formParams = array();
-      $_header_accept = $this->apiClient->selectHeaderAccept(array('application/vnd.dwolla.v1.hal+json'));
-      if (!is_null($_header_accept)) {
-        $headerParams['Accept'] = $_header_accept;
-      }
-      $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
-
-      
-      
-      
-      // Entire URL for ID
-      if (filter_var($id, FILTER_VALIDATE_URL)) {
-        $split = explode('/', $id);
-        $id = end($split);
-      }
-      // path params
-      if($id !== null) {
-        $resourcePath = str_replace("{" . "id" . "}",
-                                    $this->apiClient->toPathValue($id), $resourcePath);
-      }
-      
-      
-
-      // for model (json/xml)
-      if (isset($_tempBody)) {
-        $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-      } else if (count($formParams) > 0) {
-        // for HTTP post (form)
-        $httpBody = $formParams;
-      }
-
-      // make the API Call
-      $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $httpBody,
-                                            $headerParams, $this->authSettings);
-
-      if(!$response[1]) {
-        return null;
-      }
-
-      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Transfer');
-  }
-  
-  /**
-   * getFeesBySource
-   *
-   * Get a transfer's fees.
-   *
-   * @param string $id Transfer id to get fees for. (required)
-   * @return TransferListResponse
-   */
-   public function getFeesBySource($id) {
-      
-      // verify the required parameter 'id' is set
-      if ($id === null) {
-        throw new \InvalidArgumentException('Missing the required parameter $id when calling getFeesBySource');
-      }
-      
-
-      // parse inputs
-      $resourcePath = "/transfers/{id}/fees";
-      $resourcePath = str_replace("{format}", "json", $resourcePath);
-      $method = "GET";
-      $httpBody = '';
-      $queryParams = array();
-      $headerParams = array();
-      $formParams = array();
-      $_header_accept = $this->apiClient->selectHeaderAccept(array('application/vnd.dwolla.v1.hal+json'));
-      if (!is_null($_header_accept)) {
-        $headerParams['Accept'] = $_header_accept;
-      }
-      $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
-
-      
-      
-      
-      // Entire URL for ID
-      if (filter_var($id, FILTER_VALIDATE_URL)) {
-        $split = explode('/', $id);
-        $id = end($split);
-      }
-      // path params
-      if($id !== null) {
-        $resourcePath = str_replace("{" . "id" . "}",
-                                    $this->apiClient->toPathValue($id), $resourcePath);
-      }
-      
-      
-
-      // for model (json/xml)
-      if (isset($_tempBody)) {
-        $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-      } else if (count($formParams) > 0) {
-        // for HTTP post (form)
-        $httpBody = $formParams;
-      }
-
-      // make the API Call
-      $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $httpBody,
-                                            $headerParams, $this->authSettings);
-
-      if(!$response[1]) {
-        return null;
-      }
-
-      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'TransferListResponse');
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'MassPayment');
   }
   
 

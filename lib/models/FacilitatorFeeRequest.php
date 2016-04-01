@@ -26,36 +26,24 @@ namespace DwollaSwagger\models;
 
 use \ArrayAccess;
 
-class CreateFundingSourceRequest implements ArrayAccess {
+class FacilitatorFeeRequest implements ArrayAccess {
   static $swaggerTypes = array(
-      '_links' => 'object',
-      'routing_number' => 'string',
-      'account_number' => 'string',
-      'type' => 'string',
-      'name' => 'string'
+      '_links' => 'map[string,HalLink]',
+      'amount' => 'Amount'
   );
 
   static $attributeMap = array(
       '_links' => '_links',
-      'routing_number' => 'routingNumber',
-      'account_number' => 'accountNumber',
-      'type' => 'type',
-      'name' => 'name'
+      'amount' => 'amount'
   );
 
   
-  public $_links; /* object */
-  public $routing_number; /* string */
-  public $account_number; /* string */
-  public $type; /* string */
-  public $name; /* string */
+  public $_links; /* map[string,HalLink] */
+  public $amount; /* Amount */
 
   public function __construct(array $data = null) {
     $this->_links = $data["_links"];
-    $this->routing_number = $data["routing_number"];
-    $this->account_number = $data["account_number"];
-    $this->type = $data["type"];
-    $this->name = $data["name"];
+    $this->amount = $data["amount"];
   }
 
   public function offsetExists($offset) {

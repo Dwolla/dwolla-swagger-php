@@ -62,7 +62,7 @@ class FundingsourcesApi {
    *
    * Get an account's funding sources.
    *
-   * @param string $id Account UUID to get funding sources for. (required)
+   * @param string $id Account id to get funding sources for. (required)
    * @return FundingSourceListResponse
    */
    public function getAccountFundingSources($id) {
@@ -128,7 +128,7 @@ class FundingsourcesApi {
    *
    * Get a customer's funding sources.
    *
-   * @param string $id Customer UUID to get funding sources for. (required)
+   * @param string $id Customer id to get funding sources for. (required)
    * @return FundingSourceListResponse
    */
    public function getCustomerFundingSources($id) {
@@ -195,7 +195,7 @@ class FundingsourcesApi {
    * Create a new funding source.
    *
    * @param CreateFundingSourceRequest $body Funding source to create. (required)
-   * @param string $id Customer UUID to create funding source for. (required)
+   * @param string $id Customer id to create funding source for. (required)
    * @return FundingSource
    */
    public function createCustomerFundingSource($body, $id) {
@@ -453,7 +453,7 @@ class FundingsourcesApi {
    * Verify pending verifications exist.
    *
    * @param string $id Funding source ID to check for pending validation deposits for. (required)
-   * @return void
+   * @return MicroDeposits
    */
    public function verifyMicroDepositsExist($id) {
       
@@ -506,7 +506,11 @@ class FundingsourcesApi {
                                             $queryParams, $httpBody,
                                             $headerParams, $this->authSettings);
 
-      
+      if(!$response[1]) {
+        return null;
+      }
+
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'MicroDeposits');
   }
   
   /**
@@ -516,7 +520,7 @@ class FundingsourcesApi {
    *
    * @param VerifyMicroDepositsRequest $body Optional micro deposit amounts for verification (required)
    * @param string $id Funding source ID to initiate or verify micro deposits for. (required)
-   * @return void
+   * @return MicroDeposits
    */
    public function microDeposits($body, $id) {
       
@@ -573,7 +577,11 @@ class FundingsourcesApi {
                                             $queryParams, $httpBody,
                                             $headerParams, $this->authSettings);
 
-      
+      if(!$response[1]) {
+        return null;
+      }
+
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'MicroDeposits');
   }
   
 

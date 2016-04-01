@@ -30,24 +30,28 @@ class TransferRequestBody implements ArrayAccess {
   static $swaggerTypes = array(
       '_links' => 'map[string,HalLink]',
       'amount' => 'Amount',
-      'metadata' => 'object'
+      'metadata' => 'object',
+      'fees' => 'array[FacilitatorFeeRequest]'
   );
 
   static $attributeMap = array(
       '_links' => '_links',
       'amount' => 'amount',
-      'metadata' => 'metadata'
+      'metadata' => 'metadata',
+      'fees' => 'fees'
   );
 
   
   public $_links; /* map[string,HalLink] */
   public $amount; /* Amount */
   public $metadata; /* object */
+  public $fees; /* array[FacilitatorFeeRequest] */
 
   public function __construct(array $data = null) {
     $this->_links = $data["_links"];
     $this->amount = $data["amount"];
     $this->metadata = $data["metadata"];
+    $this->fees = $data["fees"];
   }
 
   public function offsetExists($offset) {
