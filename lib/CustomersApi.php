@@ -64,9 +64,10 @@ class CustomersApi {
    *
    * @param int $limit How many results to return. (required)
    * @param int $offset How many results to skip. (required)
+   * @param string $search Search term. (required)
    * @return CustomerListResponse
    */
-   public function _list($limit, $offset) {
+   public function _list($limit, $offset, $search) {
       
 
       // parse inputs
@@ -89,6 +90,9 @@ class CustomersApi {
       }// query params
       if($offset !== null) {
         $queryParams['offset'] = $this->apiClient->toQueryValue($offset);
+      }// query params
+      if($search !== null) {
+        $queryParams['search'] = $this->apiClient->toQueryValue($search);
       }
       
       
