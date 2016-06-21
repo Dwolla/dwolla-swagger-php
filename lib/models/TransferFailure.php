@@ -26,24 +26,32 @@ namespace DwollaSwagger\models;
 
 use \ArrayAccess;
 
-class HalLink implements ArrayAccess {
+class TransferFailure implements ArrayAccess {
   static $swaggerTypes = array(
-      'href' => 'string',
-      'type' => 'string'
+      '_links' => 'map[string,HalLink]',
+      '_embedded' => 'object',
+      'code' => 'string',
+      'description' => 'string'
   );
 
   static $attributeMap = array(
-      'href' => 'href',
-      'type' => 'type'
+      '_links' => '_links',
+      '_embedded' => '_embedded',
+      'code' => 'code',
+      'description' => 'description'
   );
 
   
-  public $href; /* string */
-  public $type; /* string */
+  public $_links; /* map[string,HalLink] */
+  public $_embedded; /* object */
+  public $code; /* string */
+  public $description; /* string */
 
   public function __construct(array $data = null) {
-    $this->href = $data["href"];
-    $this->type = $data["type"];
+    $this->_links = $data["_links"];
+    $this->_embedded = $data["_embedded"];
+    $this->code = $data["code"];
+    $this->description = $data["description"];
   }
 
   public function offsetExists($offset) {

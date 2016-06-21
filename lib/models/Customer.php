@@ -36,7 +36,14 @@ class Customer implements ArrayAccess {
       'email' => 'string',
       'type' => 'string',
       'status' => 'string',
-      'created' => 'string'
+      'created' => 'string',
+      'address1' => 'string',
+      'address2' => 'string',
+      'city' => 'string',
+      'state' => 'string',
+      'postal_code' => 'string',
+      'business_name' => 'string',
+      'doing_business_as' => 'string'
   );
 
   static $attributeMap = array(
@@ -48,7 +55,14 @@ class Customer implements ArrayAccess {
       'email' => 'email',
       'type' => 'type',
       'status' => 'status',
-      'created' => 'created'
+      'created' => 'created',
+      'address1' => 'address1',
+      'address2' => 'address2',
+      'city' => 'city',
+      'state' => 'state',
+      'postal_code' => 'postalCode',
+      'business_name' => 'businessName',
+      'doing_business_as' => 'doingBusinessAs'
   );
 
   
@@ -61,6 +75,13 @@ class Customer implements ArrayAccess {
   public $type; /* string */
   public $status; /* string */
   public $created; /* string */
+  public $address1; /* string */
+  public $address2; /* string */
+  public $city; /* string */
+  public $state; /* string */
+  public $postal_code; /* string */
+  public $business_name; /* string */
+  public $doing_business_as; /* string */
 
   public function __construct(array $data = null) {
     $this->_links = $data["_links"];
@@ -72,6 +93,13 @@ class Customer implements ArrayAccess {
     $this->type = $data["type"];
     $this->status = $data["status"];
     $this->created = $data["created"];
+    $this->address1 = $data["address1"];
+    $this->address2 = $data["address2"];
+    $this->city = $data["city"];
+    $this->state = $data["state"];
+    $this->postal_code = $data["postal_code"];
+    $this->business_name = $data["business_name"];
+    $this->doing_business_as = $data["doing_business_as"];
   }
 
   public function offsetExists($offset) {

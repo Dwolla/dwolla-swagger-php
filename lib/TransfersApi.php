@@ -403,7 +403,7 @@ class TransfersApi {
    * Get a bank transfer failure by transfer id.
    *
    * @param string $id ID of failed bank transfer to get. (required)
-   * @return Transfer
+   * @return TransferFailure
    */
    public function failureById($id) {
       
@@ -460,7 +460,7 @@ class TransfersApi {
         return null;
       }
 
-      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Transfer');
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'TransferFailure');
   }
   
   /**
