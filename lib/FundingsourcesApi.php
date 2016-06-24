@@ -388,7 +388,7 @@ class FundingsourcesApi {
    *
    * @param RemoveBankRequest $body request body to remove a funding source (required)
    * @param string $id Funding source ID to remove. (required)
-   * @return Unit
+   * @return FundingSource
    */
    public function softDelete($body, $id) {
       
@@ -449,7 +449,7 @@ class FundingsourcesApi {
         return null;
       }
 
-      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Unit');
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'FundingSource');
   }
   
   /**
