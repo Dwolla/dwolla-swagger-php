@@ -469,7 +469,7 @@ class TransfersApi {
    * Get a transfer's fees.
    *
    * @param string $id Transfer id to get fees for. (required)
-   * @return TransferListResponse
+   * @return FeesBySourceResponse
    */
    public function getFeesBySource($id) {
       
@@ -526,7 +526,7 @@ class TransfersApi {
         return null;
       }
 
-      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'TransferListResponse');
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'FeesBySourceResponse');
   }
   
 

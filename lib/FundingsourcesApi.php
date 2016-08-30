@@ -63,9 +63,10 @@ class FundingsourcesApi {
    * Get an account's funding sources.
    *
    * @param string $id Account id to get funding sources for. (required)
+   * @param boolean $removed Filter funding sources by this value. (optional)
    * @return FundingSourceListResponse
    */
-   public function getAccountFundingSources($id) {
+   public function getAccountFundingSources($id, $removed) {
       
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -87,7 +88,10 @@ class FundingsourcesApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
-      
+      // query params
+      if($removed !== null) {
+        $queryParams['removed'] = $this->apiClient->toQueryValue($removed);
+      }
       
       
       // Entire URL for ID
@@ -129,9 +133,10 @@ class FundingsourcesApi {
    * Get a customer's funding sources.
    *
    * @param string $id Customer id to get funding sources for. (required)
+   * @param boolean $removed Filter funding sources by this value. (optional)
    * @return FundingSourceListResponse
    */
-   public function getCustomerFundingSources($id) {
+   public function getCustomerFundingSources($id, $removed) {
       
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -153,7 +158,10 @@ class FundingsourcesApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
-      
+      // query params
+      if($removed !== null) {
+        $queryParams['removed'] = $this->apiClient->toQueryValue($removed);
+      }
       
       
       // Entire URL for ID
@@ -453,72 +461,6 @@ class FundingsourcesApi {
   }
   
   /**
-   * delete
-   *
-   * Delete a funding source by id.
-   *
-   * @param string $id Funding source ID to delete. (required)
-   * @return FundingSource
-   */
-   public function delete($id) {
-      
-      // verify the required parameter 'id' is set
-      if ($id === null) {
-        throw new \InvalidArgumentException('Missing the required parameter $id when calling delete');
-      }
-      
-
-      // parse inputs
-      $resourcePath = "/funding-sources/{id}";
-      $resourcePath = str_replace("{format}", "json", $resourcePath);
-      $method = "DELETE";
-      $httpBody = '';
-      $queryParams = array();
-      $headerParams = array();
-      $formParams = array();
-      $_header_accept = $this->apiClient->selectHeaderAccept(array('application/vnd.dwolla.v1.hal+json'));
-      if (!is_null($_header_accept)) {
-        $headerParams['Accept'] = $_header_accept;
-      }
-      $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
-
-      
-      
-      
-      // Entire URL for ID
-      if (filter_var($id, FILTER_VALIDATE_URL)) {
-        $split = explode('/', $id);
-        $id = end($split);
-      }
-      // path params
-      if($id !== null) {
-        $resourcePath = str_replace("{" . "id" . "}",
-                                    $this->apiClient->toPathValue($id), $resourcePath);
-      }
-      
-      
-
-      // for model (json/xml)
-      if (isset($_tempBody)) {
-        $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-      } else if (count($formParams) > 0) {
-        // for HTTP post (form)
-        $httpBody = $formParams;
-      }
-
-      // make the API Call
-      $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $httpBody,
-                                            $headerParams, $this->authSettings);
-
-      if(!$response[1]) {
-        return null;
-      }
-
-      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'FundingSource');
-  }
-  
-  /**
    * getBalance
    *
    * Get the balance of a funding source.
@@ -590,7 +532,7 @@ class FundingsourcesApi {
    * Verify pending verifications exist.
    *
    * @param string $id Funding source ID to check for pending validation deposits for. (required)
-   * @return MicroDeposits
+   * @return MicroDepositsInitiated
    */
    public function verifyMicroDepositsExist($id) {
       
@@ -647,7 +589,7 @@ class FundingsourcesApi {
         return null;
       }
 
-      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'MicroDeposits');
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'MicroDepositsInitiated');
   }
   
   /**

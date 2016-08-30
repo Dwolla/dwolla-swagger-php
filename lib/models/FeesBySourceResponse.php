@@ -26,20 +26,32 @@ namespace DwollaSwagger\models;
 
 use \ArrayAccess;
 
-class RemoveBankRequest implements ArrayAccess {
+class FeesBySourceResponse implements ArrayAccess {
   static $swaggerTypes = array(
-      'removed' => 'boolean'
+      '_links' => 'map[string,HalLink]',
+      '_embedded' => 'object',
+      'transactions' => 'array[Transfer]',
+      'total' => 'int'
   );
 
   static $attributeMap = array(
-      'removed' => 'removed'
+      '_links' => '_links',
+      '_embedded' => '_embedded',
+      'transactions' => 'transactions',
+      'total' => 'total'
   );
 
   
-  public $removed; /* boolean */
+  public $_links; /* map[string,HalLink] */
+  public $_embedded; /* object */
+  public $transactions; /* array[Transfer] */
+  public $total; /* int */
 
   public function __construct(array $data = null) {
-    $this->removed = $data["removed"];
+    $this->_links = $data["_links"];
+    $this->_embedded = $data["_embedded"];
+    $this->transactions = $data["transactions"];
+    $this->total = $data["total"];
   }
 
   public function offsetExists($offset) {

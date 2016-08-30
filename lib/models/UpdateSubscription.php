@@ -26,20 +26,20 @@ namespace DwollaSwagger\models;
 
 use \ArrayAccess;
 
-class RemoveBankRequest implements ArrayAccess {
+class UpdateSubscription implements ArrayAccess {
   static $swaggerTypes = array(
-      'removed' => 'boolean'
+      'paused' => 'boolean'
   );
 
   static $attributeMap = array(
-      'removed' => 'removed'
+      'paused' => 'paused'
   );
 
   
-  public $removed; /* boolean */
+  public $paused; /* boolean */
 
   public function __construct(array $data = null) {
-    $this->removed = $data["removed"];
+    $this->paused = $data["paused"];
   }
 
   public function offsetExists($offset) {

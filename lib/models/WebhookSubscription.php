@@ -32,6 +32,7 @@ class WebhookSubscription implements ArrayAccess {
       '_embedded' => 'object',
       'id' => 'string',
       'url' => 'string',
+      'paused' => 'boolean',
       'created' => 'DateTime'
   );
 
@@ -40,6 +41,7 @@ class WebhookSubscription implements ArrayAccess {
       '_embedded' => '_embedded',
       'id' => 'id',
       'url' => 'url',
+      'paused' => 'paused',
       'created' => 'created'
   );
 
@@ -48,6 +50,7 @@ class WebhookSubscription implements ArrayAccess {
   public $_embedded; /* object */
   public $id; /* string */
   public $url; /* string */
+  public $paused; /* boolean */
   public $created; /* DateTime */
 
   public function __construct(array $data = null) {
@@ -55,6 +58,7 @@ class WebhookSubscription implements ArrayAccess {
     $this->_embedded = $data["_embedded"];
     $this->id = $data["id"];
     $this->url = $data["url"];
+    $this->paused = $data["paused"];
     $this->created = $data["created"];
   }
 
