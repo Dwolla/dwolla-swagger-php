@@ -73,7 +73,7 @@ $jenny->lastName = 'Smith';
 $jenny->email = 'jsmith@gmail.com';
 $jenny->phone = '7188675309'
 
-$location = $customersApi.create($jenny);
+$location = $customersApi->create($jenny);
 ```
 
 `$location` will contain a URL to your newly created resource (HTTP 201 / Location header).
