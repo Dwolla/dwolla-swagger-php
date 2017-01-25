@@ -36,7 +36,9 @@ class FundingSource implements ArrayAccess {
       'name' => 'string',
       'created' => 'DateTime',
       'balance' => 'object',
-      'removed' => 'boolean'
+      'removed' => 'boolean',
+      'channels' => 'array[string]',
+      'bank_name' => 'string'
   );
 
   static $attributeMap = array(
@@ -48,7 +50,9 @@ class FundingSource implements ArrayAccess {
       'name' => 'name',
       'created' => 'created',
       'balance' => 'balance',
-      'removed' => 'removed'
+      'removed' => 'removed',
+      'channels' => 'channels',
+      'bank_name' => 'bankName'
   );
 
   
@@ -61,6 +65,8 @@ class FundingSource implements ArrayAccess {
   public $created; /* DateTime */
   public $balance; /* object */
   public $removed; /* boolean */
+  public $channels; /* array[string] */
+  public $bank_name; /* string */
 
   public function __construct(array $data = null) {
     $this->_links = $data["_links"];
@@ -72,6 +78,8 @@ class FundingSource implements ArrayAccess {
     $this->created = $data["created"];
     $this->balance = $data["balance"];
     $this->removed = $data["removed"];
+    $this->channels = $data["channels"];
+    $this->bank_name = $data["bank_name"];
   }
 
   public function offsetExists($offset) {

@@ -29,21 +29,25 @@ use \ArrayAccess;
 class HalLink implements ArrayAccess {
   static $swaggerTypes = array(
       'href' => 'string',
-      'type' => 'string'
+      'type' => 'string',
+      'resource_type' => 'string'
   );
 
   static $attributeMap = array(
       'href' => 'href',
-      'type' => 'type'
+      'type' => 'type',
+      'resource_type' => 'resource-type'
   );
 
   
   public $href; /* string */
   public $type; /* string */
+  public $resource_type; /* string */
 
   public function __construct(array $data = null) {
     $this->href = $data["href"];
     $this->type = $data["type"];
+    $this->resource_type = $data["resource_type"];
   }
 
   public function offsetExists($offset) {

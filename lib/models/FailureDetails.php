@@ -26,48 +26,24 @@ namespace DwollaSwagger\models;
 
 use \ArrayAccess;
 
-class Transfer implements ArrayAccess {
+class FailureDetails implements ArrayAccess {
   static $swaggerTypes = array(
-      '_links' => 'map[string,HalLink]',
-      '_embedded' => 'object',
-      'id' => 'string',
-      'status' => 'string',
-      'amount' => 'Money',
-      'created' => 'DateTime',
-      'metadata' => 'object',
-      'clearing' => 'Clearing'
+      'code' => 'string',
+      'description' => 'string'
   );
 
   static $attributeMap = array(
-      '_links' => '_links',
-      '_embedded' => '_embedded',
-      'id' => 'id',
-      'status' => 'status',
-      'amount' => 'amount',
-      'created' => 'created',
-      'metadata' => 'metadata',
-      'clearing' => 'clearing'
+      'code' => 'code',
+      'description' => 'description'
   );
 
   
-  public $_links; /* map[string,HalLink] */
-  public $_embedded; /* object */
-  public $id; /* string */
-  public $status; /* string */
-  public $amount; /* Money */
-  public $created; /* DateTime */
-  public $metadata; /* object */
-  public $clearing; /* Clearing */
+  public $code; /* string */
+  public $description; /* string */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->_embedded = $data["_embedded"];
-    $this->id = $data["id"];
-    $this->status = $data["status"];
-    $this->amount = $data["amount"];
-    $this->created = $data["created"];
-    $this->metadata = $data["metadata"];
-    $this->clearing = $data["clearing"];
+    $this->code = $data["code"];
+    $this->description = $data["description"];
   }
 
   public function offsetExists($offset) {

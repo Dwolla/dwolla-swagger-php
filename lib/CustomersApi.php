@@ -67,7 +67,7 @@ class CustomersApi {
    * @param string $search Search term. (required)
    * @return CustomerListResponse
    */
-   public function _list($limit, $offset, $search) {
+   public function _list($limit = null, $offset = null, $search = null) {
       
 
       // parse inputs

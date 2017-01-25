@@ -31,14 +31,18 @@ class TransferRequestBody implements ArrayAccess {
       '_links' => 'map[string,HalLink]',
       'amount' => 'Amount',
       'metadata' => 'object',
-      'fees' => 'array[FacilitatorFeeRequest]'
+      'fees' => 'array[FacilitatorFeeRequest]',
+      'clearing' => 'Clearing',
+      'imad' => 'string'
   );
 
   static $attributeMap = array(
       '_links' => '_links',
       'amount' => 'amount',
       'metadata' => 'metadata',
-      'fees' => 'fees'
+      'fees' => 'fees',
+      'clearing' => 'clearing',
+      'imad' => 'imad'
   );
 
   
@@ -46,12 +50,16 @@ class TransferRequestBody implements ArrayAccess {
   public $amount; /* Amount */
   public $metadata; /* object */
   public $fees; /* array[FacilitatorFeeRequest] */
+  public $clearing; /* Clearing */
+  public $imad; /* string */
 
   public function __construct(array $data = null) {
     $this->_links = $data["_links"];
     $this->amount = $data["amount"];
     $this->metadata = $data["metadata"];
     $this->fees = $data["fees"];
+    $this->clearing = $data["clearing"];
+    $this->imad = $data["imad"];
   }
 
   public function offsetExists($offset) {

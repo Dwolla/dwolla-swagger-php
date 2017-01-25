@@ -33,7 +33,8 @@ class CreateFundingSourceRequest implements ArrayAccess {
       'account_number' => 'string',
       'type' => 'string',
       'name' => 'string',
-      'verified' => 'boolean'
+      'verified' => 'boolean',
+      'channels' => 'array[string]'
   );
 
   static $attributeMap = array(
@@ -42,7 +43,8 @@ class CreateFundingSourceRequest implements ArrayAccess {
       'account_number' => 'accountNumber',
       'type' => 'type',
       'name' => 'name',
-      'verified' => 'verified'
+      'verified' => 'verified',
+      'channels' => 'channels'
   );
 
   
@@ -52,6 +54,7 @@ class CreateFundingSourceRequest implements ArrayAccess {
   public $type; /* string */
   public $name; /* string */
   public $verified; /* boolean */
+  public $channels; /* array[string] */
 
   public function __construct(array $data = null) {
     $this->_links = $data["_links"];
@@ -60,6 +63,7 @@ class CreateFundingSourceRequest implements ArrayAccess {
     $this->type = $data["type"];
     $this->name = $data["name"];
     $this->verified = $data["verified"];
+    $this->channels = $data["channels"];
   }
 
   public function offsetExists($offset) {

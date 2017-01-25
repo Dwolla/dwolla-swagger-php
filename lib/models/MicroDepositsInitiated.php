@@ -31,14 +31,16 @@ class MicroDepositsInitiated implements ArrayAccess {
       '_links' => 'map[string,HalLink]',
       '_embedded' => 'object',
       'created' => 'DateTime',
-      'status' => 'string'
+      'status' => 'string',
+      'failure' => 'FailureDetails'
   );
 
   static $attributeMap = array(
       '_links' => '_links',
       '_embedded' => '_embedded',
       'created' => 'created',
-      'status' => 'status'
+      'status' => 'status',
+      'failure' => 'failure'
   );
 
   
@@ -46,12 +48,14 @@ class MicroDepositsInitiated implements ArrayAccess {
   public $_embedded; /* object */
   public $created; /* DateTime */
   public $status; /* string */
+  public $failure; /* FailureDetails */
 
   public function __construct(array $data = null) {
     $this->_links = $data["_links"];
     $this->_embedded = $data["_embedded"];
     $this->created = $data["created"];
     $this->status = $data["status"];
+    $this->failure = $data["failure"];
   }
 
   public function offsetExists($offset) {
