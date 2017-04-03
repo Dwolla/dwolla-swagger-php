@@ -32,8 +32,8 @@ To get started, all you need to set is the `access_token` and `host` values.
 ```php
 DwollaSwagger\Configuration::$access_token = 'a token';
 
-# For UAT/Sandbox
-$apiClient = new DwollaSwagger\ApiClient("https://api-uat.dwolla.com/");
+# For Sandbox
+$apiClient = new DwollaSwagger\ApiClient("https://api-sandbox.dwolla.com/");
 
 # For production
 $apiClient = new DwollaSwagger\ApiClient("https://api.dwolla.com");
