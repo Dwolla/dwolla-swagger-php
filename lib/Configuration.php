@@ -59,6 +59,11 @@ class Configuration {
    */
   public static $debug_file = 'php://output';
 
+  /**
+   * Control over IPV4 and 6 routing
+   */
+  public static $allowIPV6 = true;
+
   /*
    *  manually initalize  ApiClient
    */
