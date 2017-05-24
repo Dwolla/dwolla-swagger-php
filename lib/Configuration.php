@@ -65,7 +65,7 @@ class Configuration {
   public static $allowIPV6 = true;
 
   /*
-   *  manually initalize  ApiClient
+   *  manually initialize  ApiClient
    */
   public static function init() {
     if (self::$apiClient === null)
