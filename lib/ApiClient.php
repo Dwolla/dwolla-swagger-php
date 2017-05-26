@@ -281,6 +281,11 @@ class ApiClient {
     // obtain the HTTP response headers
     curl_setopt($curl, CURLOPT_HEADER, 1);
 
+    // force IPV4 only, if needed
+    if (!Configuration::$allowIPV6 && defined('CURLOPT_IPRESOLVE') && defined('CURL_IPRESOLVE_V4')) {
+      curl_setopt($curl, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+    }
+
     // Make the request
     $response = curl_exec($curl);
     $http_header_size = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
