@@ -42,9 +42,9 @@ class ApiClient {
    */
   function __construct($host = null) {
     if ($host === null) {
-      $this->host = 'https://localhost/';
+      $this->host = 'https://localhost';
     } else {
-      $this->host = $host;
+      $this->host = rtrim($host, "/");
     }
   }
 
