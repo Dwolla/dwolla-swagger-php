@@ -45,7 +45,7 @@ Now that we've set up our client, we can use it to make requests to the API. Let
 
 ```php
 DwollaSwagger\Configuration::$access_token = 'a token';
-$apiClient = new DwollaSwagger\ApiClient("https://api-uat.dwolla.com/");
+$apiClient = new DwollaSwagger\ApiClient("https://api-sandbox.dwolla.com/");
 
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
 $myCusties = $customersApi->_list(10);
