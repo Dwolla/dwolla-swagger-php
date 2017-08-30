@@ -66,7 +66,7 @@ class FundingsourcesApi {
    * @param boolean $removed Filter funding sources by this value. (optional)
    * @return FundingSourceListResponse
    */
-   public function getAccountFundingSources($id, $removed) {
+   public function getAccountFundingSources($id, $removed = null) {
       
       // verify the required parameter 'id' is set
       if ($id === null) {
