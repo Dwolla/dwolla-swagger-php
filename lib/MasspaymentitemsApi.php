@@ -56,7 +56,7 @@ class MasspaymentitemsApi {
     $this->apiClient = $apiClient;
   }
 
-  
+
   /**
    * byId
    *
@@ -66,12 +66,12 @@ class MasspaymentitemsApi {
    * @return MassPaymentItem
    */
    public function byId($id) {
-      
+
       // verify the required parameter 'id' is set
       if ($id === null) {
         throw new \InvalidArgumentException('Missing the required parameter $id when calling byId');
       }
-      
+
 
       // parse inputs
       $resourcePath = "/mass-payment-items/{id}";
@@ -87,9 +87,9 @@ class MasspaymentitemsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
-      
-      
-      
+
+
+
       // Entire URL for ID
       if (filter_var($id, FILTER_VALIDATE_URL)) {
         $split = explode('/', $id);
@@ -100,8 +100,8 @@ class MasspaymentitemsApi {
         $resourcePath = str_replace("{" . "id" . "}",
                                     $this->apiClient->toPathValue($id), $resourcePath);
       }
-      
-      
+
+
 
       // for model (json/xml)
       if (isset($_tempBody)) {
@@ -122,25 +122,25 @@ class MasspaymentitemsApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'MassPaymentItem');
   }
-  
+
   /**
    * getMassPaymentItems
    *
    * Get a mass payment's items.
    *
    * @param string $id Mass payment id to get items for. (required)
-   * @param int $limit How many results to return. (required)
-   * @param int $offset How many results to skip. (required)
-   * @param string $status What status to filter by. (required)
+   * @param int $limit How many results to return. (optional)
+   * @param int $offset How many results to skip. (optional)
+   * @param string $status What status to filter by. (optional)
    * @return MassPaymentItemListResponse
    */
-   public function getMassPaymentItems($id, $limit, $offset, $status) {
-      
+   public function getMassPaymentItems($id, $limit = null, $offset = null, $status = null) {
+
       // verify the required parameter 'id' is set
       if ($id === null) {
         throw new \InvalidArgumentException('Missing the required parameter $id when calling getMassPaymentItems');
       }
-      
+
 
       // parse inputs
       $resourcePath = "/mass-payments/{id}/items";
@@ -166,8 +166,8 @@ class MasspaymentitemsApi {
       if($status !== null) {
         $queryParams['status'] = $this->apiClient->toQueryValue($status);
       }
-      
-      
+
+
       // Entire URL for ID
       if (filter_var($id, FILTER_VALIDATE_URL)) {
         $split = explode('/', $id);
@@ -178,8 +178,8 @@ class MasspaymentitemsApi {
         $resourcePath = str_replace("{" . "id" . "}",
                                     $this->apiClient->toPathValue($id), $resourcePath);
       }
-      
-      
+
+
 
       // for model (json/xml)
       if (isset($_tempBody)) {
@@ -200,6 +200,6 @@ class MasspaymentitemsApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'MassPaymentItemListResponse');
   }
-  
+
 
 }
