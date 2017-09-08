@@ -56,24 +56,24 @@ class TransfersApi {
     $this->apiClient = $apiClient;
   }
 
-  
+
   /**
    * getAccountTransfers
    *
    * Get an account's transfers.
    *
    * @param string $id Account id to get transfers for. (required)
-   * @param int $limit How many results to return. (required)
-   * @param int $offset How many results to skip. (required)
+   * @param int $limit How many results to return. (optional)
+   * @param int $offset How many results to skip. (optional)
    * @return TransferListResponse
    */
-   public function getAccountTransfers($id, $limit, $offset) {
-      
+   public function getAccountTransfers($id, $limit = null, $offset = null) {
+
       // verify the required parameter 'id' is set
       if ($id === null) {
         throw new \InvalidArgumentException('Missing the required parameter $id when calling getAccountTransfers');
       }
-      
+
 
       // parse inputs
       $resourcePath = "/accounts/{id}/transfers";
@@ -96,8 +96,8 @@ class TransfersApi {
       if($offset !== null) {
         $queryParams['offset'] = $this->apiClient->toQueryValue($offset);
       }
-      
-      
+
+
       // Entire URL for ID
       if (filter_var($id, FILTER_VALIDATE_URL)) {
         $split = explode('/', $id);
@@ -108,8 +108,8 @@ class TransfersApi {
         $resourcePath = str_replace("{" . "id" . "}",
                                     $this->apiClient->toPathValue($id), $resourcePath);
       }
-      
-      
+
+
 
       // for model (json/xml)
       if (isset($_tempBody)) {
@@ -130,24 +130,24 @@ class TransfersApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'TransferListResponse');
   }
-  
+
   /**
    * getCustomerTransfers
    *
    * Get a customer's transfers.
    *
    * @param string $id Customer id to get transfers for. (required)
-   * @param int $limit How many results to return. (required)
-   * @param int $offset How many results to skip. (required)
+   * @param int $limit How many results to return. (optional)
+   * @param int $offset How many results to skip. (optional)
    * @return TransferListResponse
    */
-   public function getCustomerTransfers($id, $limit, $offset) {
-      
+   public function getCustomerTransfers($id, $limit = null, $offset = null) {
+
       // verify the required parameter 'id' is set
       if ($id === null) {
         throw new \InvalidArgumentException('Missing the required parameter $id when calling getCustomerTransfers');
       }
-      
+
 
       // parse inputs
       $resourcePath = "/customers/{id}/transfers";
@@ -170,8 +170,8 @@ class TransfersApi {
       if($offset !== null) {
         $queryParams['offset'] = $this->apiClient->toQueryValue($offset);
       }
-      
-      
+
+
       // Entire URL for ID
       if (filter_var($id, FILTER_VALIDATE_URL)) {
         $split = explode('/', $id);
@@ -182,8 +182,8 @@ class TransfersApi {
         $resourcePath = str_replace("{" . "id" . "}",
                                     $this->apiClient->toPathValue($id), $resourcePath);
       }
-      
-      
+
+
 
       // for model (json/xml)
       if (isset($_tempBody)) {
@@ -204,7 +204,7 @@ class TransfersApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'TransferListResponse');
   }
-  
+
   /**
    * create
    *
@@ -214,7 +214,7 @@ class TransfersApi {
    * @return Unit
    */
    public function create($body) {
-      
+
 
       // parse inputs
       $resourcePath = "/transfers";
@@ -230,10 +230,10 @@ class TransfersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
-      
-      
-      
-      
+
+
+
+
       // body params
       $_tempBody = null;
       if (isset($body)) {
@@ -259,7 +259,7 @@ class TransfersApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Unit');
   }
-  
+
   /**
    * byId
    *
@@ -269,12 +269,12 @@ class TransfersApi {
    * @return Transfer
    */
    public function byId($id) {
-      
+
       // verify the required parameter 'id' is set
       if ($id === null) {
         throw new \InvalidArgumentException('Missing the required parameter $id when calling byId');
       }
-      
+
 
       // parse inputs
       $resourcePath = "/transfers/{id}";
@@ -290,9 +290,9 @@ class TransfersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
-      
-      
-      
+
+
+
       // Entire URL for ID
       if (filter_var($id, FILTER_VALIDATE_URL)) {
         $split = explode('/', $id);
@@ -303,8 +303,8 @@ class TransfersApi {
         $resourcePath = str_replace("{" . "id" . "}",
                                     $this->apiClient->toPathValue($id), $resourcePath);
       }
-      
-      
+
+
 
       // for model (json/xml)
       if (isset($_tempBody)) {
@@ -325,7 +325,7 @@ class TransfersApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Transfer');
   }
-  
+
   /**
    * update
    *
@@ -336,12 +336,12 @@ class TransfersApi {
    * @return Transfer
    */
    public function update($body, $id) {
-      
+
       // verify the required parameter 'id' is set
       if ($id === null) {
         throw new \InvalidArgumentException('Missing the required parameter $id when calling update');
       }
-      
+
 
       // parse inputs
       $resourcePath = "/transfers/{id}";
@@ -357,9 +357,9 @@ class TransfersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
-      
-      
-      
+
+
+
       // Entire URL for ID
       if (filter_var($id, FILTER_VALIDATE_URL)) {
         $split = explode('/', $id);
@@ -370,7 +370,7 @@ class TransfersApi {
         $resourcePath = str_replace("{" . "id" . "}",
                                     $this->apiClient->toPathValue($id), $resourcePath);
       }
-      
+
       // body params
       $_tempBody = null;
       if (isset($body)) {
@@ -396,7 +396,7 @@ class TransfersApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Transfer');
   }
-  
+
   /**
    * failureById
    *
@@ -406,12 +406,12 @@ class TransfersApi {
    * @return TransferFailure
    */
    public function failureById($id) {
-      
+
       // verify the required parameter 'id' is set
       if ($id === null) {
         throw new \InvalidArgumentException('Missing the required parameter $id when calling failureById');
       }
-      
+
 
       // parse inputs
       $resourcePath = "/transfers/{id}/failure";
@@ -427,9 +427,9 @@ class TransfersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
-      
-      
-      
+
+
+
       // Entire URL for ID
       if (filter_var($id, FILTER_VALIDATE_URL)) {
         $split = explode('/', $id);
@@ -440,8 +440,8 @@ class TransfersApi {
         $resourcePath = str_replace("{" . "id" . "}",
                                     $this->apiClient->toPathValue($id), $resourcePath);
       }
-      
-      
+
+
 
       // for model (json/xml)
       if (isset($_tempBody)) {
@@ -462,7 +462,7 @@ class TransfersApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'TransferFailure');
   }
-  
+
   /**
    * getFeesBySource
    *
@@ -472,12 +472,12 @@ class TransfersApi {
    * @return FeesBySourceResponse
    */
    public function getFeesBySource($id) {
-      
+
       // verify the required parameter 'id' is set
       if ($id === null) {
         throw new \InvalidArgumentException('Missing the required parameter $id when calling getFeesBySource');
       }
-      
+
 
       // parse inputs
       $resourcePath = "/transfers/{id}/fees";
@@ -493,9 +493,9 @@ class TransfersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
-      
-      
-      
+
+
+
       // Entire URL for ID
       if (filter_var($id, FILTER_VALIDATE_URL)) {
         $split = explode('/', $id);
@@ -506,8 +506,8 @@ class TransfersApi {
         $resourcePath = str_replace("{" . "id" . "}",
                                     $this->apiClient->toPathValue($id), $resourcePath);
       }
-      
-      
+
+
 
       // for model (json/xml)
       if (isset($_tempBody)) {
@@ -528,6 +528,6 @@ class TransfersApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'FeesBySourceResponse');
   }
-  
+
 
 }

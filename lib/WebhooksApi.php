@@ -56,24 +56,24 @@ class WebhooksApi {
     $this->apiClient = $apiClient;
   }
 
-  
+
   /**
    * hooksById
    *
    * Get webhooks by subscription id.
    *
    * @param string $id ID of webhook to get. (required)
-   * @param int $limit How many results to return. (required)
-   * @param int $offset How many results to skip. (required)
+   * @param int $limit How many results to return. (optional)
+   * @param int $offset How many results to skip. (optional)
    * @return WebhookEventListResponse
    */
-   public function hooksById($id, $limit, $offset) {
-      
+   public function hooksById($id, $limit = null, $offset = null) {
+
       // verify the required parameter 'id' is set
       if ($id === null) {
         throw new \InvalidArgumentException('Missing the required parameter $id when calling hooksById');
       }
-      
+
 
       // parse inputs
       $resourcePath = "/webhook-subscriptions/{id}/webhooks";
@@ -96,8 +96,8 @@ class WebhooksApi {
       if($offset !== null) {
         $queryParams['offset'] = $this->apiClient->toQueryValue($offset);
       }
-      
-      
+
+
       // Entire URL for ID
       if (filter_var($id, FILTER_VALIDATE_URL)) {
         $split = explode('/', $id);
@@ -108,8 +108,8 @@ class WebhooksApi {
         $resourcePath = str_replace("{" . "id" . "}",
                                     $this->apiClient->toPathValue($id), $resourcePath);
       }
-      
-      
+
+
 
       // for model (json/xml)
       if (isset($_tempBody)) {
@@ -130,7 +130,7 @@ class WebhooksApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'WebhookEventListResponse');
   }
-  
+
   /**
    * id
    *
@@ -140,12 +140,12 @@ class WebhooksApi {
    * @return Webhook
    */
    public function id($id) {
-      
+
       // verify the required parameter 'id' is set
       if ($id === null) {
         throw new \InvalidArgumentException('Missing the required parameter $id when calling id');
       }
-      
+
 
       // parse inputs
       $resourcePath = "/webhooks/{id}";
@@ -161,9 +161,9 @@ class WebhooksApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
-      
-      
-      
+
+
+
       // Entire URL for ID
       if (filter_var($id, FILTER_VALIDATE_URL)) {
         $split = explode('/', $id);
@@ -174,8 +174,8 @@ class WebhooksApi {
         $resourcePath = str_replace("{" . "id" . "}",
                                     $this->apiClient->toPathValue($id), $resourcePath);
       }
-      
-      
+
+
 
       // for model (json/xml)
       if (isset($_tempBody)) {
@@ -196,7 +196,7 @@ class WebhooksApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Webhook');
   }
-  
+
   /**
    * retriesById
    *
@@ -206,12 +206,12 @@ class WebhooksApi {
    * @return WebhookRetryRequestListResponse
    */
    public function retriesById($id) {
-      
+
       // verify the required parameter 'id' is set
       if ($id === null) {
         throw new \InvalidArgumentException('Missing the required parameter $id when calling retriesById');
       }
-      
+
 
       // parse inputs
       $resourcePath = "/webhooks/{id}/retries";
@@ -227,9 +227,9 @@ class WebhooksApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
-      
-      
-      
+
+
+
       // Entire URL for ID
       if (filter_var($id, FILTER_VALIDATE_URL)) {
         $split = explode('/', $id);
@@ -240,8 +240,8 @@ class WebhooksApi {
         $resourcePath = str_replace("{" . "id" . "}",
                                     $this->apiClient->toPathValue($id), $resourcePath);
       }
-      
-      
+
+
 
       // for model (json/xml)
       if (isset($_tempBody)) {
@@ -262,7 +262,7 @@ class WebhooksApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'WebhookRetryRequestListResponse');
   }
-  
+
   /**
    * retryWebhook
    *
@@ -272,12 +272,12 @@ class WebhooksApi {
    * @return WebhookRetry
    */
    public function retryWebhook($id) {
-      
+
       // verify the required parameter 'id' is set
       if ($id === null) {
         throw new \InvalidArgumentException('Missing the required parameter $id when calling retryWebhook');
       }
-      
+
 
       // parse inputs
       $resourcePath = "/webhooks/{id}/retries";
@@ -293,9 +293,9 @@ class WebhooksApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
-      
-      
-      
+
+
+
       // Entire URL for ID
       if (filter_var($id, FILTER_VALIDATE_URL)) {
         $split = explode('/', $id);
@@ -306,8 +306,8 @@ class WebhooksApi {
         $resourcePath = str_replace("{" . "id" . "}",
                                     $this->apiClient->toPathValue($id), $resourcePath);
       }
-      
-      
+
+
 
       // for model (json/xml)
       if (isset($_tempBody)) {
@@ -328,6 +328,6 @@ class WebhooksApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'WebhookRetry');
   }
-  
+
 
 }

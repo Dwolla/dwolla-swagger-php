@@ -56,19 +56,19 @@ class CustomersApi {
     $this->apiClient = $apiClient;
   }
 
-  
+
   /**
    * _list
    *
    * Get a list of customers.
    *
-   * @param int $limit How many results to return. (required)
-   * @param int $offset How many results to skip. (required)
-   * @param string $search Search term. (required)
+   * @param int $limit How many results to return. (optional)
+   * @param int $offset How many results to skip. (optional)
+   * @param string $search Search term. (optional)
    * @return CustomerListResponse
    */
    public function _list($limit = null, $offset = null, $search = null) {
-      
+
 
       // parse inputs
       $resourcePath = "/customers";
@@ -94,10 +94,10 @@ class CustomersApi {
       if($search !== null) {
         $queryParams['search'] = $this->apiClient->toQueryValue($search);
       }
-      
-      
-      
-      
+
+
+
+
 
       // for model (json/xml)
       if (isset($_tempBody)) {
@@ -118,7 +118,7 @@ class CustomersApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'CustomerListResponse');
   }
-  
+
   /**
    * create
    *
@@ -128,7 +128,7 @@ class CustomersApi {
    * @return Unit
    */
    public function create($body) {
-      
+
 
       // parse inputs
       $resourcePath = "/customers";
@@ -144,10 +144,10 @@ class CustomersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
-      
-      
-      
-      
+
+
+
+
       // body params
       $_tempBody = null;
       if (isset($body)) {
@@ -173,7 +173,7 @@ class CustomersApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Unit');
   }
-  
+
   /**
    * getCustomer
    *
@@ -183,12 +183,12 @@ class CustomersApi {
    * @return Customer
    */
    public function getCustomer($id) {
-      
+
       // verify the required parameter 'id' is set
       if ($id === null) {
         throw new \InvalidArgumentException('Missing the required parameter $id when calling getCustomer');
       }
-      
+
 
       // parse inputs
       $resourcePath = "/customers/{id}";
@@ -204,9 +204,9 @@ class CustomersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
-      
-      
-      
+
+
+
       // Entire URL for ID
       if (filter_var($id, FILTER_VALIDATE_URL)) {
         $split = explode('/', $id);
@@ -217,8 +217,8 @@ class CustomersApi {
         $resourcePath = str_replace("{" . "id" . "}",
                                     $this->apiClient->toPathValue($id), $resourcePath);
       }
-      
-      
+
+
 
       // for model (json/xml)
       if (isset($_tempBody)) {
@@ -239,7 +239,7 @@ class CustomersApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Customer');
   }
-  
+
   /**
    * updateCustomer
    *
@@ -250,12 +250,12 @@ class CustomersApi {
    * @return Customer
    */
    public function updateCustomer($body, $id) {
-      
+
       // verify the required parameter 'id' is set
       if ($id === null) {
         throw new \InvalidArgumentException('Missing the required parameter $id when calling updateCustomer');
       }
-      
+
 
       // parse inputs
       $resourcePath = "/customers/{id}";
@@ -271,9 +271,9 @@ class CustomersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
-      
-      
-      
+
+
+
       // Entire URL for ID
       if (filter_var($id, FILTER_VALIDATE_URL)) {
         $split = explode('/', $id);
@@ -284,7 +284,7 @@ class CustomersApi {
         $resourcePath = str_replace("{" . "id" . "}",
                                     $this->apiClient->toPathValue($id), $resourcePath);
       }
-      
+
       // body params
       $_tempBody = null;
       if (isset($body)) {
@@ -310,7 +310,7 @@ class CustomersApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Customer');
   }
-  
+
   /**
    * getCustomerDocuments
    *
@@ -320,12 +320,12 @@ class CustomersApi {
    * @return DocumentListResponse
    */
    public function getCustomerDocuments($id) {
-      
+
       // verify the required parameter 'id' is set
       if ($id === null) {
         throw new \InvalidArgumentException('Missing the required parameter $id when calling getCustomerDocuments');
       }
-      
+
 
       // parse inputs
       $resourcePath = "/customers/{id}/documents";
@@ -341,9 +341,9 @@ class CustomersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
-      
-      
-      
+
+
+
       // Entire URL for ID
       if (filter_var($id, FILTER_VALIDATE_URL)) {
         $split = explode('/', $id);
@@ -354,8 +354,8 @@ class CustomersApi {
         $resourcePath = str_replace("{" . "id" . "}",
                                     $this->apiClient->toPathValue($id), $resourcePath);
       }
-      
-      
+
+
 
       // for model (json/xml)
       if (isset($_tempBody)) {
@@ -376,7 +376,7 @@ class CustomersApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'DocumentListResponse');
   }
-  
+
   /**
    * uploadDocument
    *
@@ -385,7 +385,7 @@ class CustomersApi {
    * @return Unit
    */
    public function uploadDocument() {
-      
+
 
       // parse inputs
       $resourcePath = "/customers/{id}/documents";
@@ -401,11 +401,11 @@ class CustomersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('multipart/form-data'));
 
-      
-      
-      
-      
-      
+
+
+
+
+
 
       // for model (json/xml)
       if (isset($_tempBody)) {
@@ -426,7 +426,7 @@ class CustomersApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Unit');
   }
-  
+
   /**
    * createFundingSourcesTokenForCustomer
    *
@@ -436,12 +436,12 @@ class CustomersApi {
    * @return CustomerOAuthToken
    */
    public function createFundingSourcesTokenForCustomer($id) {
-      
+
       // verify the required parameter 'id' is set
       if ($id === null) {
         throw new \InvalidArgumentException('Missing the required parameter $id when calling createFundingSourcesTokenForCustomer');
       }
-      
+
 
       // parse inputs
       $resourcePath = "/customers/{id}/funding-sources-token";
@@ -457,9 +457,9 @@ class CustomersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
-      
-      
-      
+
+
+
       // Entire URL for ID
       if (filter_var($id, FILTER_VALIDATE_URL)) {
         $split = explode('/', $id);
@@ -470,8 +470,8 @@ class CustomersApi {
         $resourcePath = str_replace("{" . "id" . "}",
                                     $this->apiClient->toPathValue($id), $resourcePath);
       }
-      
-      
+
+
 
       // for model (json/xml)
       if (isset($_tempBody)) {
@@ -492,7 +492,7 @@ class CustomersApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'CustomerOAuthToken');
   }
-  
+
   /**
    * getCustomerIavToken
    *
@@ -502,12 +502,12 @@ class CustomersApi {
    * @return IavToken
    */
    public function getCustomerIavToken($id) {
-      
+
       // verify the required parameter 'id' is set
       if ($id === null) {
         throw new \InvalidArgumentException('Missing the required parameter $id when calling getCustomerIavToken');
       }
-      
+
 
       // parse inputs
       $resourcePath = "/customers/{id}/iav-token";
@@ -523,9 +523,9 @@ class CustomersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
-      
-      
-      
+
+
+
       // Entire URL for ID
       if (filter_var($id, FILTER_VALIDATE_URL)) {
         $split = explode('/', $id);
@@ -536,8 +536,8 @@ class CustomersApi {
         $resourcePath = str_replace("{" . "id" . "}",
                                     $this->apiClient->toPathValue($id), $resourcePath);
       }
-      
-      
+
+
 
       // for model (json/xml)
       if (isset($_tempBody)) {
@@ -558,6 +558,6 @@ class CustomersApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'IavToken');
   }
-  
+
 
 }
