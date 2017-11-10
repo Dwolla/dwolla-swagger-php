@@ -65,9 +65,10 @@ class TransfersApi {
    * @param string $id Account id to get transfers for. (required)
    * @param int $limit How many results to return. (optional)
    * @param int $offset How many results to skip. (optional)
+   * @param string $status What status to filter by. (optional)
    * @return TransferListResponse
    */
-   public function getAccountTransfers($id, $limit = null, $offset = null) {
+   public function getAccountTransfers($id, $limit = null, $offset = null, $status = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -95,6 +96,9 @@ class TransfersApi {
       }// query params
       if($offset !== null) {
         $queryParams['offset'] = $this->apiClient->toQueryValue($offset);
+      }// query params
+      if($status !== null) {
+        $queryParams['status'] = $this->apiClient->toQueryValue($status);
       }
 
 
@@ -139,9 +143,10 @@ class TransfersApi {
    * @param string $id Customer id to get transfers for. (required)
    * @param int $limit How many results to return. (optional)
    * @param int $offset How many results to skip. (optional)
+   * @param string $status What status to filter by. (required)
    * @return TransferListResponse
    */
-   public function getCustomerTransfers($id, $limit = null, $offset = null) {
+   public function getCustomerTransfers($id, $limit = null, $offset = null, $status = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -169,6 +174,9 @@ class TransfersApi {
       }// query params
       if($offset !== null) {
         $queryParams['offset'] = $this->apiClient->toQueryValue($offset);
+      }// query params
+      if($status !== null) {
+        $queryParams['status'] = $this->apiClient->toQueryValue($status);
       }
 
 

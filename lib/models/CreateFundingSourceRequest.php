@@ -42,6 +42,7 @@ class CreateFundingSourceRequest implements ArrayAccess {
       'routing_number' => 'routingNumber',
       'account_number' => 'accountNumber',
       'type' => 'type',
+      'bank_account_type' => 'bankAccountType',
       'name' => 'name',
       'verified' => 'verified',
       'channels' => 'channels'
@@ -52,6 +53,7 @@ class CreateFundingSourceRequest implements ArrayAccess {
   public $routing_number; /* string */
   public $account_number; /* string */
   public $type; /* string */
+  public $bank_account_type; /* string */
   public $name; /* string */
   public $verified; /* boolean */
   public $channels; /* array[string] */
@@ -61,6 +63,7 @@ class CreateFundingSourceRequest implements ArrayAccess {
     $this->routing_number = $data["routing_number"];
     $this->account_number = $data["account_number"];
     $this->type = $data["type"];
+    $this->bank_account_type = $data["bank_account_type"];
     $this->name = $data["name"];
     $this->verified = $data["verified"];
     $this->channels = $data["channels"];

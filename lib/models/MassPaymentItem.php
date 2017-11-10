@@ -33,7 +33,8 @@ class MassPaymentItem implements ArrayAccess {
       'id' => 'string',
       'status' => 'string',
       'amount' => 'Amount',
-      'metadata' => 'object'
+      'metadata' => 'object',
+      'correlation_id' => 'string'
   );
 
   static $attributeMap = array(
@@ -42,7 +43,8 @@ class MassPaymentItem implements ArrayAccess {
       'id' => 'id',
       'status' => 'status',
       'amount' => 'amount',
-      'metadata' => 'metadata'
+      'metadata' => 'metadata',
+      'correlation_id' => 'correlationId'
   );
 
   
@@ -52,6 +54,7 @@ class MassPaymentItem implements ArrayAccess {
   public $status; /* string */
   public $amount; /* Amount */
   public $metadata; /* object */
+  public $correlation_id; /* string */
 
   public function __construct(array $data = null) {
     $this->_links = $data["_links"];
@@ -60,6 +63,7 @@ class MassPaymentItem implements ArrayAccess {
     $this->status = $data["status"];
     $this->amount = $data["amount"];
     $this->metadata = $data["metadata"];
+    $this->correlation_id = $data["correlation_id"];
   }
 
   public function offsetExists($offset) {

@@ -35,7 +35,9 @@ class Transfer implements ArrayAccess {
       'amount' => 'Money',
       'created' => 'DateTime',
       'metadata' => 'object',
-      'clearing' => 'Clearing'
+      'clearing' => 'Clearing',
+      'correlation_id' => 'string',
+      'individual_ach_id' => 'string'
   );
 
   static $attributeMap = array(
@@ -46,7 +48,9 @@ class Transfer implements ArrayAccess {
       'amount' => 'amount',
       'created' => 'created',
       'metadata' => 'metadata',
-      'clearing' => 'clearing'
+      'clearing' => 'clearing',
+      'correlation_id' => 'correlationId',
+      'individual_ach_id' => 'individualAchId'
   );
 
   
@@ -58,6 +62,8 @@ class Transfer implements ArrayAccess {
   public $created; /* DateTime */
   public $metadata; /* object */
   public $clearing; /* Clearing */
+  public $correlation_id; /* string */
+  public $individual_ach_id; /* string */
 
   public function __construct(array $data = null) {
     $this->_links = $data["_links"];
@@ -68,6 +74,8 @@ class Transfer implements ArrayAccess {
     $this->created = $data["created"];
     $this->metadata = $data["metadata"];
     $this->clearing = $data["clearing"];
+    $this->correlation_id = $data["correlation_id"];
+    $this->individual_ach_id = $data["individual_ach_id"];
   }
 
   public function offsetExists($offset) {
