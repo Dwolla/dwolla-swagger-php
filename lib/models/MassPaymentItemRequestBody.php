@@ -30,24 +30,28 @@ class MassPaymentItemRequestBody implements ArrayAccess {
   static $swaggerTypes = array(
       '_links' => 'object',
       'amount' => 'Amount',
-      'metadata' => 'object'
+      'metadata' => 'object',
+      'correlation_id' => 'string'
   );
 
   static $attributeMap = array(
       '_links' => '_links',
       'amount' => 'amount',
-      'metadata' => 'metadata'
+      'metadata' => 'metadata',
+      'correlation_id' => 'correlationId'
   );
 
   
   public $_links; /* object */
   public $amount; /* Amount */
   public $metadata; /* object */
+  public $correlation_id; /* string */
 
   public function __construct(array $data = null) {
     $this->_links = $data["_links"];
     $this->amount = $data["amount"];
     $this->metadata = $data["metadata"];
+    $this->correlation_id = $data["correlation_id"];
   }
 
   public function offsetExists($offset) {

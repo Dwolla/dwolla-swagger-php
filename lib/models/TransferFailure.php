@@ -31,14 +31,16 @@ class TransferFailure implements ArrayAccess {
       '_links' => 'map[string,HalLink]',
       '_embedded' => 'object',
       'code' => 'string',
-      'description' => 'string'
+      'description' => 'string',
+      'explanation' => 'string'
   );
 
   static $attributeMap = array(
       '_links' => '_links',
       '_embedded' => '_embedded',
       'code' => 'code',
-      'description' => 'description'
+      'description' => 'description',
+      'explanation' => 'explanation'
   );
 
   
@@ -46,12 +48,14 @@ class TransferFailure implements ArrayAccess {
   public $_embedded; /* object */
   public $code; /* string */
   public $description; /* string */
+  public $explanation; /* string */
 
   public function __construct(array $data = null) {
     $this->_links = $data["_links"];
     $this->_embedded = $data["_embedded"];
     $this->code = $data["code"];
     $this->description = $data["description"];
+    $this->explanation = $data["explanation"];
   }
 
   public function offsetExists($offset) {

@@ -33,12 +33,15 @@ class FundingSource implements ArrayAccess {
       'id' => 'string',
       'status' => 'string',
       'type' => 'string',
+      'bank_account_type' => 'string',
       'name' => 'string',
       'created' => 'DateTime',
       'balance' => 'object',
       'removed' => 'boolean',
       'channels' => 'array[string]',
-      'bank_name' => 'string'
+      'bank_name' => 'string',
+      'iav_account_holders' => 'object',
+      'fingerprint' => 'string'
   );
 
   static $attributeMap = array(
@@ -47,12 +50,15 @@ class FundingSource implements ArrayAccess {
       'id' => 'id',
       'status' => 'status',
       'type' => 'type',
+      'bank_account_type' => 'bankAccountType',
       'name' => 'name',
       'created' => 'created',
       'balance' => 'balance',
       'removed' => 'removed',
       'channels' => 'channels',
-      'bank_name' => 'bankName'
+      'bank_name' => 'bankName',
+      'iav_account_holders' => 'iavAccountHolders',
+      'fingerprint' => 'fingerprint'
   );
 
   
@@ -61,12 +67,15 @@ class FundingSource implements ArrayAccess {
   public $id; /* string */
   public $status; /* string */
   public $type; /* string */
+  public $bank_account_type; /* string */
   public $name; /* string */
   public $created; /* DateTime */
   public $balance; /* object */
   public $removed; /* boolean */
   public $channels; /* array[string] */
   public $bank_name; /* string */
+  public $iav_account_holders; /* object */
+  public $fingerprint; /* string */
 
   public function __construct(array $data = null) {
     $this->_links = $data["_links"];
@@ -74,12 +83,15 @@ class FundingSource implements ArrayAccess {
     $this->id = $data["id"];
     $this->status = $data["status"];
     $this->type = $data["type"];
+    $this->bank_account_type = $data["bank_account_type"];
     $this->name = $data["name"];
     $this->created = $data["created"];
     $this->balance = $data["balance"];
     $this->removed = $data["removed"];
     $this->channels = $data["channels"];
     $this->bank_name = $data["bank_name"];
+    $this->iav_account_holders = $data["iav_account_holders"];
+    $this->fingerprint = $data["fingerprint"];
   }
 
   public function offsetExists($offset) {

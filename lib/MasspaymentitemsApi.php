@@ -132,9 +132,10 @@ class MasspaymentitemsApi {
    * @param int $limit How many results to return. (optional)
    * @param int $offset How many results to skip. (optional)
    * @param string $status What status to filter by. (optional)
+   * @param string $correlation_id Correlation ID to search by. (optional)
    * @return MassPaymentItemListResponse
    */
-   public function getMassPaymentItems($id, $limit = null, $offset = null, $status = null) {
+   public function getMassPaymentItems($id, $limit = null, $offset = null, $status = null, $correlation_id = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -165,6 +166,9 @@ class MasspaymentitemsApi {
       }// query params
       if($status !== null) {
         $queryParams['status'] = $this->apiClient->toQueryValue($status);
+      }// query params
+      if($correlation_id !== null) {
+        $queryParams['correlationId'] = $this->apiClient->toQueryValue($correlation_id);
       }
 
 

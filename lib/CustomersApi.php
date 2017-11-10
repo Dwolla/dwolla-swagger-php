@@ -382,9 +382,15 @@ class CustomersApi {
    *
    * Upload a verification document.
    *
+   * @param string $id ID of customer. (required)
    * @return Unit
    */
-   public function uploadDocument() {
+   public function uploadDocument($id) {
+
+      // verify the required parameter 'id' is set
+      if ($id === null) {
+        throw new \InvalidArgumentException('Missing the required parameter $id when calling uploadDocument');
+      }
 
 
       // parse inputs
@@ -404,6 +410,16 @@ class CustomersApi {
 
 
 
+      // Entire URL for ID
+      if (filter_var($id, FILTER_VALIDATE_URL)) {
+        $split = explode('/', $id);
+        $id = end($split);
+      }
+      // path params
+      if($id !== null) {
+        $resourcePath = str_replace("{" . "id" . "}",
+                                    $this->apiClient->toPathValue($id), $resourcePath);
+      }
 
 
 
