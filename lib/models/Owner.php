@@ -26,48 +26,44 @@ namespace DwollaSwagger\models;
 
 use \ArrayAccess;
 
-class CreateFundingSourceRequest implements ArrayAccess {
+class Owner implements ArrayAccess {
   static $swaggerTypes = array(
-      '_links' => 'object',
-      'routing_number' => 'string',
-      'account_number' => 'string',
-      'type' => 'string',
-      'bank_account_type' => 'string',
-      'name' => 'string',
-      'verified' => 'boolean',
-      'channels' => 'array[string]'
+      '_links' => 'map[string,HalLink]',
+      'id' => 'string',
+      'first_name' => 'string',
+      'last_name' => 'string',
+      'address' => 'Address',
+      'verification_status' => 'string',
+      '_embedded' => 'map[string,Number]'
   );
 
   static $attributeMap = array(
       '_links' => '_links',
-      'routing_number' => 'routingNumber',
-      'account_number' => 'accountNumber',
-      'type' => 'type',
-      'bank_account_type' => 'bankAccountType',
-      'name' => 'name',
-      'verified' => 'verified',
-      'channels' => 'channels'
+      'id' => 'id',
+      'first_name' => 'firstName',
+      'last_name' => 'lastName',
+      'address' => 'address',
+      'verification_status' => 'verificationStatus',
+      '_embedded' => '_embedded'
   );
 
 
-  public $_links; /* object */
-  public $routing_number; /* string */
-  public $account_number; /* string */
-  public $type; /* string */
-  public $bank_account_type; /* string */
-  public $name; /* string */
-  public $verified; /* boolean */
-  public $channels; /* array[string] */
+  public $_links; /* map[string,HalLink] */
+  public $id; /* string */
+  public $first_name; /* string */
+  public $last_name; /* string */
+  public $address; /* Address */
+  public $verification_status; /* string */
+  public $_embedded; /* map[string,Number] */
 
   public function __construct(array $data = null) {
     $this->_links = $data["_links"];
-    $this->routing_number = $data["routing_number"];
-    $this->account_number = $data["account_number"];
-    $this->type = $data["type"];
-    $this->bank_account_type = $data["bank_account_type"];
-    $this->name = $data["name"];
-    $this->verified = $data["verified"];
-    $this->channels = $data["channels"];
+    $this->id = $data["id"];
+    $this->first_name = $data["first_name"];
+    $this->last_name = $data["last_name"];
+    $this->address = $data["address"];
+    $this->verification_status = $data["verification_status"];
+    $this->_embedded = $data["_embedded"];
   }
 
   public function offsetExists($offset) {

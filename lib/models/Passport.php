@@ -26,48 +26,24 @@ namespace DwollaSwagger\models;
 
 use \ArrayAccess;
 
-class CreateFundingSourceRequest implements ArrayAccess {
+class Passport implements ArrayAccess {
   static $swaggerTypes = array(
-      '_links' => 'object',
-      'routing_number' => 'string',
-      'account_number' => 'string',
-      'type' => 'string',
-      'bank_account_type' => 'string',
-      'name' => 'string',
-      'verified' => 'boolean',
-      'channels' => 'array[string]'
+      'number' => 'string',
+      'country' => 'string'
   );
 
   static $attributeMap = array(
-      '_links' => '_links',
-      'routing_number' => 'routingNumber',
-      'account_number' => 'accountNumber',
-      'type' => 'type',
-      'bank_account_type' => 'bankAccountType',
-      'name' => 'name',
-      'verified' => 'verified',
-      'channels' => 'channels'
+      'number' => 'number',
+      'country' => 'country'
   );
 
 
-  public $_links; /* object */
-  public $routing_number; /* string */
-  public $account_number; /* string */
-  public $type; /* string */
-  public $bank_account_type; /* string */
-  public $name; /* string */
-  public $verified; /* boolean */
-  public $channels; /* array[string] */
+  public $number; /* string */
+  public $country; /* string */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->routing_number = $data["routing_number"];
-    $this->account_number = $data["account_number"];
-    $this->type = $data["type"];
-    $this->bank_account_type = $data["bank_account_type"];
-    $this->name = $data["name"];
-    $this->verified = $data["verified"];
-    $this->channels = $data["channels"];
+    $this->number = $data["number"];
+    $this->country = $data["country"];
   }
 
   public function offsetExists($offset) {

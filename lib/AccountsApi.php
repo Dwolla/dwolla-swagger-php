@@ -63,7 +63,7 @@ class AccountsApi {
    * Get account info by id.
    *
    * @param string $id Account ID to get info for. (required)
-   * @return AccountInfo
+   * @return FullAccountInfo
    */
    public function id($id) {
       
@@ -71,7 +71,7 @@ class AccountsApi {
       if ($id === null) {
         throw new \InvalidArgumentException('Missing the required parameter $id when calling id');
       }
-      
+
 
       // parse inputs
       $resourcePath = "/accounts/{id}";
@@ -120,9 +120,9 @@ class AccountsApi {
         return null;
       }
 
-      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'AccountInfo');
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'FullAccountInfo');
   }
-  
+
   /**
    * createFundingSourcesToken
    *

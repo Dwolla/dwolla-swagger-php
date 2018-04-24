@@ -26,48 +26,40 @@ namespace DwollaSwagger\models;
 
 use \ArrayAccess;
 
-class CreateFundingSourceRequest implements ArrayAccess {
+class FullAccountInfo implements ArrayAccess {
   static $swaggerTypes = array(
-      '_links' => 'object',
-      'routing_number' => 'string',
-      'account_number' => 'string',
-      'type' => 'string',
-      'bank_account_type' => 'string',
+      '_links' => 'map[string,HalLink]',
+      'id' => 'string',
       'name' => 'string',
-      'verified' => 'boolean',
-      'channels' => 'array[string]'
+      'timezone_offset' => 'int',
+      'type' => 'string',
+      '_embedded' => 'object'
   );
 
   static $attributeMap = array(
       '_links' => '_links',
-      'routing_number' => 'routingNumber',
-      'account_number' => 'accountNumber',
-      'type' => 'type',
-      'bank_account_type' => 'bankAccountType',
+      'id' => 'id',
       'name' => 'name',
-      'verified' => 'verified',
-      'channels' => 'channels'
+      'timezone_offset' => 'timezoneOffset',
+      'type' => 'type',
+      '_embedded' => '_embedded'
   );
 
 
-  public $_links; /* object */
-  public $routing_number; /* string */
-  public $account_number; /* string */
-  public $type; /* string */
-  public $bank_account_type; /* string */
+  public $_links; /* map[string,HalLink] */
+  public $id; /* string */
   public $name; /* string */
-  public $verified; /* boolean */
-  public $channels; /* array[string] */
+  public $timezone_offset; /* int */
+  public $type; /* string */
+  public $_embedded; /* object */
 
   public function __construct(array $data = null) {
     $this->_links = $data["_links"];
-    $this->routing_number = $data["routing_number"];
-    $this->account_number = $data["account_number"];
-    $this->type = $data["type"];
-    $this->bank_account_type = $data["bank_account_type"];
+    $this->id = $data["id"];
     $this->name = $data["name"];
-    $this->verified = $data["verified"];
-    $this->channels = $data["channels"];
+    $this->timezone_offset = $data["timezone_offset"];
+    $this->type = $data["type"];
+    $this->_embedded = $data["_embedded"];
   }
 
   public function offsetExists($offset) {
