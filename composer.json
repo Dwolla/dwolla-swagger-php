@@ -8,15 +8,20 @@
     "api"
   ],
   "homepage": "http://developers.dwolla.com/",
-  "license": "Apache v2",
+  "license": "Apache-2.0",
   "authors": [
     {
       "name": "Swagger and contributors",
       "homepage": "https://github.com/swagger-api/swagger-codegen"
     },
-    { 
-      "name": "David Stancu", 
+    {
+      "name": "David Stancu",
       "homepage": "https://github.com/mach-kernel"
+    },
+    {
+      "name": "Dwolla",
+      "email": "api@dwolla.com",
+      "homepage": "https://developers.dwolla.com/"
     }
   ],
   "require": {
