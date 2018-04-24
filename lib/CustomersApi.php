@@ -65,9 +65,10 @@ class CustomersApi {
    * @param int $limit How many results to return. (optional)
    * @param int $offset How many results to skip. (optional)
    * @param string $search Search term. (optional)
+   * @param string $status Customer status. (optional)
    * @return CustomerListResponse
    */
-   public function _list($limit = null, $offset = null, $search = null) {
+   public function _list($limit = null, $offset = null, $search = null, $status = null) {
 
 
       // parse inputs
@@ -94,7 +95,9 @@ class CustomersApi {
       if($search !== null) {
         $queryParams['search'] = $this->apiClient->toQueryValue($search);
       }
-
+      if($status !== null) {
+        $queryParams['status'] = $this->apiClient->toQueryValue($status);
+      }
 
 
 
@@ -310,6 +313,280 @@ class CustomersApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Customer');
   }
+
+  /**
+   * addBeneficialOwner
+   *
+   * Add a beneficial owner
+   *
+   * @param CreateOwnerRequest $body Beneficial owner to create. (required)
+   * @param string $id Customer id to add owner for for. (required)
+   * @return Owner
+   */
+   public function addBeneficialOwner($body, $id) {
+
+      // verify the required parameter 'id' is set
+      if ($id === null) {
+        throw new \InvalidArgumentException('Missing the required parameter $id when calling addBeneficialOwner');
+      }
+
+
+      // parse inputs
+      $resourcePath = "/customers/{id}/beneficial-owners";
+      $resourcePath = str_replace("{format}", "json", $resourcePath);
+      $method = "POST";
+      $httpBody = '';
+      $queryParams = array();
+      $headerParams = array();
+      $formParams = array();
+      $_header_accept = $this->apiClient->selectHeaderAccept(array('application/vnd.dwolla.v1.hal+json'));
+      if (!is_null($_header_accept)) {
+        $headerParams['Accept'] = $_header_accept;
+      }
+      $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
+
+
+
+
+      // Entire URL for ID
+      if (filter_var($id, FILTER_VALIDATE_URL)) {
+        $split = explode('/', $id);
+        $id = end($split);
+      }
+      // path params
+      if($id !== null) {
+        $resourcePath = str_replace("{" . "id" . "}",
+                                    $this->apiClient->toPathValue($id), $resourcePath);
+      }
+
+      // body params
+      $_tempBody = null;
+      if (isset($body)) {
+        $_tempBody = $body;
+      }
+
+      // for model (json/xml)
+      if (isset($_tempBody)) {
+        $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+      } else if (count($formParams) > 0) {
+        // for HTTP post (form)
+        $httpBody = $formParams;
+      }
+
+      // make the API Call
+      $response = $this->apiClient->callAPI($resourcePath, $method,
+                                            $queryParams, $httpBody,
+                                            $headerParams, $this->authSettings);
+
+      if(!$response[1]) {
+        return null;
+      }
+
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Owner');
+  }
+
+  /**
+   * getBeneficialOwners
+   *
+   * Get Beneficial Owners added for a customer.
+   *
+   * @param string $id ID of customer. (required)
+   * @return BeneficialOwnerListResponse
+   */
+   public function getBeneficialOwners($id) {
+
+      // verify the required parameter 'id' is set
+      if ($id === null) {
+        throw new \InvalidArgumentException('Missing the required parameter $id when calling getBeneficialOwners');
+      }
+
+
+      // parse inputs
+      $resourcePath = "/customers/{id}/beneficial-owners";
+      $resourcePath = str_replace("{format}", "json", $resourcePath);
+      $method = "GET";
+      $httpBody = '';
+      $queryParams = array();
+      $headerParams = array();
+      $formParams = array();
+      $_header_accept = $this->apiClient->selectHeaderAccept(array('application/vnd.dwolla.v1.hal+json'));
+      if (!is_null($_header_accept)) {
+        $headerParams['Accept'] = $_header_accept;
+      }
+      $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
+
+
+
+
+      // Entire URL for ID
+      if (filter_var($id, FILTER_VALIDATE_URL)) {
+        $split = explode('/', $id);
+        $id = end($split);
+      }
+      // path params
+      if($id !== null) {
+        $resourcePath = str_replace("{" . "id" . "}",
+                                    $this->apiClient->toPathValue($id), $resourcePath);
+      }
+
+
+
+      // for model (json/xml)
+      if (isset($_tempBody)) {
+        $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+      } else if (count($formParams) > 0) {
+        // for HTTP post (form)
+        $httpBody = $formParams;
+      }
+
+      // make the API Call
+      $response = $this->apiClient->callAPI($resourcePath, $method,
+                                            $queryParams, $httpBody,
+                                            $headerParams, $this->authSettings);
+
+      if(!$response[1]) {
+        return null;
+      }
+
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'BeneficialOwnerListResponse');
+  }
+
+  /**
+   * getOwnershipStatus
+   *
+   * Get a customer's ownership certification status.
+   *
+   * @param string $id Customer id to get ownership certification status for. (required)
+   * @return Ownership
+   */
+   public function getOwnershipStatus($id) {
+
+      // verify the required parameter 'id' is set
+      if ($id === null) {
+        throw new \InvalidArgumentException('Missing the required parameter $id when calling getOwnershipStatus');
+      }
+
+
+      // parse inputs
+      $resourcePath = "/customers/{id}/beneficial-ownership";
+      $resourcePath = str_replace("{format}", "json", $resourcePath);
+      $method = "GET";
+      $httpBody = '';
+      $queryParams = array();
+      $headerParams = array();
+      $formParams = array();
+      $_header_accept = $this->apiClient->selectHeaderAccept(array('application/vnd.dwolla.v1.hal+json'));
+      if (!is_null($_header_accept)) {
+        $headerParams['Accept'] = $_header_accept;
+      }
+      $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
+
+
+
+
+      // Entire URL for ID
+      if (filter_var($id, FILTER_VALIDATE_URL)) {
+        $split = explode('/', $id);
+        $id = end($split);
+      }
+      // path params
+      if($id !== null) {
+        $resourcePath = str_replace("{" . "id" . "}",
+                                    $this->apiClient->toPathValue($id), $resourcePath);
+      }
+
+
+
+      // for model (json/xml)
+      if (isset($_tempBody)) {
+        $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+      } else if (count($formParams) > 0) {
+        // for HTTP post (form)
+        $httpBody = $formParams;
+      }
+
+      // make the API Call
+      $response = $this->apiClient->callAPI($resourcePath, $method,
+                                            $queryParams, $httpBody,
+                                            $headerParams, $this->authSettings);
+
+      if(!$response[1]) {
+        return null;
+      }
+
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Ownership');
+  }
+
+  /**
+   * changeOwnershipStatus
+   *
+   * Change ownership status.
+   *
+   * @param CertifyRequest $body Status of ownership (required)
+   * @param string $id Customer id to change ownership status. (required)
+   * @return Ownership
+   */
+   public function changeOwnershipStatus($body, $id) {
+
+      // verify the required parameter 'id' is set
+      if ($id === null) {
+        throw new \InvalidArgumentException('Missing the required parameter $id when calling changeOwnershipStatus');
+      }
+
+
+      // parse inputs
+      $resourcePath = "/customers/{id}/beneficial-ownership";
+      $resourcePath = str_replace("{format}", "json", $resourcePath);
+      $method = "POST";
+      $httpBody = '';
+      $queryParams = array();
+      $headerParams = array();
+      $formParams = array();
+      $_header_accept = $this->apiClient->selectHeaderAccept(array('application/vnd.dwolla.v1.hal+json'));
+      if (!is_null($_header_accept)) {
+        $headerParams['Accept'] = $_header_accept;
+      }
+      $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
+
+
+
+
+      // Entire URL for ID
+      if (filter_var($id, FILTER_VALIDATE_URL)) {
+        $split = explode('/', $id);
+        $id = end($split);
+      }
+      // path params
+      if($id !== null) {
+        $resourcePath = str_replace("{" . "id" . "}",
+                                    $this->apiClient->toPathValue($id), $resourcePath);
+      }
+
+      // body params
+      $_tempBody = null;
+      if (isset($body)) {
+        $_tempBody = $body;
+      }
+
+      // for model (json/xml)
+      if (isset($_tempBody)) {
+        $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+      } else if (count($formParams) > 0) {
+        // for HTTP post (form)
+        $httpBody = $formParams;
+      }
+
+      // make the API Call
+      $response = $this->apiClient->callAPI($resourcePath, $method,
+                                            $queryParams, $httpBody,
+                                            $headerParams, $this->authSettings);
+
+      if(!$response[1]) {
+        return null;
+      }
+
+      return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Ownership');
+      }
 
   /**
    * getCustomerDocuments

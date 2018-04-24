@@ -26,48 +26,40 @@ namespace DwollaSwagger\models;
 
 use \ArrayAccess;
 
-class CreateFundingSourceRequest implements ArrayAccess {
+class UpdateOwnerRequest implements ArrayAccess {
   static $swaggerTypes = array(
-      '_links' => 'object',
-      'routing_number' => 'string',
-      'account_number' => 'string',
-      'type' => 'string',
-      'bank_account_type' => 'string',
-      'name' => 'string',
-      'verified' => 'boolean',
-      'channels' => 'array[string]'
+      'first_name' => 'string',
+      'last_name' => 'string',
+      'ssn' => 'string',
+      'date_of_birth' => 'string',
+      'address' => 'Address',
+      'passport' => 'Passport'
   );
 
   static $attributeMap = array(
-      '_links' => '_links',
-      'routing_number' => 'routingNumber',
-      'account_number' => 'accountNumber',
-      'type' => 'type',
-      'bank_account_type' => 'bankAccountType',
-      'name' => 'name',
-      'verified' => 'verified',
-      'channels' => 'channels'
+      'first_name' => 'firstName',
+      'last_name' => 'lastName',
+      'ssn' => 'ssn',
+      'date_of_birth' => 'dateOfBirth',
+      'address' => 'address',
+      'passport' => 'passport'
   );
 
 
-  public $_links; /* object */
-  public $routing_number; /* string */
-  public $account_number; /* string */
-  public $type; /* string */
-  public $bank_account_type; /* string */
-  public $name; /* string */
-  public $verified; /* boolean */
-  public $channels; /* array[string] */
+  public $first_name; /* string */
+  public $last_name; /* string */
+  public $ssn; /* string */
+  public $date_of_birth; /* string */
+  public $address; /* Address */
+  public $passport; /* Passport */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->routing_number = $data["routing_number"];
-    $this->account_number = $data["account_number"];
-    $this->type = $data["type"];
-    $this->bank_account_type = $data["bank_account_type"];
-    $this->name = $data["name"];
-    $this->verified = $data["verified"];
-    $this->channels = $data["channels"];
+    $this->first_name = $data["first_name"];
+    $this->last_name = $data["last_name"];
+    $this->ssn = $data["ssn"];
+    $this->date_of_birth = $data["date_of_birth"];
+    $this->address = $data["address"];
+    $this->passport = $data["passport"];
   }
 
   public function offsetExists($offset) {
