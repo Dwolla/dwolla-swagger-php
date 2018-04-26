@@ -70,7 +70,7 @@ class CreateCustomer implements ArrayAccess {
       'ein' => 'ein',
       'doing_business_as' => 'doingBusinessAs',
       'website' => 'website',
-      'controller' => 'object'
+      'controller' => 'controller'
   );
 
 
@@ -115,7 +115,7 @@ class CreateCustomer implements ArrayAccess {
     $this->ein = $data["ein"];
     $this->doing_business_as = $data["doing_business_as"];
     $this->website = $data["website"];
-    $this->controller = $data["controller"]
+    $this->controller = $data["controller"];
   }
 
   public function offsetExists($offset) {
