@@ -304,7 +304,9 @@ class ApiClient {
     } else if ($response_info['http_code'] >= 200 && $response_info['http_code'] <= 299 ) {
       $data = json_decode($http_body);
       if ($response_info['http_code'] == 201) {
-        $data = self::http_parse_headers($http_header)["Location"];
+        $data = is_null(self::http_parse_headers($http_header)["Location"])
+        ? self::http_parse_headers($http_header)["location"]
+        : self::http_parse_headers($http_header)["Location"];
       }
       else if (json_last_error() > 0) { // if response is a string
         $data = $http_body;
