@@ -24,6 +24,16 @@ namespace DwollaSwagger;
 
 class EventsApi {
 
+  /**
+   * @var ApiClient $apiClient instance of the ApiClient
+   */
+  private $apiClient;
+
+  /**
+   * @var array $authSettings array of authentication methods
+   */
+  public $authSettings;
+
   function __construct($apiClient = null) {
     if (null === $apiClient) {
       if (Configuration::$apiClient === null) {
@@ -40,17 +50,20 @@ class EventsApi {
     $this->authSettings = array('oauth2');
   }
 
-  private $apiClient; // instance of the ApiClient
 
   /**
-   * get the API client
+   * Returns an instance of the API Client
+   *
+   * @return ApiClient|null
    */
   public function getApiClient() {
     return $this->apiClient;
   }
 
   /**
-   * set the API client
+   * Set the API client
+   *
+   * @param ApiClient $apiClient
    */
   public function setApiClient($apiClient) {
     $this->apiClient = $apiClient;
@@ -64,7 +77,8 @@ class EventsApi {
    *
    * @param int $limit How many results to return. (optional)
    * @param int $offset How many results to skip. (optional)
-   * @return EventListResponse
+   * @return models\EventListResponse
+   * @throws ApiException
    */
    public function events($limit = null, $offset = null) {
 
@@ -121,7 +135,8 @@ class EventsApi {
    * Get an event by id.
    *
    * @param string $id ID of application event to get. (required)
-   * @return ApplicationEvent
+   * @return models\ApplicationEvent
+   * @throws ApiException
    */
    public function id($id) {
 
