@@ -24,6 +24,16 @@ namespace DwollaSwagger;
 
 class MasspaymentsApi {
 
+  /**
+   * @var ApiClient $apiClient instance of the ApiClient
+   */
+  private $apiClient;
+
+  /**
+   * @var array $authSettings array of authentication methods
+   */
+  public $authSettings;
+
   function __construct($apiClient = null) {
     if (null === $apiClient) {
       if (Configuration::$apiClient === null) {
@@ -40,17 +50,20 @@ class MasspaymentsApi {
     $this->authSettings = array('oauth2');
   }
 
-  private $apiClient; // instance of the ApiClient
 
   /**
-   * get the API client
+   * Returns an instance of the API Client
+   *
+   * @return ApiClient|null
    */
   public function getApiClient() {
     return $this->apiClient;
   }
 
   /**
-   * set the API client
+   * Set the API client
+   *
+   * @param ApiClient $apiClient
    */
   public function setApiClient($apiClient) {
     $this->apiClient = $apiClient;
@@ -66,7 +79,8 @@ class MasspaymentsApi {
    * @param int $limit How many results to return. (optional)
    * @param int $offset How many results to skip. (optional)
    * @param string $correlation_id Correlation ID to search by. (optional)
-   * @return MassPaymentListResponse
+   * @return models\MassPaymentListResponse
+   * @throws ApiException
    */
    public function getByAccount($id, $limit = null, $offset = null, $correlation_id = null) {
 
@@ -144,7 +158,8 @@ class MasspaymentsApi {
    * @param int $limit How many results to return. (optional)
    * @param int $offset How many results to skip. (optional)
    * @param string $correlation_id Correlation ID to search by. (required)
-   * @return MassPaymentListResponse
+   * @return models\MassPaymentListResponse
+   * @throws ApiException
    */
    public function getByCustomer($id, $limit = null, $offset = null, $correlation_id = null) {
 
@@ -218,8 +233,9 @@ class MasspaymentsApi {
    *
    * Create a new mass payment.
    *
-   * @param MassPaymentRequestBody $body Mass payment request. (required)
-   * @return Unit
+   * @param models\MassPaymentRequestBody $body Mass payment request. (required)
+   * @return models\Unit
+   * @throws ApiException
    */
    public function create($body) {
 
@@ -274,7 +290,8 @@ class MasspaymentsApi {
    * Get a mass payment by id.
    *
    * @param string $id ID of mass payment to get. (required)
-   * @return MassPayment
+   * @return models\MassPayment
+   * @throws ApiException
    */
    public function byId($id) {
 
@@ -339,9 +356,10 @@ class MasspaymentsApi {
    *
    * Update a mass-payment.
    *
-   * @param UpdateJobRequestBody $body Mass-payment to update. (required)
+   * @param models\UpdateJobRequestBody $body Mass-payment to update. (required)
    * @param string $id ID of mass-payment to update (required)
-   * @return MassPayment
+   * @return models\MassPayment
+   * @throws ApiException
    */
    public function update($body, $id) {
 
