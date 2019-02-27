@@ -368,7 +368,7 @@ class ApiClient {
    * the query, by imploding comma-separated if it's an object.
    * If it's a string, pass through unchanged. It will be url-encoded
    * later.
-   * @param object $object an object to be serialized to a string
+   * @param object|string|int $object an object to be serialized to a string
    * @return string the serialized object
    */
   public static function toQueryValue($object) {
