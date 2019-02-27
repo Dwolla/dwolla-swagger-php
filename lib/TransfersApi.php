@@ -24,6 +24,16 @@ namespace DwollaSwagger;
 
 class TransfersApi {
 
+  /**
+   * @var ApiClient $apiClient instance of the ApiClient
+   */
+  private $apiClient;
+
+  /**
+   * @var array $authSettings array of authentication methods
+   */
+  public $authSettings;
+
   function __construct($apiClient = null) {
     if (null === $apiClient) {
       if (Configuration::$apiClient === null) {
@@ -40,17 +50,20 @@ class TransfersApi {
     $this->authSettings = array('oauth2');
   }
 
-  private $apiClient; // instance of the ApiClient
 
   /**
-   * get the API client
+   * Returns an instance of the API Client
+   *
+   * @return ApiClient|null
    */
   public function getApiClient() {
     return $this->apiClient;
   }
 
   /**
-   * set the API client
+   * Set the API client
+   *
+   * @param ApiClient $apiClient
    */
   public function setApiClient($apiClient) {
     $this->apiClient = $apiClient;
@@ -66,7 +79,8 @@ class TransfersApi {
    * @param int $limit How many results to return. (optional)
    * @param int $offset How many results to skip. (optional)
    * @param string $status What status to filter by. (optional)
-   * @return TransferListResponse
+   * @return models\TransferListResponse
+   * @throws ApiException
    */
    public function getAccountTransfers($id, $limit = null, $offset = null, $status = null) {
 
@@ -144,7 +158,8 @@ class TransfersApi {
    * @param int $limit How many results to return. (optional)
    * @param int $offset How many results to skip. (optional)
    * @param string $status What status to filter by. (required)
-   * @return TransferListResponse
+   * @return models\TransferListResponse
+   * @throws ApiException
    */
    public function getCustomerTransfers($id, $limit = null, $offset = null, $status = null) {
 
@@ -218,8 +233,9 @@ class TransfersApi {
    *
    * Create a new transfer.
    *
-   * @param TransferRequestBody $body Transfer request. (required)
-   * @return Unit
+   * @param models\TransferRequestBody $body Transfer request. (required)
+   * @return models\Unit
+   * @throws ApiException
    */
    public function create($body) {
 
@@ -274,7 +290,8 @@ class TransfersApi {
    * Get a transfer by id.
    *
    * @param string $id ID of transfer to get. (required)
-   * @return Transfer
+   * @return models\Transfer
+   * @throws ApiException
    */
    public function byId($id) {
 
@@ -339,9 +356,10 @@ class TransfersApi {
    *
    * Update a transfer.
    *
-   * @param UpdateTransfer $body Transfer to update. (required)
+   * @param models\UpdateTransfer $body Transfer to update. (required)
    * @param string $id ID of transfer to get. (required)
-   * @return Transfer
+   * @return models\Transfer
+   * @throws ApiException
    */
    public function update($body, $id) {
 
@@ -411,7 +429,8 @@ class TransfersApi {
    * Get a bank transfer failure by transfer id.
    *
    * @param string $id ID of failed bank transfer to get. (required)
-   * @return TransferFailure
+   * @return models\TransferFailure
+   * @throws ApiException
    */
    public function failureById($id) {
 
@@ -477,7 +496,8 @@ class TransfersApi {
    * Get a transfer's fees.
    *
    * @param string $id Transfer id to get fees for. (required)
-   * @return FeesBySourceResponse
+   * @return models\FeesBySourceResponse
+   * @throws ApiException
    */
    public function getFeesBySource($id) {
 

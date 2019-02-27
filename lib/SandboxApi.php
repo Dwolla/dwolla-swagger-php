@@ -24,6 +24,16 @@ namespace DwollaSwagger;
 
 class SandboxApi {
 
+  /**
+   * @var ApiClient $apiClient instance of the ApiClient
+   */
+  private $apiClient;
+
+  /**
+   * @var array $authSettings array of authentication methods
+   */
+  public $authSettings;
+
   function __construct($apiClient = null) {
     if (null === $apiClient) {
       if (Configuration::$apiClient === null) {
@@ -40,17 +50,20 @@ class SandboxApi {
     $this->authSettings = array('oauth2');
   }
 
-  private $apiClient; // instance of the ApiClient
 
   /**
-   * get the API client
+   * Returns an instance of the API Client
+   *
+   * @return ApiClient|null
    */
   public function getApiClient() {
     return $this->apiClient;
   }
 
   /**
-   * set the API client
+   * Set the API client
+   *
+   * @param ApiClient $apiClient
    */
   public function setApiClient($apiClient) {
     $this->apiClient = $apiClient;
@@ -62,7 +75,8 @@ class SandboxApi {
    *
    * Simulate ach processing
    *
-   * @return ProcessResult
+   * @return models\ProcessResult
+   * @throws ApiException
    */
    public function simulations() {
 
