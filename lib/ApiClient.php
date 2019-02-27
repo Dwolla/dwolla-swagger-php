@@ -27,23 +27,26 @@ class ApiClient {
   
   private static $default_header = array();
 
-  /*
+  /**
    * @var string timeout (second) of the HTTP request, by default set to 0, no timeout
    */
   protected $curl_timeout = 0;
 
-  /*
+  /**
    * @var string user agent of the HTTP request, set to "PHP-Swagger" by default
    */
   protected $user_agent = "PHP-Swagger";
 
   /**
+   * @var string Base url of the API server
+   */
+  protected $host = 'https://localhost';
+
+  /**
    * @param string $host Base url of the API server (optional)
    */
   function __construct($host = null) {
-    if ($host === null) {
-      $this->host = 'https://localhost';
-    } else {
+    if (!is_null($host)) {
       $this->host = rtrim($host, "/");
     }
   }
@@ -129,7 +132,8 @@ class ApiClient {
 
   /**
    * get the user agent of the api client
-   * 
+   *
+   * @param string $user_agent user agent of the HTTP request. Not currently used.
    * @return string user agent
    */
   public function getUserAgent($user_agent) {
@@ -161,7 +165,7 @@ class ApiClient {
   /**
    * Get API key (with prefix if set)
    * @param string key name
-   * @return string API key with the prefix
+   * @return string|null API key with the prefix
    */
   public function getApiKeyWithPrefix($apiKey) {
     if (isset(Configuration::$apiKeyPrefix[$apiKey])) {
@@ -169,7 +173,7 @@ class ApiClient {
     } else if (isset(Configuration::$apiKey[$apiKey])) {
       return Configuration::$apiKey[$apiKey];
     } else {
-      return;
+      return null;
     }
   }
 
@@ -177,7 +181,7 @@ class ApiClient {
    * update hearder and query param based on authentication setting
    * 
    * @param array $headerParams header parameters (by ref)
-   * @param array $queryParams query parameters (by ref)
+   * @param array $queryParams query parameters (by ref). Parameter is not used.
    * @param array $authSettings array of authentication scheme (e.g ['api_key'])
    */
   public function updateParamsForAuth(&$headerParams, &$queryParams, $authSettings)
@@ -207,6 +211,8 @@ class ApiClient {
    * @param array $queryParams parameters to be place in query URL
    * @param array $postData parameters to be placed in POST body
    * @param array $headerParams parameters to be place in request header
+   * @param array $authSettings array of authentication scheme (e.g ['api_key'])
+   * @throws ApiException
    * @return mixed
    */
   public function callApi($resourcePath, $method, $queryParams, $postData,
@@ -414,7 +420,7 @@ class ApiClient {
   /**
    * Deserialize a JSON string into an object
    *
-   * @param object $object object or primitive to be deserialized
+   * @param object $data object or primitive to be deserialized
    * @param string $class class name is passed as a string
    * @return object an instance of $class
    */
