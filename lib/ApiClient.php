@@ -336,9 +336,9 @@ class ApiClient {
       $sanitized = $data;
     } else if (is_object($data)) {
       $values = array();
-      foreach (array_keys($data::$swaggerTypes) as $property) {
+      /** @var ModelInterface $data */
+      foreach (array_keys($data::getSwaggerTypes()) as $property) {
         if ($data->$property !== null) {
-          /** @var ModelInterface $data */
           $values[$data::getAttributeMap()[$property]] = $this->sanitizeForSerialization($data->$property);
         }
       }
@@ -451,7 +451,7 @@ class ApiClient {
       $class = "DwollaSwagger\\models\\".$class;
       /** @var ModelInterface $instance */
       $instance = new $class();
-      foreach ($instance::$swaggerTypes as $property => $type) {
+      foreach ($instance::getSwaggerTypes() as $property => $type) {
         $original_property_name = $instance::getAttributeMap()[$property];
         if (isset($original_property_name) && isset($data->$original_property_name)) {
           $instance->$property = self::deserialize($data->$original_property_name, $type);
