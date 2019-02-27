@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class Transfer implements ArrayAccess {
+class Transfer implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       '_links' => 'map[string,HalLink]',
       '_embedded' => 'object',
@@ -76,6 +77,22 @@ class Transfer implements ArrayAccess {
     $this->clearing = $data["clearing"];
     $this->correlation_id = $data["correlation_id"];
     $this->individual_ach_id = $data["individual_ach_id"];
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

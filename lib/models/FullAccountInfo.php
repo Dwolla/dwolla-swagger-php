@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class FullAccountInfo implements ArrayAccess {
+class FullAccountInfo implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       '_links' => 'map[string,HalLink]',
       'id' => 'string',
@@ -60,6 +61,22 @@ class FullAccountInfo implements ArrayAccess {
     $this->timezone_offset = $data["timezone_offset"];
     $this->type = $data["type"];
     $this->_embedded = $data["_embedded"];
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

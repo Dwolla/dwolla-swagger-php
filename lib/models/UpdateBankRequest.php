@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class UpdateBankRequest implements ArrayAccess {
+class UpdateBankRequest implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       '_links' => 'object',
       'name' => 'string',
@@ -56,6 +57,22 @@ class UpdateBankRequest implements ArrayAccess {
     $this->routing_number = $data["routing_number"];
     $this->account_number = $data["account_number"];
     $this->bank_account_type = $data["bank_account_type"];
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

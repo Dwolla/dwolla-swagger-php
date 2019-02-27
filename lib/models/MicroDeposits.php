@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class MicroDeposits implements ArrayAccess {
+class MicroDeposits implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       '_links' => 'map[string,HalLink]',
       '_embedded' => 'object'
@@ -44,6 +45,22 @@ class MicroDeposits implements ArrayAccess {
   public function __construct(array $data = null) {
     $this->_links = $data["_links"];
     $this->_embedded = $data["_embedded"];
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

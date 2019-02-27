@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class HalLink implements ArrayAccess {
+class HalLink implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       'href' => 'string',
       'type' => 'string',
@@ -48,6 +49,22 @@ class HalLink implements ArrayAccess {
     $this->href = $data["href"];
     $this->type = $data["type"];
     $this->resource_type = $data["resource_type"];
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

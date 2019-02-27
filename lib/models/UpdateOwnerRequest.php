@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class UpdateOwnerRequest implements ArrayAccess {
+class UpdateOwnerRequest implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       'first_name' => 'string',
       'last_name' => 'string',
@@ -60,6 +61,22 @@ class UpdateOwnerRequest implements ArrayAccess {
     $this->date_of_birth = $data["date_of_birth"];
     $this->address = $data["address"];
     $this->passport = $data["passport"];
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

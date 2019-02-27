@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class UpdateCustomer implements ArrayAccess {
+class UpdateCustomer implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       'first_name' => 'string',
       'last_name' => 'string',
@@ -120,6 +121,22 @@ class UpdateCustomer implements ArrayAccess {
     $this->doing_business_as = $data["doing_business_as"];
     $this->website = $data["website"];
     $this->controller = $data["controller"];
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class UpdateSubscription implements ArrayAccess {
+class UpdateSubscription implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       'paused' => 'boolean'
   );
@@ -40,6 +41,22 @@ class UpdateSubscription implements ArrayAccess {
 
   public function __construct(array $data = null) {
     $this->paused = $data["paused"];
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

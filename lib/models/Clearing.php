@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class Clearing implements ArrayAccess {
+class Clearing implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       'source' => 'string',
       'destination' => 'string'
@@ -44,6 +45,22 @@ class Clearing implements ArrayAccess {
   public function __construct(array $data = null) {
     $this->source = $data["source"];
     $this->destination = $data["destination"];
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

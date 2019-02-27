@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class OAuthResponse implements ArrayAccess {
+class OAuthResponse implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       '_links' => 'map[string,HalLink]',
       'access_token' => 'string',
@@ -64,6 +65,22 @@ class OAuthResponse implements ArrayAccess {
     $this->refresh_expires_in = $data["refresh_expires_in"];
     $this->token_type = $data["token_type"];
     $this->scope = $data["scope"];
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

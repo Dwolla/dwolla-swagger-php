@@ -9,7 +9,7 @@
 namespace DwollaSwagger\interfaces;
 
 
-interface iModel
+interface ModelInterface
 {
   /**
    * @return array Get Swagger Types
