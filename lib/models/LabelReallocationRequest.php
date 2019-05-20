@@ -28,27 +28,21 @@ use \ArrayAccess;
 
 class LabelReallocationRequest implements ArrayAccess {
   static $swaggerTypes = array(
-      'from_label_id' => 'string',
-      'to_label_id' => 'string',
+      '_links' => 'map[string,HalLink]',
       'amount' => 'Amount'
   );
 
   static $attributeMap = array(
-      'from_label_id' => 'fromLabelId',
-      'to_label_id' => 'toLabelId',
+      '_links' => '_links',
       'amount' => 'amount'
   );
 
 
-  public $from_label_id; /* string */
-  public $to_label_id; /* string */
-  public $partner_id; /* string */
+  public $_links; /* map[string,HalLink] */
   public $amount; /* Amount */
 
   public function __construct(array $data = null) {
-    $this->from_label_id = $data["from_label_id"];
-    $this->to_label_id = $data["to_label_id"];
-    $this->partner_id = $data["partner_id"];
+    $this->_links = $data["_links"];
     $this->amount = $data["amount"];
   }
 
