@@ -26,48 +26,30 @@ namespace DwollaSwagger\models;
 
 use \ArrayAccess;
 
-class Owner implements ArrayAccess {
+class LabelReallocationRequest implements ArrayAccess {
   static $swaggerTypes = array(
-      '_links' => 'map[string,HalLink]',
-      'id' => 'string',
-      'first_name' => 'string',
-      'last_name' => 'string',
-      'address' => 'Address',
-      'verification_status' => 'string',
-      '_embedded' => 'map[string,Number]',
-      'created' => 'string'
+      'from_label_id' => 'string',
+      'to_label_id' => 'string',
+      'amount' => 'Amount'
   );
 
   static $attributeMap = array(
-      '_links' => '_links',
-      'id' => 'id',
-      'first_name' => 'firstName',
-      'last_name' => 'lastName',
-      'address' => 'address',
-      'verification_status' => 'verificationStatus',
-      '_embedded' => '_embedded',
-      'created' => 'created'
+      'from_label_id' => 'fromLabelId',
+      'to_label_id' => 'toLabelId',
+      'amount' => 'amount'
   );
 
 
-  public $_links; /* map[string,HalLink] */
-  public $id; /* string */
-  public $first_name; /* string */
-  public $last_name; /* string */
-  public $address; /* Address */
-  public $verification_status; /* string */
-  public $_embedded; /* map[string,Number] */
-  public $created; /* string */
+  public $from_label_id; /* string */
+  public $to_label_id; /* string */
+  public $partner_id; /* string */
+  public $amount; /* Amount */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->id = $data["id"];
-    $this->first_name = $data["first_name"];
-    $this->last_name = $data["last_name"];
-    $this->address = $data["address"];
-    $this->verification_status = $data["verification_status"];
-    $this->_embedded = $data["_embedded"];
-    $this->created = $data["created"];
+    $this->from_label_id = $data["from_label_id"];
+    $this->to_label_id = $data["to_label_id"];
+    $this->partner_id = $data["partner_id"];
+    $this->amount = $data["amount"];
   }
 
   public function offsetExists($offset) {
