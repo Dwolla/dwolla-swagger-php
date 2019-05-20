@@ -47,7 +47,8 @@ class CreateCustomer implements ArrayAccess {
       'ein' => 'string',
       'doing_business_as' => 'string',
       'website' => 'string',
-      'controller' => 'object'
+      'controller' => 'object',
+      'correlation_id' => 'string'
   );
 
   static $attributeMap = array(
@@ -70,7 +71,8 @@ class CreateCustomer implements ArrayAccess {
       'ein' => 'ein',
       'doing_business_as' => 'doingBusinessAs',
       'website' => 'website',
-      'controller' => 'controller'
+      'controller' => 'controller',
+      'correlation_id' => 'correlationId'
   );
 
 
@@ -94,6 +96,7 @@ class CreateCustomer implements ArrayAccess {
   public $doing_business_as; /* string */
   public $website; /* string */
   public $controller; /* object */
+  public $correlation_id; /* string */
 
   public function __construct(array $data = null) {
     $this->first_name = $data["first_name"];
@@ -116,6 +119,7 @@ class CreateCustomer implements ArrayAccess {
     $this->doing_business_as = $data["doing_business_as"];
     $this->website = $data["website"];
     $this->controller = $data["controller"];
+    $this->correlation_id = $data["correlation_id"];
   }
 
   public function offsetExists($offset) {

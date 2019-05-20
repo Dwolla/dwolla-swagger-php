@@ -26,48 +26,28 @@ namespace DwollaSwagger\models;
 
 use \ArrayAccess;
 
-class Owner implements ArrayAccess {
+class LabelListResponse implements ArrayAccess {
   static $swaggerTypes = array(
       '_links' => 'map[string,HalLink]',
-      'id' => 'string',
-      'first_name' => 'string',
-      'last_name' => 'string',
-      'address' => 'Address',
-      'verification_status' => 'string',
-      '_embedded' => 'map[string,Number]',
-      'created' => 'string'
+      '_embedded' => 'object',
+      'total' => 'int'
   );
 
   static $attributeMap = array(
       '_links' => '_links',
-      'id' => 'id',
-      'first_name' => 'firstName',
-      'last_name' => 'lastName',
-      'address' => 'address',
-      'verification_status' => 'verificationStatus',
       '_embedded' => '_embedded',
-      'created' => 'created'
+      'total' => 'total'
   );
 
 
   public $_links; /* map[string,HalLink] */
-  public $id; /* string */
-  public $first_name; /* string */
-  public $last_name; /* string */
-  public $address; /* Address */
-  public $verification_status; /* string */
-  public $_embedded; /* map[string,Number] */
-  public $created; /* string */
+  public $_embedded; /* object */
+  public $total; /* int */
 
   public function __construct(array $data = null) {
     $this->_links = $data["_links"];
-    $this->id = $data["id"];
-    $this->first_name = $data["first_name"];
-    $this->last_name = $data["last_name"];
-    $this->address = $data["address"];
-    $this->verification_status = $data["verification_status"];
     $this->_embedded = $data["_embedded"];
-    $this->created = $data["created"];
+    $this->total = $data["total"];
   }
 
   public function offsetExists($offset) {
