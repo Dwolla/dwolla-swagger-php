@@ -24,6 +24,16 @@ namespace DwollaSwagger;
 
 class BeneficialownersApi {
 
+  /**
+   * @var ApiClient $apiClient instance of the ApiClient
+   */
+  private $apiClient;
+
+  /**
+   * @var array $authSettings array of authentication methods
+   */
+  public $authSettings;
+
   function __construct($apiClient = null) {
     if (null === $apiClient) {
       if (Configuration::$apiClient === null) {
@@ -40,17 +50,20 @@ class BeneficialownersApi {
     $this->authSettings = array('oauth2');
   }
 
-  private $apiClient; // instance of the ApiClient
 
   /**
-   * get the API client
+   * Returns an instance of the API Client
+   *
+   * @return ApiClient|null
    */
   public function getApiClient() {
     return $this->apiClient;
   }
 
   /**
-   * set the API client
+   * Set the API client
+   *
+   * @param ApiClient $apiClient
    */
   public function setApiClient($apiClient) {
     $this->apiClient = $apiClient;
@@ -60,10 +73,11 @@ class BeneficialownersApi {
   /**
    * getById
    *
-   * Get an beneficial owner by ID
+   * Get a beneficial owner by ID
    *
    * @param string $id ID of owner to lookup (required)
-   * @return Owner
+   * @return models\Owner
+   * @throws ApiException
    */
    public function getById($id) {
 
@@ -128,9 +142,10 @@ class BeneficialownersApi {
    *
    * Update a beneficial owner.
    *
-   * @param UpdateOwnerRequest $body Owner to update. (required)
+   * @param models\UpdateOwnerRequest $body Owner to update. (required)
    * @param string $id ID of owner to update (required)
-   * @return Owner
+   * @return models\Owner
+   * @throws ApiException
    */
    public function update($body, $id) {
 
@@ -197,10 +212,11 @@ class BeneficialownersApi {
   /**
    * getBeneficialOwnerDocuments
    *
-   * Get documents uploaded for beneficial owner.
+   * Get documents uploaded for a beneficial owner.
    *
    * @param string $id ID of owner. (required)
-   * @return DocumentListResponse
+   * @return models\DocumentListResponse
+   * @throws ApiException
    */
    public function getBeneficialOwnerDocuments($id) {
 
@@ -266,7 +282,8 @@ class BeneficialownersApi {
    * Delete a beneficial owner by id.
    *
    * @param string $id ID of beneficial owner to delete. (required)
-   * @return Owner
+   * @return models\Owner
+   * @throws ApiException
    */
    public function deleteById($id) {
 

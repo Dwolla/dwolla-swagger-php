@@ -24,6 +24,16 @@ namespace DwollaSwagger;
 
 class FundingsourcesApi {
 
+  /**
+   * @var ApiClient $apiClient instance of the ApiClient
+   */
+  private $apiClient;
+
+  /**
+   * @var array $authSettings array of authentication methods
+   */
+  public $authSettings;
+
   function __construct($apiClient = null) {
     if (null === $apiClient) {
       if (Configuration::$apiClient === null) {
@@ -40,17 +50,20 @@ class FundingsourcesApi {
     $this->authSettings = array('oauth2');
   }
 
-  private $apiClient; // instance of the ApiClient
 
   /**
-   * get the API client
+   * Returns an instance of the API Client
+   *
+   * @return ApiClient|null
    */
   public function getApiClient() {
     return $this->apiClient;
   }
 
   /**
-   * set the API client
+   * Set the API client
+   *
+   * @param ApiClient $apiClient
    */
   public function setApiClient($apiClient) {
     $this->apiClient = $apiClient;
@@ -64,7 +77,8 @@ class FundingsourcesApi {
    *
    * @param string $id Account id to get funding sources for. (required)
    * @param boolean $removed Filter funding sources by this value. (optional)
-   * @return FundingSourceListResponse
+   * @return models\FundingSourceListResponse
+   * @throws ApiException
    */
    public function getAccountFundingSources($id, $removed = null) {
       
@@ -134,7 +148,8 @@ class FundingsourcesApi {
    *
    * @param string $id Customer id to get funding sources for. (required)
    * @param boolean $removed Filter funding sources by this value. (optional)
-   * @return FundingSourceListResponse
+   * @return models\FundingSourceListResponse
+   * @throws ApiException
    */
    public function getCustomerFundingSources($id, $removed = null) {
       
@@ -202,9 +217,10 @@ class FundingsourcesApi {
    *
    * Create a new funding source.
    *
-   * @param CreateFundingSourceRequest $body Funding source to create. (required)
+   * @param models\CreateFundingSourceRequest $body Funding source to create. (required)
    * @param string $id Customer id to create funding source for. (required)
-   * @return FundingSource
+   * @return models\FundingSource
+   * @throws ApiException
    */
    public function createCustomerFundingSource($body, $id) {
       
@@ -273,8 +289,9 @@ class FundingsourcesApi {
    *
    * Create a new funding source.
    *
-   * @param CreateFundingSourceRequest $body Funding source to create. (required)
-   * @return FundingSource
+   * @param models\CreateFundingSourceRequest $body Funding source to create. (required)
+   * @return models\FundingSource
+   * @throws ApiException
    */
    public function createFundingSource($body) {
       
@@ -329,7 +346,8 @@ class FundingsourcesApi {
    * Get a funding source by id.
    *
    * @param string $id Funding source ID to get. (required)
-   * @return FundingSource
+   * @return models\FundingSource
+   * @throws ApiException
    */
    public function id($id) {
       
@@ -394,9 +412,10 @@ class FundingsourcesApi {
    *
    * Update a funding source.
    *
-   * @param UpdateBankRequest $body request body to update a funding source (required)
+   * @param models\UpdateBankRequest $body request body to update a funding source (required)
    * @param string $id Funding source ID to update. (required)
-   * @return FundingSource
+   * @return models\FundingSource
+   * @throws ApiException
    */
    public function update($body, $id) {
 
@@ -465,9 +484,10 @@ class FundingsourcesApi {
    *
    * Remove a funding source.
    *
-   * @param RemoveBankRequest $body request body to remove a funding source (required)
+   * @param models\RemoveBankRequest $body request body to remove a funding source (required)
    * @param string $id Funding source ID to remove. (required)
-   * @return FundingSource
+   * @return models\FundingSource
+   * @throws ApiException
    */
    public function softDelete($body, $id) {
       
@@ -537,7 +557,8 @@ class FundingsourcesApi {
    * Get the balance of a funding source.
    *
    * @param string $id Funding source ID to get the balance for. (required)
-   * @return FundingSourceBalance
+   * @return models\FundingSourceBalance
+   * @throws ApiException
    */
    public function getBalance($id) {
       
@@ -603,7 +624,8 @@ class FundingsourcesApi {
    * Verify pending verifications exist.
    *
    * @param string $id Funding source ID to check for pending validation deposits for. (required)
-   * @return MicroDepositsInitiated
+   * @return models\MicroDepositsInitiated
+   * @throws ApiException
    */
    public function verifyMicroDepositsExist($id) {
       
@@ -668,9 +690,10 @@ class FundingsourcesApi {
    *
    * Initiate or verify micro deposits for bank verification.
    *
-   * @param VerifyMicroDepositsRequest $body Optional micro deposit amounts for verification (required)
+   * @param models\VerifyMicroDepositsRequest $body Optional micro deposit amounts for verification (required)
    * @param string $id Funding source ID to initiate or verify micro deposits for. (required)
-   * @return MicroDeposits
+   * @return models\MicroDeposits
+   * @throws ApiException
    */
    public function microDeposits($body, $id) {
       

@@ -24,6 +24,16 @@ namespace DwollaSwagger;
 
 class WebhooksubscriptionsApi {
 
+  /**
+   * @var ApiClient $apiClient instance of the ApiClient
+   */
+  private $apiClient;
+
+  /**
+   * @var array $authSettings array of authentication methods
+   */
+  public $authSettings;
+
   function __construct($apiClient = null) {
     if (null === $apiClient) {
       if (Configuration::$apiClient === null) {
@@ -40,17 +50,20 @@ class WebhooksubscriptionsApi {
     $this->authSettings = array('oauth2');
   }
 
-  private $apiClient; // instance of the ApiClient
 
   /**
-   * get the API client
+   * Returns an instance of the API Client
+   *
+   * @return ApiClient|null
    */
   public function getApiClient() {
     return $this->apiClient;
   }
 
   /**
-   * set the API client
+   * Set the API client
+   *
+   * @param ApiClient $apiClient
    */
   public function setApiClient($apiClient) {
     $this->apiClient = $apiClient;
@@ -62,7 +75,8 @@ class WebhooksubscriptionsApi {
    *
    * Get the list of webhooks.
    *
-   * @return WebhookListResponse
+   * @return models\WebhookListResponse
+   * @throws ApiException
    */
    public function _list() {
       
@@ -112,8 +126,9 @@ class WebhooksubscriptionsApi {
    *
    * Create a new webhook subscription.
    *
-   * @param CreateWebhook $body Webhook subscription to create. (required)
-   * @return WebhookSubscription
+   * @param models\CreateWebhook $body Webhook subscription to create. (required)
+   * @return models\WebhookSubscription
+   * @throws ApiException
    */
    public function create($body) {
       
@@ -168,7 +183,8 @@ class WebhooksubscriptionsApi {
    * Get a webhook subscription by id.
    *
    * @param string $id ID of webhook subscription to get. (required)
-   * @return WebhookSubscription
+   * @return models\WebhookSubscription
+   * @throws ApiException
    */
    public function id($id) {
       
@@ -233,9 +249,10 @@ class WebhooksubscriptionsApi {
    *
    * Update a subscription by id.
    *
-   * @param UpdateSubscription $body Details to update. (required)
+   * @param models\UpdateSubscription $body Details to update. (required)
    * @param string $id ID of webhook to update. (required)
-   * @return WebhookSubscription
+   * @return models\WebhookSubscription
+   * @throws ApiException
    */
    public function updateSubscription($body, $id) {
       
@@ -305,7 +322,8 @@ class WebhooksubscriptionsApi {
    * Delete a webhook subscription by id.
    *
    * @param string $id ID of webhook subscription to delete. (required)
-   * @return WebhookSubscription
+   * @return models\WebhookSubscription
+   * @throws ApiException
    */
    public function deleteById($id) {
       

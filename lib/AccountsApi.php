@@ -24,6 +24,16 @@ namespace DwollaSwagger;
 
 class AccountsApi {
 
+  /**
+   * @var ApiClient $apiClient instance fo the ApiClient
+   */
+  private $apiClient;
+
+  /**
+   * @var array $authSettings array of authentication methods
+   */
+  public $authSettings;
+
   function __construct($apiClient = null) {
     if (null === $apiClient) {
       if (Configuration::$apiClient === null) {
@@ -39,8 +49,6 @@ class AccountsApi {
     // Authentication methods
     $this->authSettings = array('oauth2');
   }
-
-  private $apiClient; // instance of the ApiClient
 
   /**
    * get the API client
@@ -63,7 +71,8 @@ class AccountsApi {
    * Get account info by id.
    *
    * @param string $id Account ID to get info for. (required)
-   * @return FullAccountInfo
+   * @return models\FullAccountInfo
+   * @throws ApiException
    */
    public function id($id) {
       
@@ -129,7 +138,8 @@ class AccountsApi {
    * Create an OAuth token that is capable of adding a financial institution for the given account.
    *
    * @param string $id Account ID to create token for. (required)
-   * @return AccountOAuthToken
+   * @return models\AccountOAuthToken
+   * @throws ApiException
    */
    public function createFundingSourcesToken($id) {
       

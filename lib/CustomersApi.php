@@ -24,6 +24,16 @@ namespace DwollaSwagger;
 
 class CustomersApi {
 
+  /**
+   * @var ApiClient $apiClient instance of the ApiClient
+   */
+  private $apiClient;
+
+  /**
+   * @var array $authSettings array of authentication methods
+   */
+  public $authSettings;
+
   function __construct($apiClient = null) {
     if (null === $apiClient) {
       if (Configuration::$apiClient === null) {
@@ -40,17 +50,20 @@ class CustomersApi {
     $this->authSettings = array('oauth2');
   }
 
-  private $apiClient; // instance of the ApiClient
 
   /**
-   * get the API client
+   * Returns an instance of the API Client
+   *
+   * @return ApiClient|null
    */
   public function getApiClient() {
     return $this->apiClient;
   }
 
   /**
-   * set the API client
+   * Set the API client
+   *
+   * @param ApiClient $apiClient
    */
   public function setApiClient($apiClient) {
     $this->apiClient = $apiClient;
@@ -66,7 +79,8 @@ class CustomersApi {
    * @param int $offset How many results to skip. (optional)
    * @param string $search Search term. (optional)
    * @param string $status Customer status. (optional)
-   * @return CustomerListResponse
+   * @return models\CustomerListResponse
+   * @throws ApiException
    */
    public function _list($limit = null, $offset = null, $search = null, $status = null) {
 
@@ -127,8 +141,9 @@ class CustomersApi {
    *
    * Create a new customer.
    *
-   * @param CreateCustomer $body Customer to create. (required)
-   * @return Unit
+   * @param models\CreateCustomer $body Customer to create. (required)
+   * @return models\Unit
+   * @throws ApiException
    */
    public function create($body) {
 
@@ -183,7 +198,8 @@ class CustomersApi {
    * Get a customer by id
    *
    * @param string $id Id of customer to get. (required)
-   * @return Customer
+   * @return models\Customer
+   * @throws ApiException
    */
    public function getCustomer($id) {
 
@@ -248,9 +264,10 @@ class CustomersApi {
    *
    * Update customer record. Personal customer records are re-verified upon update.
    *
-   * @param UpdateCustomer $body Customer to update. (required)
+   * @param models\UpdateCustomer $body Customer to update. (required)
    * @param string $id Id of customer to update. (required)
-   * @return Customer
+   * @return models\Customer
+   * @throws ApiException
    */
    public function updateCustomer($body, $id) {
 
@@ -319,9 +336,10 @@ class CustomersApi {
    *
    * Add a beneficial owner
    *
-   * @param CreateOwnerRequest $body Beneficial owner to create. (required)
+   * @param models\CreateOwnerRequest $body Beneficial owner to create. (required)
    * @param string $id Customer id to add owner for for. (required)
-   * @return Owner
+   * @return models\Owner
+   * @throws ApiException
    */
    public function addBeneficialOwner($body, $id) {
 
@@ -391,7 +409,8 @@ class CustomersApi {
    * Get Beneficial Owners added for a customer.
    *
    * @param string $id ID of customer. (required)
-   * @return BeneficialOwnerListResponse
+   * @return models\BeneficialOwnerListResponse
+   * @throws ApiException
    */
    public function getBeneficialOwners($id) {
 
@@ -457,7 +476,8 @@ class CustomersApi {
    * Get a customer's ownership certification status.
    *
    * @param string $id Customer id to get ownership certification status for. (required)
-   * @return Ownership
+   * @return models\Ownership
+   * @throws ApiException
    */
    public function getOwnershipStatus($id) {
 
@@ -522,9 +542,10 @@ class CustomersApi {
    *
    * Change ownership status.
    *
-   * @param CertifyRequest $body Status of ownership (required)
+   * @param models\CertifyRequest $body Status of ownership (required)
    * @param string $id Customer id to change ownership status. (required)
-   * @return Ownership
+   * @return models\Ownership
+   * @throws ApiException
    */
    public function changeOwnershipStatus($body, $id) {
 
@@ -594,7 +615,8 @@ class CustomersApi {
    * Get documents uploaded for customer.
    *
    * @param string $id ID of customer. (required)
-   * @return DocumentListResponse
+   * @return models\DocumentListResponse
+   * @throws ApiException
    */
    public function getCustomerDocuments($id) {
 
@@ -660,7 +682,8 @@ class CustomersApi {
    * Upload a verification document.
    *
    * @param string $id ID of customer. (required)
-   * @return Unit
+   * @return models\Unit
+   * @throws ApiException
    */
    public function uploadDocument($id) {
 
@@ -726,7 +749,8 @@ class CustomersApi {
    * Create an OAuth token that is capable of adding a financial institution for the given customer.
    *
    * @param string $id ID of customer. (required)
-   * @return CustomerOAuthToken
+   * @return models\CustomerOAuthToken
+   * @throws ApiException
    */
    public function createFundingSourcesTokenForCustomer($id) {
 
@@ -792,7 +816,8 @@ class CustomersApi {
    * Get iav token for customer.
    *
    * @param string $id ID of customer. (required)
-   * @return IavToken
+   * @return models\IavToken
+   * @throws ApiException
    */
    public function getCustomerIavToken($id) {
 
