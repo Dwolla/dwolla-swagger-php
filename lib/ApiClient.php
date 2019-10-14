@@ -24,7 +24,7 @@ class ApiClient {
   public static $GET = "GET";
   public static $PUT = "PUT";
   public static $DELETE = "DELETE";
-  
+
   private static $default_header = array();
 
   /*
@@ -35,7 +35,7 @@ class ApiClient {
   /*
    * @var string user agent of the HTTP request, set to "PHP-Swagger" by default
    */
-  protected $user_agent = "php-swagger-1.1.0";
+  protected $user_agent = "php-swagger-1.2.0";
 
   /**
    * @param string $host Base url of the API server (optional)
@@ -49,20 +49,20 @@ class ApiClient {
   }
 
   /**
-   * add default header 
+   * add default header
    *
    * @param string $header_name header name (e.g. Token)
    * @param string $header_value header value (e.g. 1z8wp3)
    */
   public function addDefaultHeader($header_name, $header_value) {
-    if (!is_string($header_name)) 
+    if (!is_string($header_name))
       throw new \InvalidArgumentException('Header name must be a string.');
 
     self::$default_header[$header_name] =  $header_value;
   }
 
   /**
-   * get the default header 
+   * get the default header
    *
    * @return array default header
    */
@@ -129,7 +129,7 @@ class ApiClient {
 
   /**
    * get the user agent of the api client
-   * 
+   *
    * @return string user agent
    */
   public function getUserAgent($user_agent) {
@@ -175,7 +175,7 @@ class ApiClient {
 
   /**
    * update hearder and query param based on authentication setting
-   * 
+   *
    * @param array $headerParams header parameters (by ref)
    * @param array $queryParams query parameters (by ref)
    * @param array $authSettings array of authentication scheme (e.g ['api_key'])
@@ -189,18 +189,18 @@ class ApiClient {
     foreach($authSettings as $auth) {
       // determine which one to use
       switch($auth) {
-        
+
         case 'oauth2':
-          
-          $headerParams['Authorization'] = 'Bearer ' . Configuration::$access_token; 
+
+          $headerParams['Authorization'] = 'Bearer ' . Configuration::$access_token;
           break;
-        
+
         default:
           //TODO show warning about security definition not found
       }
     }
   }
-  
+
   /**
    * @param string $resourcePath path to method endpoint
    * @param string $method method to call
@@ -430,7 +430,7 @@ class ApiClient {
         $subClass = $subClass_array[1];
         foreach ($data as $key => $value) {
           $deserialized[$key] = self::deserialize($value, $subClass);
-        }        
+        }
       }
     } elseif (strcasecmp(substr($class, 0, 6),'array[') == 0) {
       $subClass = substr($class, 6, -1);

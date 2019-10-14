@@ -26,46 +26,31 @@ namespace DwollaSwagger\models;
 
 use \ArrayAccess;
 
-class Document implements ArrayAccess {
+class KbaQuestions implements ArrayAccess {
   static $swaggerTypes = array(
       '_links' => 'map[string,HalLink]',
       'id' => 'string',
-      'status' => 'string',
-      'type' => 'string',
-      'created' => 'DateTime',
-      'failure_reason' => 'string',
-      'all_failure_reasons' => 'array[object]',
-      '_embedded' => 'object'
+      'questions' => 'array[KbaQuestion]',
+      '_embedded' => 'map[string,Number]'
   );
 
   static $attributeMap = array(
       '_links' => '_links',
       'id' => 'id',
-      'status' => 'status',
-      'type' => 'type',
-      'created' => 'created',
-      'failure_reason' => 'failureReason',
-      'all_failure_reasons' => 'allFailureReasons',
+      'questions' => 'questions',
       '_embedded' => '_embedded'
   );
 
 
   public $_links; /* map[string,HalLink] */
   public $id; /* string */
-  public $status; /* string */
-  public $type; /* string */
-  public $created; /* DateTime */
-  public $failure_reason; /* string */
-  public $all_failure_reasons; /* array[object] */
-  public $_embedded; /* object */
+  public $questions; /* array[Question] */
+  public $_embedded; /* map[string,Number] */
 
   public function __construct(array $data = null) {
     $this->_links = $data["_links"];
     $this->id = $data["id"];
-    $this->status = $data["status"];
-    $this->type = $data["type"];
-    $this->created = $data["created"];
-    $this->failure_reason = $data["failure_reason"];
+    $this->questions = $data["questions"];
     $this->_embedded = $data["_embedded"];
   }
 
