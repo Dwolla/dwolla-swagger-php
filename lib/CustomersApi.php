@@ -68,7 +68,7 @@ class CustomersApi {
    * @param string $status Customer status. (optional)
    * @return CustomerListResponse
    */
-   public function _list($limit = null, $offset = null, $search = null, $status = null) {
+   public function _list($limit = null, $offset = null, $search = null, $status = null, $headers = null) {
 
 
       // parse inputs
@@ -84,6 +84,10 @@ class CustomersApi {
         $headerParams['Accept'] = $_header_accept;
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
+
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
       // query params
       if($limit !== null) {
@@ -130,7 +134,7 @@ class CustomersApi {
    * @param CreateCustomer $body Customer to create. (required)
    * @return Unit
    */
-   public function create($body) {
+   public function create($body, $headers = null) {
 
 
       // parse inputs
@@ -146,11 +150,14 @@ class CustomersApi {
         $headerParams['Accept'] = $_header_accept;
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
 
-
+      
       // body params
       $_tempBody = null;
       if (isset($body)) {
@@ -185,7 +192,7 @@ class CustomersApi {
    * @param string $id Id of customer to get. (required)
    * @return Customer
    */
-   public function getCustomer($id) {
+   public function getCustomer($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -207,6 +214,9 @@ class CustomersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -252,7 +262,7 @@ class CustomersApi {
    * @param string $id Id of customer to update. (required)
    * @return Customer
    */
-   public function updateCustomer($body, $id) {
+   public function updateCustomer($body, $id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -274,6 +284,9 @@ class CustomersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -323,7 +336,7 @@ class CustomersApi {
    * @param string $id Customer id to add owner for for. (required)
    * @return Owner
    */
-   public function addBeneficialOwner($body, $id) {
+   public function addBeneficialOwner($body, $id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -345,6 +358,9 @@ class CustomersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -393,7 +409,7 @@ class CustomersApi {
    * @param string $id ID of customer. (required)
    * @return BeneficialOwnerListResponse
    */
-   public function getBeneficialOwners($id) {
+   public function getBeneficialOwners($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -415,6 +431,9 @@ class CustomersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -459,7 +478,7 @@ class CustomersApi {
    * @param string $id Customer id to get ownership certification status for. (required)
    * @return Ownership
    */
-   public function getOwnershipStatus($id) {
+   public function getOwnershipStatus($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -480,7 +499,10 @@ class CustomersApi {
         $headerParams['Accept'] = $_header_accept;
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
-
+      
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -526,7 +548,7 @@ class CustomersApi {
    * @param string $id Customer id to change ownership status. (required)
    * @return Ownership
    */
-   public function changeOwnershipStatus($body, $id) {
+   public function changeOwnershipStatus($body, $id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -548,6 +570,9 @@ class CustomersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -596,7 +621,7 @@ class CustomersApi {
    * @param string $id ID of customer. (required)
    * @return DocumentListResponse
    */
-   public function getCustomerDocuments($id) {
+   public function getCustomerDocuments($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -618,7 +643,9 @@ class CustomersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
-
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
       // Entire URL for ID
@@ -662,7 +689,7 @@ class CustomersApi {
    * @param string $id ID of customer. (required)
    * @return Unit
    */
-   public function uploadDocument($id) {
+   public function uploadDocument($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -684,6 +711,9 @@ class CustomersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('multipart/form-data'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -728,7 +758,7 @@ class CustomersApi {
    * @param string $id ID of customer. (required)
    * @return CustomerOAuthToken
    */
-   public function createFundingSourcesTokenForCustomer($id) {
+   public function createFundingSourcesTokenForCustomer($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -750,6 +780,9 @@ class CustomersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -794,7 +827,7 @@ class CustomersApi {
    * @param string $id ID of customer. (required)
    * @return IavToken
    */
-   public function getCustomerIavToken($id) {
+   public function getCustomerIavToken($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -816,6 +849,9 @@ class CustomersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -860,7 +896,7 @@ class CustomersApi {
    * @param string $id Customer id to initiate kba for. (required)
    * @return Unit
    */
-   public function initiateKba($id) {
+   public function initiateKba($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -882,6 +918,9 @@ class CustomersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -927,7 +966,7 @@ class CustomersApi {
    * @param string $id Customer id to create label for. (required)
    * @return Label
    */
-   public function createLabel($body, $id) {
+   public function createLabel($body, $id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -949,6 +988,9 @@ class CustomersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -997,7 +1039,7 @@ class CustomersApi {
    * @param string $id Customer id to get labels for. (required)
    * @return LabelListResponse
    */
-   public function getLabelsForCustomer($id, $limit = null, $offset = null) {
+   public function getLabelsForCustomer($id, $limit = null, $offset = null, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -1018,6 +1060,10 @@ class CustomersApi {
         $headerParams['Accept'] = $_header_accept;
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
+
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
       // query params
       if($limit !== null) {

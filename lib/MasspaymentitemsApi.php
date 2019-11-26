@@ -65,7 +65,7 @@ class MasspaymentitemsApi {
    * @param string $id ID of mass payment item to get. (required)
    * @return MassPaymentItem
    */
-   public function byId($id) {
+   public function byId($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -87,6 +87,9 @@ class MasspaymentitemsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -135,7 +138,7 @@ class MasspaymentitemsApi {
    * @param string $correlation_id Correlation ID to search by. (optional)
    * @return MassPaymentItemListResponse
    */
-   public function getMassPaymentItems($id, $limit = null, $offset = null, $status = null, $correlation_id = null) {
+   public function getMassPaymentItems($id, $limit = null, $offset = null, $status = null, $correlation_id = null, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -157,6 +160,10 @@ class MasspaymentitemsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
+      
       // query params
       if($limit !== null) {
         $queryParams['limit'] = $this->apiClient->toQueryValue($limit);

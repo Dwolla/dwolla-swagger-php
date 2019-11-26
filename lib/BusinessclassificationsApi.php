@@ -64,7 +64,7 @@ class BusinessclassificationsApi {
    *
    * @return BusinessClassificationListResponse
    */
-   public function _list() {
+   public function _list($headers = null) {
       
 
       // parse inputs
@@ -81,6 +81,9 @@ class BusinessclassificationsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
       
       
       
@@ -115,7 +118,7 @@ class BusinessclassificationsApi {
    * @param string $id Id of business classification to get. (required)
    * @return BusinessClassification
    */
-   public function getBusinessClassification($id) {
+   public function getBusinessClassification($id, $headers = null) {
       
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -137,6 +140,9 @@ class BusinessclassificationsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
       
       
       

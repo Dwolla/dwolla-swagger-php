@@ -64,7 +64,7 @@ class SandboxApi {
    *
    * @return ProcessResult
    */
-   public function simulations() {
+   public function simulations($headers = null) {
 
 
       // parse inputs
@@ -81,6 +81,9 @@ class SandboxApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 

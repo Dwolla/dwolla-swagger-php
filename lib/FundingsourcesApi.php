@@ -66,7 +66,7 @@ class FundingsourcesApi {
    * @param boolean $removed Filter funding sources by this value. (optional)
    * @return FundingSourceListResponse
    */
-   public function getAccountFundingSources($id, $removed = null) {
+   public function getAccountFundingSources($id, $removed = null, $headers = null) {
       
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -87,6 +87,10 @@ class FundingsourcesApi {
         $headerParams['Accept'] = $_header_accept;
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
+
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
       // query params
       if($removed !== null) {
@@ -136,7 +140,7 @@ class FundingsourcesApi {
    * @param boolean $removed Filter funding sources by this value. (optional)
    * @return FundingSourceListResponse
    */
-   public function getCustomerFundingSources($id, $removed = null) {
+   public function getCustomerFundingSources($id, $removed = null, $headers = null) {
       
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -157,6 +161,10 @@ class FundingsourcesApi {
         $headerParams['Accept'] = $_header_accept;
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
+      
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
       // query params
       if($removed !== null) {
@@ -206,7 +214,7 @@ class FundingsourcesApi {
    * @param string $id Customer id to create funding source for. (required)
    * @return FundingSource
    */
-   public function createCustomerFundingSource($body, $id) {
+   public function createCustomerFundingSource($body, $id, $headers = null) {
       
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -228,6 +236,9 @@ class FundingsourcesApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
       
       
       
@@ -276,7 +287,7 @@ class FundingsourcesApi {
    * @param CreateFundingSourceRequest $body Funding source to create. (required)
    * @return FundingSource
    */
-   public function createFundingSource($body) {
+   public function createFundingSource($body, $headers = null) {
       
 
       // parse inputs
@@ -293,6 +304,9 @@ class FundingsourcesApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
       
       
       
@@ -331,7 +345,7 @@ class FundingsourcesApi {
    * @param string $id Funding source ID to get. (required)
    * @return FundingSource
    */
-   public function id($id) {
+   public function id($id, $headers = null) {
       
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -353,6 +367,9 @@ class FundingsourcesApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
       
       
       
@@ -398,7 +415,7 @@ class FundingsourcesApi {
    * @param string $id Funding source ID to update. (required)
    * @return FundingSource
    */
-   public function update($body, $id) {
+   public function update($body, $id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -420,6 +437,9 @@ class FundingsourcesApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -469,7 +489,7 @@ class FundingsourcesApi {
    * @param string $id Funding source ID to remove. (required)
    * @return FundingSource
    */
-   public function softDelete($body, $id) {
+   public function softDelete($body, $id, $headers = null) {
       
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -491,6 +511,9 @@ class FundingsourcesApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
       
       
       
@@ -539,7 +562,7 @@ class FundingsourcesApi {
    * @param string $id Funding source ID to get the balance for. (required)
    * @return FundingSourceBalance
    */
-   public function getBalance($id) {
+   public function getBalance($id, $headers = null) {
       
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -561,6 +584,9 @@ class FundingsourcesApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
       
       
       
@@ -605,7 +631,7 @@ class FundingsourcesApi {
    * @param string $id Funding source ID to check for pending validation deposits for. (required)
    * @return MicroDepositsInitiated
    */
-   public function verifyMicroDepositsExist($id) {
+   public function verifyMicroDepositsExist($id, $headers = null) {
       
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -627,6 +653,9 @@ class FundingsourcesApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
       
       
       
@@ -672,7 +701,7 @@ class FundingsourcesApi {
    * @param string $id Funding source ID to initiate or verify micro deposits for. (required)
    * @return MicroDeposits
    */
-   public function microDeposits($body, $id) {
+   public function microDeposits($body, $id, $headers = null) {
       
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -694,6 +723,9 @@ class FundingsourcesApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
       
       
       

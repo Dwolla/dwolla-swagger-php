@@ -65,7 +65,7 @@ class LabelreallocationsApi {
    * @param LabelReallocationRequest $body Labels to reallocate. (required)
    * @return LabelReallocation
    */
-   public function reallocateLabel($body) {
+   public function reallocateLabel($body, $headers = null) {
 
 
       // parse inputs
@@ -82,6 +82,9 @@ class LabelreallocationsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -120,7 +123,7 @@ class LabelreallocationsApi {
    * @param string $id Label reallocation ID (required)
    * @return LabelReallocation
    */
-   public function getLabelReallocation($id) {
+   public function getLabelReallocation($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -142,6 +145,9 @@ class LabelreallocationsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 

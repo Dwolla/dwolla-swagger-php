@@ -65,7 +65,7 @@ class DocumentsApi {
    * @param string $id Id of document to get. (required)
    * @return Document
    */
-   public function getDocument($id) {
+   public function getDocument($id, $headers = null) {
       
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -87,6 +87,9 @@ class DocumentsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
       
       
       

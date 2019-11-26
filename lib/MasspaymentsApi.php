@@ -68,7 +68,7 @@ class MasspaymentsApi {
    * @param string $correlation_id Correlation ID to search by. (optional)
    * @return MassPaymentListResponse
    */
-   public function getByAccount($id, $limit = null, $offset = null, $correlation_id = null) {
+   public function getByAccount($id, $limit = null, $offset = null, $correlation_id = null, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -89,6 +89,10 @@ class MasspaymentsApi {
         $headerParams['Accept'] = $_header_accept;
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
+
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
       // query params
       if($limit !== null) {
@@ -146,7 +150,7 @@ class MasspaymentsApi {
    * @param string $correlation_id Correlation ID to search by. (required)
    * @return MassPaymentListResponse
    */
-   public function getByCustomer($id, $limit = null, $offset = null, $correlation_id = null) {
+   public function getByCustomer($id, $limit = null, $offset = null, $correlation_id = null, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -167,6 +171,10 @@ class MasspaymentsApi {
         $headerParams['Accept'] = $_header_accept;
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
+
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
       // query params
       if($limit !== null) {
@@ -221,7 +229,7 @@ class MasspaymentsApi {
    * @param MassPaymentRequestBody $body Mass payment request. (required)
    * @return Unit
    */
-   public function create($body) {
+   public function create($body, $headers = null) {
 
 
       // parse inputs
@@ -238,6 +246,9 @@ class MasspaymentsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -276,7 +287,7 @@ class MasspaymentsApi {
    * @param string $id ID of mass payment to get. (required)
    * @return MassPayment
    */
-   public function byId($id) {
+   public function byId($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -298,6 +309,9 @@ class MasspaymentsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -343,7 +357,7 @@ class MasspaymentsApi {
    * @param string $id ID of mass-payment to update (required)
    * @return MassPayment
    */
-   public function update($body, $id) {
+   public function update($body, $id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -365,6 +379,9 @@ class MasspaymentsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 

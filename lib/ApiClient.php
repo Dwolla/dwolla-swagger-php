@@ -478,7 +478,7 @@ class ApiClient {
   /*
    * return the content type based on an array of content-type provided
    *
-   * @param array[string] content_type_array Array fo content-type
+   * @param array[string] content_type_array Array of content-type
    * @return string Content-Type (e.g. application/json)
    */
   public static function selectHeaderContentType($content_type) {
@@ -489,6 +489,16 @@ class ApiClient {
     } else {
       return implode(',', $content_type);
     }
+  }
+
+  /*
+   * return the idempotency key based on an array of idempotency-key provided
+   *
+   * @param array[string] idempotency_key_array Array of idempotency-key
+   * @return string Idempotency-Key (e.g. some UUID)
+   */
+  public static function selectHeaderIdempotencyKey($idempotency_key) {
+    return $idempotency_key;
   }
 
 }

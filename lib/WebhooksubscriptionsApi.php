@@ -64,7 +64,7 @@ class WebhooksubscriptionsApi {
    *
    * @return WebhookListResponse
    */
-   public function _list() {
+   public function _list($headers = null) {
       
 
       // parse inputs
@@ -81,6 +81,9 @@ class WebhooksubscriptionsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
       
       
       
@@ -115,7 +118,7 @@ class WebhooksubscriptionsApi {
    * @param CreateWebhook $body Webhook subscription to create. (required)
    * @return WebhookSubscription
    */
-   public function create($body) {
+   public function create($body, $headers = null) {
       
 
       // parse inputs
@@ -132,6 +135,9 @@ class WebhooksubscriptionsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
       
       
       
@@ -170,7 +176,7 @@ class WebhooksubscriptionsApi {
    * @param string $id ID of webhook subscription to get. (required)
    * @return WebhookSubscription
    */
-   public function id($id) {
+   public function id($id, $headers = null) {
       
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -192,6 +198,9 @@ class WebhooksubscriptionsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
       
       
       
@@ -237,7 +246,7 @@ class WebhooksubscriptionsApi {
    * @param string $id ID of webhook to update. (required)
    * @return WebhookSubscription
    */
-   public function updateSubscription($body, $id) {
+   public function updateSubscription($body, $id, $headers = null) {
       
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -259,6 +268,9 @@ class WebhooksubscriptionsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
       
       
       
@@ -307,7 +319,7 @@ class WebhooksubscriptionsApi {
    * @param string $id ID of webhook subscription to delete. (required)
    * @return WebhookSubscription
    */
-   public function deleteById($id) {
+   public function deleteById($id, $headers = null) {
       
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -329,6 +341,9 @@ class WebhooksubscriptionsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
       
       
       

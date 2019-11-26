@@ -64,7 +64,7 @@ class OndemandauthorizationsApi {
    *
    * @return Authorization
    */
-   public function createAuthorization() {
+   public function createAuthorization($headers = null) {
       
 
       // parse inputs
@@ -81,6 +81,9 @@ class OndemandauthorizationsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
       
       
       
