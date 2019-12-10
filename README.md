@@ -159,7 +159,7 @@ Each model represents the different kinds of requests and responses that can be 
 ## Changelog
 
 1.3.0
-* Add support for customer headers on all requests. (e.g. [Idempotency-Key](https://docs.dwolla.com/#idempotency-key) header)
+* Add support for custom headers on all requests. (e.g. [Idempotency-Key](https://docs.dwolla.com/#idempotency-key) header)
 
 1.2.0
 * API schema updated, `CustomersApi` updated to support KBA related endpoint.
