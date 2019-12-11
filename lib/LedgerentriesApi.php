@@ -65,7 +65,7 @@ class LedgerentriesApi {
    * @param string $id ID of ledger entry to get. (required)
    * @return LedgerEntry
    */
-   public function getLedgerEntry($id) {
+   public function getLedgerEntry($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -87,6 +87,9 @@ class LedgerentriesApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 

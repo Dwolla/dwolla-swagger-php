@@ -66,7 +66,7 @@ class EventsApi {
    * @param int $offset How many results to skip. (optional)
    * @return EventListResponse
    */
-   public function events($limit = null, $offset = null) {
+   public function events($limit = null, $offset = null, $headers = null) {
 
 
       // parse inputs
@@ -82,6 +82,10 @@ class EventsApi {
         $headerParams['Accept'] = $_header_accept;
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
+
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
       // query params
       if($limit !== null) {
@@ -123,7 +127,7 @@ class EventsApi {
    * @param string $id ID of application event to get. (required)
    * @return ApplicationEvent
    */
-   public function id($id) {
+   public function id($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -145,6 +149,9 @@ class EventsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 

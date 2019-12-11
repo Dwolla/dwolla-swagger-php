@@ -65,7 +65,7 @@ class BeneficialownersApi {
    * @param string $id ID of owner to lookup (required)
    * @return Owner
    */
-   public function getById($id) {
+   public function getById($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -87,6 +87,9 @@ class BeneficialownersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -132,7 +135,7 @@ class BeneficialownersApi {
    * @param string $id ID of owner to update (required)
    * @return Owner
    */
-   public function update($body, $id) {
+   public function update($body, $id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -154,6 +157,9 @@ class BeneficialownersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -202,7 +208,7 @@ class BeneficialownersApi {
    * @param string $id ID of owner. (required)
    * @return DocumentListResponse
    */
-   public function getBeneficialOwnerDocuments($id) {
+   public function getBeneficialOwnerDocuments($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -224,6 +230,9 @@ class BeneficialownersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -268,7 +277,7 @@ class BeneficialownersApi {
    * @param string $id ID of beneficial owner to delete. (required)
    * @return Owner
    */
-   public function deleteById($id) {
+   public function deleteById($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -290,7 +299,9 @@ class BeneficialownersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
-
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
       // Entire URL for ID

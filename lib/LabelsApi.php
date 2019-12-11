@@ -65,7 +65,7 @@ class LabelsApi {
    * @param string $id ID of label to get. (required)
    * @return Label
    */
-   public function getLabel($id) {
+   public function getLabel($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -87,6 +87,9 @@ class LabelsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -131,7 +134,7 @@ class LabelsApi {
    * @param string $id Label id to remove. (required)
    * @return Label
    */
-   public function removeLabel($id) {
+   public function removeLabel($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -153,6 +156,9 @@ class LabelsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -199,7 +205,7 @@ class LabelsApi {
    * @param int $offset How many results to skip. (optional)
    * @return LedgerEntryListResponse
    */
-   public function getLedgerEntriesForLabel($id, $limit = null, $offset = null) {
+   public function getLedgerEntriesForLabel($id, $limit = null, $offset = null, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -221,6 +227,10 @@ class LabelsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
+      
       // query params
       if($limit !== null) {
         $queryParams['limit'] = $this->apiClient->toQueryValue($limit);
@@ -270,7 +280,7 @@ class LabelsApi {
    * @param string $id Label id to add the ledger entry for. (required)
    * @return LedgerEntry
    */
-   public function addLedgerEntry($body, $id) {
+   public function addLedgerEntry($body, $id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -292,6 +302,9 @@ class LabelsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 

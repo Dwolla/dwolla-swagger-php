@@ -65,7 +65,7 @@ class KbaApi {
    * @param string $id ID of KBA session to get. (required)
    * @return KbaQuestions
    */
-   public function getKbaQuestions($id) {
+   public function getKbaQuestions($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -87,6 +87,9 @@ class KbaApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -132,7 +135,7 @@ class KbaApi {
    * @param string $id Id of KBA session to answer (required)
    * @return AnswerKbaQuestionsResponse
    */
-   public function answerKbaQuestions($body, $id) {
+   public function answerKbaQuestions($body, $id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -154,6 +157,9 @@ class KbaApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 

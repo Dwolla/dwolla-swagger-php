@@ -68,7 +68,7 @@ class TransfersApi {
    * @param string $status What status to filter by. (optional)
    * @return TransferListResponse
    */
-   public function getAccountTransfers($id, $limit = null, $offset = null, $status = null) {
+   public function getAccountTransfers($id, $limit = null, $offset = null, $status = null, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -89,6 +89,10 @@ class TransfersApi {
         $headerParams['Accept'] = $_header_accept;
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
+
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
       // query params
       if($limit !== null) {
@@ -146,7 +150,7 @@ class TransfersApi {
    * @param string $status What status to filter by. (required)
    * @return TransferListResponse
    */
-   public function getCustomerTransfers($id, $limit = null, $offset = null, $status = null) {
+   public function getCustomerTransfers($id, $limit = null, $offset = null, $status = null, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -168,6 +172,10 @@ class TransfersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
+      
       // query params
       if($limit !== null) {
         $queryParams['limit'] = $this->apiClient->toQueryValue($limit);
@@ -221,7 +229,7 @@ class TransfersApi {
    * @param TransferRequestBody $body Transfer request. (required)
    * @return Unit
    */
-   public function create($body) {
+   public function create($body, $headers = null) {
 
 
       // parse inputs
@@ -238,6 +246,9 @@ class TransfersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -276,7 +287,7 @@ class TransfersApi {
    * @param string $id ID of transfer to get. (required)
    * @return Transfer
    */
-   public function byId($id) {
+   public function byId($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -298,6 +309,9 @@ class TransfersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -343,7 +357,7 @@ class TransfersApi {
    * @param string $id ID of transfer to get. (required)
    * @return Transfer
    */
-   public function update($body, $id) {
+   public function update($body, $id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -365,6 +379,9 @@ class TransfersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -413,7 +430,7 @@ class TransfersApi {
    * @param string $id ID of failed bank transfer to get. (required)
    * @return TransferFailure
    */
-   public function failureById($id) {
+   public function failureById($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -435,6 +452,9 @@ class TransfersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -479,7 +499,7 @@ class TransfersApi {
    * @param string $id Transfer id to get fees for. (required)
    * @return FeesBySourceResponse
    */
-   public function getFeesBySource($id) {
+   public function getFeesBySource($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -501,6 +521,9 @@ class TransfersApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/vnd.dwolla.v1.hal+json'));
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 

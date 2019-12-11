@@ -65,7 +65,7 @@ class AccountsApi {
    * @param string $id Account ID to get info for. (required)
    * @return FullAccountInfo
    */
-   public function id($id) {
+   public function id($id, $headers = null) {
       
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -87,6 +87,9 @@ class AccountsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
       
       
       
@@ -131,7 +134,7 @@ class AccountsApi {
    * @param string $id Account ID to create token for. (required)
    * @return AccountOAuthToken
    */
-   public function createFundingSourcesToken($id) {
+   public function createFundingSourcesToken($id, $headers = null) {
       
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -153,6 +156,9 @@ class AccountsApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
       
       
       

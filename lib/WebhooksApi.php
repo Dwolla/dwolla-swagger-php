@@ -67,7 +67,7 @@ class WebhooksApi {
    * @param int $offset How many results to skip. (optional)
    * @return WebhookEventListResponse
    */
-   public function hooksById($id, $limit = null, $offset = null) {
+   public function hooksById($id, $limit = null, $offset = null, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -88,6 +88,10 @@ class WebhooksApi {
         $headerParams['Accept'] = $_header_accept;
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
+
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
       // query params
       if($limit !== null) {
@@ -139,7 +143,7 @@ class WebhooksApi {
    * @param string $id ID of webhook to get. (required)
    * @return Webhook
    */
-   public function id($id) {
+   public function id($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -161,6 +165,9 @@ class WebhooksApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -205,7 +212,7 @@ class WebhooksApi {
    * @param string $id ID of webhook to get retries for. (required)
    * @return WebhookRetryRequestListResponse
    */
-   public function retriesById($id) {
+   public function retriesById($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -227,6 +234,9 @@ class WebhooksApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
@@ -271,7 +281,7 @@ class WebhooksApi {
    * @param string $id ID of webhook to retry. (required)
    * @return WebhookRetry
    */
-   public function retryWebhook($id) {
+   public function retryWebhook($id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -293,6 +303,9 @@ class WebhooksApi {
       }
       $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
 
+      if (!is_null($headers)){
+        $headerParams = array_merge($headerParams, $headers);
+      }
 
 
 
