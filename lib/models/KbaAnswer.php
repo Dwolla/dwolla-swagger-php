@@ -42,8 +42,8 @@ class KbaAnswer implements ArrayAccess {
   public $text; /* string */
 
   public function __construct(array $data = null) {
-    $this->id = $data["id"];
-    $this->text = $data["text"];
+    $this->id = $data["id"] ?? null;
+    $this->text = $data["text"] ?? null;
   }
 
   public function offsetExists($offset) {

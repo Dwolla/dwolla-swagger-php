@@ -96,26 +96,26 @@ class Customer implements ArrayAccess {
   public $correlation_id; /* string */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->_embedded = $data["_embedded"];
-    $this->id = $data["id"];
-    $this->first_name = $data["first_name"];
-    $this->last_name = $data["last_name"];
-    $this->email = $data["email"];
-    $this->type = $data["type"];
-    $this->status = $data["status"];
-    $this->created = $data["created"];
-    $this->address1 = $data["address1"];
-    $this->address2 = $data["address2"];
-    $this->city = $data["city"];
-    $this->state = $data["state"];
-    $this->postal_code = $data["postal_code"];
-    $this->phone = $data["phone"];
-    $this->business_name = $data["business_name"];
-    $this->doing_business_as = $data["doing_business_as"];
-    $this->website = $data["website"];
-    $this->controller = $data["controller"];
-    $this->correlation_id = $data["correlation_id"];
+    $this->_links = $data["_links"] ?? null;
+    $this->_embedded = $data["_embedded"] ?? null;
+    $this->id = $data["id"] ?? null;
+    $this->first_name = $data["first_name"] ?? null;
+    $this->last_name = $data["last_name"] ?? null;
+    $this->email = $data["email"] ?? null;
+    $this->type = $data["type"] ?? null;
+    $this->status = $data["status"] ?? null;
+    $this->created = $data["created"] ?? null;
+    $this->address1 = $data["address1"] ?? null;
+    $this->address2 = $data["address2"] ?? null;
+    $this->city = $data["city"] ?? null;
+    $this->state = $data["state"] ?? null;
+    $this->postal_code = $data["postal_code"] ?? null;
+    $this->phone = $data["phone"] ?? null;
+    $this->business_name = $data["business_name"] ?? null;
+    $this->doing_business_as = $data["doing_business_as"] ?? null;
+    $this->website = $data["website"] ?? null;
+    $this->controller = $data["controller"] ?? null;
+    $this->correlation_id = $data["correlation_id"] ?? null;
   }
 
   public function offsetExists($offset) {

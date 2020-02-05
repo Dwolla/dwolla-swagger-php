@@ -69,17 +69,17 @@ class Transfer implements ArrayAccess {
   public $ach_details; /* object */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->_embedded = $data["_embedded"];
-    $this->id = $data["id"];
-    $this->status = $data["status"];
-    $this->amount = $data["amount"];
-    $this->created = $data["created"];
-    $this->metadata = $data["metadata"];
-    $this->clearing = $data["clearing"];
-    $this->correlation_id = $data["correlation_id"];
-    $this->individual_ach_id = $data["individual_ach_id"];
-    $this->ach_details = $data["ach_details"];
+    $this->_links = $data["_links"] ?? null;
+    $this->_embedded = $data["_embedded"] ?? null;
+    $this->id = $data["id"] ?? null;
+    $this->status = $data["status"] ?? null;
+    $this->amount = $data["amount"] ?? null;
+    $this->created = $data["created"] ?? null;
+    $this->metadata = $data["metadata"] ?? null;
+    $this->clearing = $data["clearing"] ?? null;
+    $this->correlation_id = $data["correlation_id"] ?? null;
+    $this->individual_ach_id = $data["individual_ach_id"] ?? null;
+    $this->ach_details = $data["ach_details"] ?? null;
   }
 
   public function offsetExists($offset) {

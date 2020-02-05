@@ -60,14 +60,14 @@ class CreateFundingSourceRequest implements ArrayAccess {
   public $channels; /* array[string] */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->routing_number = $data["routing_number"];
-    $this->account_number = $data["account_number"];
-    $this->type = $data["type"];
-    $this->bank_account_type = $data["bank_account_type"];
-    $this->name = $data["name"];
-    $this->verified = $data["verified"];
-    $this->channels = $data["channels"];
+    $this->_links = $data["_links"] ?? null;
+    $this->routing_number = $data["routing_number"] ?? null;
+    $this->account_number = $data["account_number"] ?? null;
+    $this->type = $data["type"] ?? null;
+    $this->bank_account_type = $data["bank_account_type"] ?? null;
+    $this->name = $data["name"] ?? null;
+    $this->verified = $data["verified"] ?? null;
+    $this->channels = $data["channels"] ?? null;
   }
 
   public function offsetExists($offset) {

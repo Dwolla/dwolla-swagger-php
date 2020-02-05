@@ -51,11 +51,11 @@ class LedgerEntry implements ArrayAccess {
   public $created; /* DateTime */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->_embedded = $data["_embedded"];
-    $this->id = $data["id"];
-    $this->amount = $data["amount"];
-    $this->created = $data["created"];
+    $this->_links = $data["_links"] ?? null;
+    $this->_embedded = $data["_embedded"] ?? null;
+    $this->id = $data["id"] ?? null;
+    $this->amount = $data["amount"] ?? null;
+    $this->created = $data["created"] ?? null;
   }
 
   public function offsetExists($offset) {

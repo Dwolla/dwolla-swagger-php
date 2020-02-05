@@ -51,11 +51,11 @@ class UpdateBankRequest implements ArrayAccess {
   public $bank_account_type; /* string */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->name = $data["name"];
-    $this->routing_number = $data["routing_number"];
-    $this->account_number = $data["account_number"];
-    $this->bank_account_type = $data["bank_account_type"];
+    $this->_links = $data["_links"] ?? null;
+    $this->name = $data["name"] ?? null;
+    $this->routing_number = $data["routing_number"] ?? null;
+    $this->account_number = $data["account_number"] ?? null;
+    $this->bank_account_type = $data["bank_account_type"] ?? null;
   }
 
   public function offsetExists($offset) {

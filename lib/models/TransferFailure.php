@@ -54,12 +54,12 @@ class TransferFailure implements ArrayAccess {
   public $created; /* string */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->_embedded = $data["_embedded"];
-    $this->code = $data["code"];
-    $this->description = $data["description"];
-    $this->explanation = $data["explanation"];
-    $this->created = $data["created"];
+    $this->_links = $data["_links"] ?? null;
+    $this->_embedded = $data["_embedded"] ?? null;
+    $this->code = $data["code"] ?? null;
+    $this->description = $data["description"] ?? null;
+    $this->explanation = $data["explanation"] ?? null;
+    $this->created = $data["created"] ?? null;
   }
 
   public function offsetExists($offset) {

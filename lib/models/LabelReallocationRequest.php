@@ -42,8 +42,8 @@ class LabelReallocationRequest implements ArrayAccess {
   public $amount; /* Amount */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->amount = $data["amount"];
+    $this->_links = $data["_links"] ?? null;
+    $this->amount = $data["amount"] ?? null;
   }
 
   public function offsetExists($offset) {

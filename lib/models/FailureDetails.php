@@ -42,8 +42,8 @@ class FailureDetails implements ArrayAccess {
   public $description; /* string */
 
   public function __construct(array $data = null) {
-    $this->code = $data["code"];
-    $this->description = $data["description"];
+    $this->code = $data["code"] ?? null;
+    $this->description = $data["description"] ?? null;
   }
 
   public function offsetExists($offset) {

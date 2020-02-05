@@ -45,9 +45,9 @@ class Ownership implements ArrayAccess {
   public $_embedded; /* map[string,Number] */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->status = $data["status"];
-    $this->_embedded = $data["_embedded"];
+    $this->_links = $data["_links"] ?? null;
+    $this->status = $data["status"] ?? null;
+    $this->_embedded = $data["_embedded"] ?? null;
   }
 
   public function offsetExists($offset) {

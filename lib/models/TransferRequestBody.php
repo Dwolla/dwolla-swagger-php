@@ -60,14 +60,14 @@ class TransferRequestBody implements ArrayAccess {
   public $ach_details; /* object */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->amount = $data["amount"];
-    $this->metadata = $data["metadata"];
-    $this->fees = $data["fees"];
-    $this->clearing = $data["clearing"];
-    $this->imad = $data["imad"];
-    $this->correlation_id = $data["correlation_id"];
-    $this->ach_details = $data["ach_details"];
+    $this->_links = $data["_links"] ?? null;
+    $this->amount = $data["amount"] ?? null;
+    $this->metadata = $data["metadata"] ?? null;
+    $this->fees = $data["fees"] ?? null;
+    $this->clearing = $data["clearing"] ?? null;
+    $this->imad = $data["imad"] ?? null;
+    $this->correlation_id = $data["correlation_id"] ?? null;
+    $this->ach_details = $data["ach_details"] ?? null;
   }
 
   public function offsetExists($offset) {

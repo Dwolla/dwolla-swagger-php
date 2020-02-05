@@ -63,15 +63,15 @@ class MassPayment implements ArrayAccess {
   public $correlation_id; /* string */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->_embedded = $data["_embedded"];
-    $this->id = $data["id"];
-    $this->status = $data["status"];
-    $this->created = $data["created"];
-    $this->metadata = $data["metadata"];
-    $this->total = $data["total"];
-    $this->total_fees = $data["total_fees"];
-    $this->correlation_id = $data["correlation_id"];
+    $this->_links = $data["_links"] ?? null;
+    $this->_embedded = $data["_embedded"] ?? null;
+    $this->id = $data["id"] ?? null;
+    $this->status = $data["status"] ?? null;
+    $this->created = $data["created"] ?? null;
+    $this->metadata = $data["metadata"] ?? null;
+    $this->total = $data["total"] ?? null;
+    $this->total_fees = $data["total_fees"] ?? null;
+    $this->correlation_id = $data["correlation_id"] ?? null;
   }
 
   public function offsetExists($offset) {

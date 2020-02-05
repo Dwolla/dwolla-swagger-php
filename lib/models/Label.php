@@ -51,11 +51,11 @@ class Label implements ArrayAccess {
   public $amount; /* Amount */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->_embedded = $data["_embedded"];
-    $this->id = $data["id"];
-    $this->created = $data["created"];
-    $this->amount = $data["amount"];
+    $this->_links = $data["_links"] ?? null;
+    $this->_embedded = $data["_embedded"] ?? null;
+    $this->id = $data["id"] ?? null;
+    $this->created = $data["created"] ?? null;
+    $this->amount = $data["amount"] ?? null;
   }
 
   public function offsetExists($offset) {

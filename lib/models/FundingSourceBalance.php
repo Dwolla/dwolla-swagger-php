@@ -51,11 +51,11 @@ class FundingSourceBalance implements ArrayAccess {
   public $status; /* string */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->_embedded = $data["_embedded"];
-    $this->balance = $data["balance"];
-    $this->last_updated = $data["last_updated"];
-    $this->status = $data["status"];
+    $this->_links = $data["_links"] ?? null;
+    $this->_embedded = $data["_embedded"] ?? null;
+    $this->balance = $data["balance"] ?? null;
+    $this->last_updated = $data["last_updated"] ?? null;
+    $this->status = $data["status"] ?? null;
   }
 
   public function offsetExists($offset) {

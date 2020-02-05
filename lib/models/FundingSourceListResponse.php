@@ -42,8 +42,8 @@ class FundingSourceListResponse implements ArrayAccess {
   public $_embedded; /* object */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->_embedded = $data["_embedded"];
+    $this->_links = $data["_links"] ?? null;
+    $this->_embedded = $data["_embedded"] ?? null;
   }
 
   public function offsetExists($offset) {

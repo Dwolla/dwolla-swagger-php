@@ -54,12 +54,12 @@ class ApplicationEvent implements ArrayAccess {
   public $resource_id; /* string */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->_embedded = $data["_embedded"];
-    $this->id = $data["id"];
-    $this->created = $data["created"];
-    $this->topic = $data["topic"];
-    $this->resource_id = $data["resource_id"];
+    $this->_links = $data["_links"] ?? null;
+    $this->_embedded = $data["_embedded"] ?? null;
+    $this->id = $data["id"] ?? null;
+    $this->created = $data["created"] ?? null;
+    $this->topic = $data["topic"] ?? null;
+    $this->resource_id = $data["resource_id"] ?? null;
   }
 
   public function offsetExists($offset) {

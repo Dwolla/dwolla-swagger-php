@@ -48,10 +48,10 @@ class AccountInfo implements ArrayAccess {
   public $_embedded; /* object */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->id = $data["id"];
-    $this->name = $data["name"];
-    $this->_embedded = $data["_embedded"];
+    $this->_links = $data["_links"] ?? null;
+    $this->id = $data["id"] ?? null;
+    $this->name = $data["name"] ?? null;
+    $this->_embedded = $data["_embedded"] ?? null;
   }
 
   public function offsetExists($offset) {

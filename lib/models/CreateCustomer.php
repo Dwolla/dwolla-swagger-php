@@ -99,27 +99,27 @@ class CreateCustomer implements ArrayAccess {
   public $correlation_id; /* string */
 
   public function __construct(array $data = null) {
-    $this->first_name = $data["first_name"];
-    $this->last_name = $data["last_name"];
-    $this->email = $data["email"];
-    $this->ip_address = $data["ip_address"];
-    $this->type = $data["type"];
-    $this->address1 = $data["address1"];
-    $this->address2 = $data["address2"];
-    $this->city = $data["city"];
-    $this->state = $data["state"];
-    $this->postal_code = $data["postal_code"];
-    $this->date_of_birth = $data["date_of_birth"];
-    $this->ssn = $data["ssn"];
-    $this->phone = $data["phone"];
-    $this->business_name = $data["business_name"];
-    $this->business_type = $data["business_type"];
-    $this->business_classification = $data["business_classification"];
-    $this->ein = $data["ein"];
-    $this->doing_business_as = $data["doing_business_as"];
-    $this->website = $data["website"];
-    $this->controller = $data["controller"];
-    $this->correlation_id = $data["correlation_id"];
+    $this->first_name = $data["first_name"] ?? null;
+    $this->last_name = $data["last_name"] ?? null;
+    $this->email = $data["email"] ?? null;
+    $this->ip_address = $data["ip_address"] ?? null;
+    $this->type = $data["type"] ?? null;
+    $this->address1 = $data["address1"] ?? null;
+    $this->address2 = $data["address2"] ?? null;
+    $this->city = $data["city"] ?? null;
+    $this->state = $data["state"] ?? null;
+    $this->postal_code = $data["postal_code"] ?? null;
+    $this->date_of_birth = $data["date_of_birth"] ?? null;
+    $this->ssn = $data["ssn"] ?? null;
+    $this->phone = $data["phone"] ?? null;
+    $this->business_name = $data["business_name"] ?? null;
+    $this->business_type = $data["business_type"] ?? null;
+    $this->business_classification = $data["business_classification"] ?? null;
+    $this->ein = $data["ein"] ?? null;
+    $this->doing_business_as = $data["doing_business_as"] ?? null;
+    $this->website = $data["website"] ?? null;
+    $this->controller = $data["controller"] ?? null;
+    $this->correlation_id = $data["correlation_id"] ?? null;
   }
 
   public function offsetExists($offset) {

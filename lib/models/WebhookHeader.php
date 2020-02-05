@@ -42,8 +42,8 @@ class WebhookHeader implements ArrayAccess {
   public $value; /* string */
 
   public function __construct(array $data = null) {
-    $this->name = $data["name"];
-    $this->value = $data["value"];
+    $this->name = $data["name"] ?? null;
+    $this->value = $data["value"] ?? null;
   }
 
   public function offsetExists($offset) {
