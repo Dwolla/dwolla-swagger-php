@@ -39,7 +39,7 @@ class RemoveBankRequest implements ArrayAccess {
   public $removed; /* boolean */
 
   public function __construct(array $data = null) {
-    $this->removed = $data["removed"];
+    $this->removed = $data["removed"] ?? null;
   }
 
   public function offsetExists($offset) {

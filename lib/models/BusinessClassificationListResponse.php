@@ -45,9 +45,9 @@ class BusinessClassificationListResponse implements ArrayAccess {
   public $total; /* int */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->_embedded = $data["_embedded"];
-    $this->total = $data["total"];
+    $this->_links = $data["_links"] ?? null;
+    $this->_embedded = $data["_embedded"] ?? null;
+    $this->total = $data["total"] ?? null;
   }
 
   public function offsetExists($offset) {

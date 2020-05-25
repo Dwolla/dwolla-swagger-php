@@ -42,8 +42,8 @@ class Clearing implements ArrayAccess {
   public $destination; /* string */
 
   public function __construct(array $data = null) {
-    $this->source = $data["source"];
-    $this->destination = $data["destination"];
+    $this->source = $data["source"] ?? null;
+    $this->destination = $data["destination"] ?? null;
   }
 
   public function offsetExists($offset) {

@@ -51,11 +51,11 @@ class MicroDepositsInitiated implements ArrayAccess {
   public $failure; /* FailureDetails */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->_embedded = $data["_embedded"];
-    $this->created = $data["created"];
-    $this->status = $data["status"];
-    $this->failure = $data["failure"];
+    $this->_links = $data["_links"] ?? null;
+    $this->_embedded = $data["_embedded"] ?? null;
+    $this->created = $data["created"] ?? null;
+    $this->status = $data["status"] ?? null;
+    $this->failure = $data["failure"] ?? null;
   }
 
   public function offsetExists($offset) {

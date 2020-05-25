@@ -45,9 +45,9 @@ class HalLink implements ArrayAccess {
   public $resource_type; /* string */
 
   public function __construct(array $data = null) {
-    $this->href = $data["href"];
-    $this->type = $data["type"];
-    $this->resource_type = $data["resource_type"];
+    $this->href = $data["href"] ?? null;
+    $this->type = $data["type"] ?? null;
+    $this->resource_type = $data["resource_type"] ?? null;
   }
 
   public function offsetExists($offset) {

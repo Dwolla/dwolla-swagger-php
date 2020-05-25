@@ -45,9 +45,9 @@ class AnswerKbaQuestionsResponse implements ArrayAccess {
   public $_embedded; /* map[string,Number] */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->verification_status = $data["verification_status"];
-    $this->_embedded = $data["_embedded"];
+    $this->_links = $data["_links"] ?? null;
+    $this->verification_status = $data["verification_status"] ?? null;
+    $this->_embedded = $data["_embedded"] ?? null;
   }
 
   public function offsetExists($offset) {

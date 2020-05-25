@@ -45,9 +45,9 @@ class IavToken implements ArrayAccess {
   public $token; /* string */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->_embedded = $data["_embedded"];
-    $this->token = $data["token"];
+    $this->_links = $data["_links"] ?? null;
+    $this->_embedded = $data["_embedded"] ?? null;
+    $this->token = $data["token"] ?? null;
   }
 
   public function offsetExists($offset) {

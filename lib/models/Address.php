@@ -57,13 +57,13 @@ class Address implements ArrayAccess {
   public $postal_code; /* string */
 
   public function __construct(array $data = null) {
-    $this->address1 = $data["address1"];
-    $this->address2 = $data["address2"];
-    $this->address3 = $data["address3"];
-    $this->city = $data["city"];
-    $this->state_province_region = $data["state_province_region"];
-    $this->country = $data["country"];
-    $this->postal_code = $data["postal_code"];
+    $this->address1 = $data["address1"] ?? null;
+    $this->address2 = $data["address2"] ?? null;
+    $this->address3 = $data["address3"] ?? null;
+    $this->city = $data["city"] ?? null;
+    $this->state_province_region = $data["state_province_region"] ?? null;
+    $this->country = $data["country"] ?? null;
+    $this->postal_code = $data["postal_code"] ?? null;
   }
 
   public function offsetExists($offset) {

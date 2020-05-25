@@ -57,13 +57,13 @@ class OAuthResponse implements ArrayAccess {
   public $scope; /* string */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->access_token = $data["access_token"];
-    $this->expires_in = $data["expires_in"];
-    $this->refresh_token = $data["refresh_token"];
-    $this->refresh_expires_in = $data["refresh_expires_in"];
-    $this->token_type = $data["token_type"];
-    $this->scope = $data["scope"];
+    $this->_links = $data["_links"] ?? null;
+    $this->access_token = $data["access_token"] ?? null;
+    $this->expires_in = $data["expires_in"] ?? null;
+    $this->refresh_token = $data["refresh_token"] ?? null;
+    $this->refresh_expires_in = $data["refresh_expires_in"] ?? null;
+    $this->token_type = $data["token_type"] ?? null;
+    $this->scope = $data["scope"] ?? null;
   }
 
   public function offsetExists($offset) {

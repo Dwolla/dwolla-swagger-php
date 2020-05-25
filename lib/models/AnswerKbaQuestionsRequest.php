@@ -39,7 +39,7 @@ class AnswerKbaQuestionsRequest implements ArrayAccess {
   public $answers; /* array[AnsweredKbaQuestion] */
 
   public function __construct(array $data = null) {
-    $this->answers = $data["answers"];
+    $this->answers = $data["answers"] ?? null;
   }
 
   public function offsetExists($offset) {

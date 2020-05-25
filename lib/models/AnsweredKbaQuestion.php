@@ -42,8 +42,8 @@ class AnsweredKbaQuestion implements ArrayAccess {
   public $answer_id; /* string */
 
   public function __construct(array $data = null) {
-    $this->question_id = $data["question_id"];
-    $this->answer_id = $data["answer_id"];
+    $this->question_id = $data["question_id"] ?? null;
+    $this->answer_id = $data["answer_id"] ?? null;
   }
 
   public function offsetExists($offset) {

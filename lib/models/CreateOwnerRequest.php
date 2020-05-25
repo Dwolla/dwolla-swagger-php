@@ -54,12 +54,12 @@ class CreateOwnerRequest implements ArrayAccess {
   public $passport; /* Passport */
 
   public function __construct(array $data = null) {
-    $this->first_name = $data["first_name"];
-    $this->last_name = $data["last_name"];
-    $this->ssn = $data["ssn"];
-    $this->date_of_birth = $data["date_of_birth"];
-    $this->address = $data["address"];
-    $this->passport = $data["passport"];
+    $this->first_name = $data["first_name"] ?? null;
+    $this->last_name = $data["last_name"] ?? null;
+    $this->ssn = $data["ssn"] ?? null;
+    $this->date_of_birth = $data["date_of_birth"] ?? null;
+    $this->address = $data["address"] ?? null;
+    $this->passport = $data["passport"] ?? null;
   }
 
   public function offsetExists($offset) {

@@ -60,14 +60,14 @@ class Owner implements ArrayAccess {
   public $created; /* string */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->id = $data["id"];
-    $this->first_name = $data["first_name"];
-    $this->last_name = $data["last_name"];
-    $this->address = $data["address"];
-    $this->verification_status = $data["verification_status"];
-    $this->_embedded = $data["_embedded"];
-    $this->created = $data["created"];
+    $this->_links = $data["_links"] ?? null;
+    $this->id = $data["id"] ?? null;
+    $this->first_name = $data["first_name"] ?? null;
+    $this->last_name = $data["last_name"] ?? null;
+    $this->address = $data["address"] ?? null;
+    $this->verification_status = $data["verification_status"] ?? null;
+    $this->_embedded = $data["_embedded"] ?? null;
+    $this->created = $data["created"] ?? null;
   }
 
   public function offsetExists($offset) {

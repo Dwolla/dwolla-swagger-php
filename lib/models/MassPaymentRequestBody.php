@@ -54,12 +54,12 @@ class MassPaymentRequestBody implements ArrayAccess {
   public $ach_details; /* object */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->items = $data["items"];
-    $this->metadata = $data["metadata"];
-    $this->status = $data["status"];
-    $this->correlation_id = $data["correlation_id"];
-    $this->ach_details = $data["ach_details"];
+    $this->_links = $data["_links"] ?? null;
+    $this->items = $data["items"] ?? null;
+    $this->metadata = $data["metadata"] ?? null;
+    $this->status = $data["status"] ?? null;
+    $this->correlation_id = $data["correlation_id"] ?? null;
+    $this->ach_details = $data["ach_details"] ?? null;
   }
 
   public function offsetExists($offset) {

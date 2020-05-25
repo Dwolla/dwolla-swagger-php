@@ -45,9 +45,9 @@ class WebhookAttempt implements ArrayAccess {
   public $response; /* WebhookHttpResponse */
 
   public function __construct(array $data = null) {
-    $this->id = $data["id"];
-    $this->request = $data["request"];
-    $this->response = $data["response"];
+    $this->id = $data["id"] ?? null;
+    $this->request = $data["request"] ?? null;
+    $this->response = $data["response"] ?? null;
   }
 
   public function offsetExists($offset) {

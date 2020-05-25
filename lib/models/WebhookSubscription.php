@@ -54,12 +54,12 @@ class WebhookSubscription implements ArrayAccess {
   public $created; /* DateTime */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"];
-    $this->_embedded = $data["_embedded"];
-    $this->id = $data["id"];
-    $this->url = $data["url"];
-    $this->paused = $data["paused"];
-    $this->created = $data["created"];
+    $this->_links = $data["_links"] ?? null;
+    $this->_embedded = $data["_embedded"] ?? null;
+    $this->id = $data["id"] ?? null;
+    $this->url = $data["url"] ?? null;
+    $this->paused = $data["paused"] ?? null;
+    $this->created = $data["created"] ?? null;
   }
 
   public function offsetExists($offset) {

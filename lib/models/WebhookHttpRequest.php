@@ -48,10 +48,10 @@ class WebhookHttpRequest implements ArrayAccess {
   public $body; /* string */
 
   public function __construct(array $data = null) {
-    $this->timestamp = $data["timestamp"];
-    $this->url = $data["url"];
-    $this->headers = $data["headers"];
-    $this->body = $data["body"];
+    $this->timestamp = $data["timestamp"] ?? null;
+    $this->url = $data["url"] ?? null;
+    $this->headers = $data["headers"] ?? null;
+    $this->body = $data["body"] ?? null;
   }
 
   public function offsetExists($offset) {

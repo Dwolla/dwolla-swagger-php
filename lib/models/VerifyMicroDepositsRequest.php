@@ -42,8 +42,8 @@ class VerifyMicroDepositsRequest implements ArrayAccess {
   public $amount2; /* Amount */
 
   public function __construct(array $data = null) {
-    $this->amount1 = $data["amount1"];
-    $this->amount2 = $data["amount2"];
+    $this->amount1 = $data["amount1"] ?? null;
+    $this->amount2 = $data["amount2"] ?? null;
   }
 
   public function offsetExists($offset) {
