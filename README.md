@@ -8,7 +8,7 @@ Additionally, temporary PHP 7.4 support was added using these replaces:
 
 ## Version
 
-1.3.0
+1.4.0
 
 ## Installation
 
@@ -160,6 +160,9 @@ Each model represents the different kinds of requests and responses that can be 
 * `WebhookSubscription`
 
 ## Changelog
+
+1.4.0
+* Add temporary support fix for PHP 7.4. [Issue #41](https://github.com/Dwolla/dwolla-swagger-php/issues/41). (Thanks @oprypkhantc!)
 
 1.3.0
 * Add support for custom headers on all requests. (e.g. [Idempotency-Key](https://docs.dwolla.com/#idempotency-key) header)
