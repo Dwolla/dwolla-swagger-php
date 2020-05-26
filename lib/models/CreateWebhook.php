@@ -42,8 +42,8 @@ class CreateWebhook implements ArrayAccess {
   public $secret; /* string */
 
   public function __construct(array $data = null) {
-    $this->url = $data["url"] ?? null;
-    $this->secret = $data["secret"] ?? null;
+    $this->url = isset($data["url"]) ? $data["url"] : null;
+    $this->secret = isset($data["secret"]) ? $data["secret"] : null;
   }
 
   public function offsetExists($offset) {

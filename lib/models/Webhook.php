@@ -60,14 +60,14 @@ class Webhook implements ArrayAccess {
   public $attempts; /* array[WebhookAttempt] */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"] ?? null;
-    $this->_embedded = $data["_embedded"] ?? null;
-    $this->id = $data["id"] ?? null;
-    $this->topic = $data["topic"] ?? null;
-    $this->account_id = $data["account_id"] ?? null;
-    $this->event_id = $data["event_id"] ?? null;
-    $this->subscription_id = $data["subscription_id"] ?? null;
-    $this->attempts = $data["attempts"] ?? null;
+    $this->_links = isset($data["_links"]) ? $data["_links"] : null;
+    $this->_embedded = isset($data["_embedded"]) ? $data["_embedded"] : null;
+    $this->id = isset($data["id"]) ? $data["id"] : null;
+    $this->topic = isset($data["topic"]) ? $data["topic"] : null;
+    $this->account_id = isset($data["account_id"]) ? $data["account_id"] : null;
+    $this->event_id = isset($data["event_id"]) ? $data["event_id"] : null;
+    $this->subscription_id = isset($data["subscription_id"]) ? $data["subscription_id"] : null;
+    $this->attempts = isset($data["attempts"]) ? $data["attempts"] : null;
   }
 
   public function offsetExists($offset) {

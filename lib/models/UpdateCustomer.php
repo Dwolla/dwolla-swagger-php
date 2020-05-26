@@ -102,28 +102,28 @@ class UpdateCustomer implements ArrayAccess {
   public $correlation_id; /* string */
 
   public function __construct(array $data = null) {
-    $this->first_name = $data["first_name"] ?? null;
-    $this->last_name = $data["last_name"] ?? null;
-    $this->email = $data["email"] ?? null;
-    $this->ip_address = $data["ip_address"] ?? null;
-    $this->type = $data["type"] ?? null;
-    $this->status = $data["status"] ?? null;
-    $this->address1 = $data["address1"] ?? null;
-    $this->address2 = $data["address2"] ?? null;
-    $this->city = $data["city"] ?? null;
-    $this->state = $data["state"] ?? null;
-    $this->postal_code = $data["postal_code"] ?? null;
-    $this->date_of_birth = $data["date_of_birth"] ?? null;
-    $this->ssn = $data["ssn"] ?? null;
-    $this->phone = $data["phone"] ?? null;
-    $this->business_name = $data["business_name"] ?? null;
-    $this->business_type = $data["business_type"] ?? null;
-    $this->business_classification = $data["business_classification"] ?? null;
-    $this->ein = $data["ein"] ?? null;
-    $this->doing_business_as = $data["doing_business_as"] ?? null;
-    $this->website = $data["website"] ?? null;
-    $this->controller = $data["controller"] ?? null;
-    $this->correlation_id = $data["correlation_id"] ?? null;
+    $this->first_name = isset($data["first_name"]) ? $data["first_name"] : null;
+    $this->last_name = isset($data["last_name"]) ? $data["last_name"] : null;
+    $this->email = isset($data["email"]) ? $data["email"] : null;
+    $this->ip_address = isset($data["ip_address"]) ? $data["ip_address"] : null;
+    $this->type = isset($data["type"]) ? $data["type"] : null;
+    $this->status = isset($data["status"]) ? $data["status"] : null;
+    $this->address1 = isset($data["address1"]) ? $data["address1"] : null;
+    $this->address2 = isset($data["address2"]) ? $data["address2"] : null;
+    $this->city = isset($data["city"]) ? $data["city"] : null;
+    $this->state = isset($data["state"]) ? $data["state"] : null;
+    $this->postal_code = isset($data["postal_code"]) ? $data["postal_code"] : null;
+    $this->date_of_birth = isset($data["date_of_birth"]) ? $data["date_of_birth"] : null;
+    $this->ssn = isset($data["ssn"]) ? $data["ssn"] : null;
+    $this->phone = isset($data["phone"]) ? $data["phone"] : null;
+    $this->business_name = isset($data["business_name"]) ? $data["business_name"] : null;
+    $this->business_type = isset($data["business_type"]) ? $data["business_type"] : null;
+    $this->business_classification = isset($data["business_classification"]) ? $data["business_classification"] : null;
+    $this->ein = isset($data["ein"]) ? $data["ein"] : null;
+    $this->doing_business_as = isset($data["doing_business_as"]) ? $data["doing_business_as"] : null;
+    $this->website = isset($data["website"]) ? $data["website"] : null;
+    $this->controller = isset($data["controller"]) ? $data["controller"] : null;
+    $this->correlation_id = isset($data["correlation_id"]) ? $data["correlation_id"] : null;
   }
 
   public function offsetExists($offset) {

@@ -39,7 +39,7 @@ class CertifyRequest implements ArrayAccess {
   public $status; /* string */
 
   public function __construct(array $data = null) {
-    $this->status = $data["status"] ?? null;
+    $this->status = isset($data["status"]) ? $data["status"] : null;
   }
 
   public function offsetExists($offset) {

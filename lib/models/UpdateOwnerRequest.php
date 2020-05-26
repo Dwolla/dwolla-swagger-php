@@ -54,12 +54,12 @@ class UpdateOwnerRequest implements ArrayAccess {
   public $passport; /* Passport */
 
   public function __construct(array $data = null) {
-    $this->first_name = $data["first_name"] ?? null;
-    $this->last_name = $data["last_name"] ?? null;
-    $this->ssn = $data["ssn"] ?? null;
-    $this->date_of_birth = $data["date_of_birth"] ?? null;
-    $this->address = $data["address"] ?? null;
-    $this->passport = $data["passport"] ?? null;
+    $this->first_name = isset($data["first_name"]) ? $data["first_name"] : null;
+    $this->last_name = isset($data["last_name"]) ? $data["last_name"] : null;
+    $this->ssn = isset($data["ssn"]) ? $data["ssn"] : null;
+    $this->date_of_birth = isset($data["date_of_birth"]) ? $data["date_of_birth"] : null;
+    $this->address = isset($data["address"]) ? $data["address"] : null;
+    $this->passport = isset($data["passport"]) ? $data["passport"] : null;
   }
 
   public function offsetExists($offset) {

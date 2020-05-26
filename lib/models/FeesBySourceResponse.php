@@ -48,10 +48,10 @@ class FeesBySourceResponse implements ArrayAccess {
   public $total; /* int */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"] ?? null;
-    $this->_embedded = $data["_embedded"] ?? null;
-    $this->transactions = $data["transactions"] ?? null;
-    $this->total = $data["total"] ?? null;
+    $this->_links = isset($data["_links"]) ? $data["_links"] : null;
+    $this->_embedded = isset($data["_embedded"]) ? $data["_embedded"] : null;
+    $this->transactions = isset($data["transactions"]) ? $data["transactions"] : null;
+    $this->total = isset($data["total"]) ? $data["total"] : null;
   }
 
   public function offsetExists($offset) {

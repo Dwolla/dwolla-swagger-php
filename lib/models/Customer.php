@@ -96,26 +96,26 @@ class Customer implements ArrayAccess {
   public $correlation_id; /* string */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"] ?? null;
-    $this->_embedded = $data["_embedded"] ?? null;
-    $this->id = $data["id"] ?? null;
-    $this->first_name = $data["first_name"] ?? null;
-    $this->last_name = $data["last_name"] ?? null;
-    $this->email = $data["email"] ?? null;
-    $this->type = $data["type"] ?? null;
-    $this->status = $data["status"] ?? null;
-    $this->created = $data["created"] ?? null;
-    $this->address1 = $data["address1"] ?? null;
-    $this->address2 = $data["address2"] ?? null;
-    $this->city = $data["city"] ?? null;
-    $this->state = $data["state"] ?? null;
-    $this->postal_code = $data["postal_code"] ?? null;
-    $this->phone = $data["phone"] ?? null;
-    $this->business_name = $data["business_name"] ?? null;
-    $this->doing_business_as = $data["doing_business_as"] ?? null;
-    $this->website = $data["website"] ?? null;
-    $this->controller = $data["controller"] ?? null;
-    $this->correlation_id = $data["correlation_id"] ?? null;
+    $this->_links = isset($data["_links"]) ? $data["_links"] : null;
+    $this->_embedded = isset($data["_embedded"]) ? $data["_embedded"] : null;
+    $this->id = isset($data["id"]) ? $data["id"] : null;
+    $this->first_name = isset($data["first_name"]) ? $data["first_name"] : null;
+    $this->last_name = isset($data["last_name"]) ? $data["last_name"] : null;
+    $this->email = isset($data["email"]) ? $data["email"] : null;
+    $this->type = isset($data["type"]) ? $data["type"] : null;
+    $this->status = isset($data["status"]) ? $data["status"] : null;
+    $this->created = isset($data["created"]) ? $data["created"] : null;
+    $this->address1 = isset($data["address1"]) ? $data["address1"] : null;
+    $this->address2 = isset($data["address2"]) ? $data["address2"] : null;
+    $this->city = isset($data["city"]) ? $data["city"] : null;
+    $this->state = isset($data["state"]) ? $data["state"] : null;
+    $this->postal_code = isset($data["postal_code"]) ? $data["postal_code"] : null;
+    $this->phone = isset($data["phone"]) ? $data["phone"] : null;
+    $this->business_name = isset($data["business_name"]) ? $data["business_name"] : null;
+    $this->doing_business_as = isset($data["doing_business_as"]) ? $data["doing_business_as"] : null;
+    $this->website = isset($data["website"]) ? $data["website"] : null;
+    $this->controller = isset($data["controller"]) ? $data["controller"] : null;
+    $this->correlation_id = isset($data["correlation_id"]) ? $data["correlation_id"] : null;
   }
 
   public function offsetExists($offset) {

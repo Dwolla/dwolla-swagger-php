@@ -42,8 +42,8 @@ class Passport implements ArrayAccess {
   public $country; /* string */
 
   public function __construct(array $data = null) {
-    $this->number = $data["number"] ?? null;
-    $this->country = $data["country"] ?? null;
+    $this->number = isset($data["number"]) ? $data["number"] : null;
+    $this->country = isset($data["country"]) ? $data["country"] : null;
   }
 
   public function offsetExists($offset) {

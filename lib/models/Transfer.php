@@ -69,17 +69,17 @@ class Transfer implements ArrayAccess {
   public $ach_details; /* object */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"] ?? null;
-    $this->_embedded = $data["_embedded"] ?? null;
-    $this->id = $data["id"] ?? null;
-    $this->status = $data["status"] ?? null;
-    $this->amount = $data["amount"] ?? null;
-    $this->created = $data["created"] ?? null;
-    $this->metadata = $data["metadata"] ?? null;
-    $this->clearing = $data["clearing"] ?? null;
-    $this->correlation_id = $data["correlation_id"] ?? null;
-    $this->individual_ach_id = $data["individual_ach_id"] ?? null;
-    $this->ach_details = $data["ach_details"] ?? null;
+    $this->_links = isset($data["_links"]) ? $data["_links"] : null;
+    $this->_embedded = isset($data["_embedded"]) ? $data["_embedded"] : null;
+    $this->id = isset($data["id"]) ? $data["id"] : null;
+    $this->status = isset($data["status"]) ? $data["status"] : null;
+    $this->amount = isset($data["amount"]) ? $data["amount"] : null;
+    $this->created = isset($data["created"]) ? $data["created"] : null;
+    $this->metadata = isset($data["metadata"]) ? $data["metadata"] : null;
+    $this->clearing = isset($data["clearing"]) ? $data["clearing"] : null;
+    $this->correlation_id = isset($data["correlation_id"]) ? $data["correlation_id"] : null;
+    $this->individual_ach_id = isset($data["individual_ach_id"]) ? $data["individual_ach_id"] : null;
+    $this->ach_details = isset($data["ach_details"]) ? $data["ach_details"] : null;
   }
 
   public function offsetExists($offset) {

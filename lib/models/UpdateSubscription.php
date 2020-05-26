@@ -39,7 +39,7 @@ class UpdateSubscription implements ArrayAccess {
   public $paused; /* boolean */
 
   public function __construct(array $data = null) {
-    $this->paused = $data["paused"] ?? null;
+    $this->paused = isset($data["paused"]) ? $data["paused"] : null;
   }
 
   public function offsetExists($offset) {
