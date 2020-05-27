@@ -8,7 +8,7 @@ Additionally, temporary PHP 7.4 support was added using these replaces:
 
 ## Version
 
-1.4.0
+1.4.1
 
 ## Installation
 
@@ -160,6 +160,9 @@ Each model represents the different kinds of requests and responses that can be 
 * `WebhookSubscription`
 
 ## Changelog
+
+1.4.1
+* Fix bug in [#43](https://github.com/Dwolla/dwolla-swagger-php/pull/43) to replace null-coalesce operator with backwards-compatible ternary. 
 
 1.4.0
 * Add temporary support fix for PHP 7.4. [Issue #41](https://github.com/Dwolla/dwolla-swagger-php/issues/41). (Thanks @oprypkhantc!)
