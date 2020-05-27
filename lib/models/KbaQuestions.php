@@ -48,10 +48,10 @@ class KbaQuestions implements ArrayAccess {
   public $_embedded; /* map[string,Number] */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"] ?? null;
-    $this->id = $data["id"] ?? null;
-    $this->questions = $data["questions"] ?? null;
-    $this->_embedded = $data["_embedded"] ?? null;
+    $this->_links = isset($data["_links"]) ? $data["_links"] : null;
+    $this->id = isset($data["id"]) ? $data["id"] : null;
+    $this->questions = isset($data["questions"]) ? $data["questions"] : null;
+    $this->_embedded = isset($data["_embedded"]) ? $data["_embedded"] : null;
   }
 
   public function offsetExists($offset) {

@@ -60,13 +60,13 @@ class Document implements ArrayAccess {
   public $_embedded; /* object */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"] ?? null;
-    $this->id = $data["id"] ?? null;
-    $this->status = $data["status"] ?? null;
-    $this->type = $data["type"] ?? null;
-    $this->created = $data["created"] ?? null;
-    $this->failure_reason = $data["failure_reason"] ?? null;
-    $this->_embedded = $data["_embedded"] ?? null;
+    $this->_links = isset($data["_links"]) ? $data["_links"] : null;
+    $this->id = isset($data["id"]) ? $data["id"] : null;
+    $this->status = isset($data["status"]) ? $data["status"] : null;
+    $this->type = isset($data["type"]) ? $data["type"] : null;
+    $this->created = isset($data["created"]) ? $data["created"] : null;
+    $this->failure_reason = isset($data["failure_reason"]) ? $data["failure_reason"] : null;
+    $this->_embedded = isset($data["_embedded"]) ? $data["_embedded"] : null;
   }
 
   public function offsetExists($offset) {

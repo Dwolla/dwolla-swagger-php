@@ -78,20 +78,20 @@ class FundingSource implements ArrayAccess {
   public $fingerprint; /* string */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"] ?? null;
-    $this->_embedded = $data["_embedded"] ?? null;
-    $this->id = $data["id"] ?? null;
-    $this->status = $data["status"] ?? null;
-    $this->type = $data["type"] ?? null;
-    $this->bank_account_type = $data["bank_account_type"] ?? null;
-    $this->name = $data["name"] ?? null;
-    $this->created = $data["created"] ?? null;
-    $this->balance = $data["balance"] ?? null;
-    $this->removed = $data["removed"] ?? null;
-    $this->channels = $data["channels"] ?? null;
-    $this->bank_name = $data["bank_name"] ?? null;
-    $this->iav_account_holders = $data["iav_account_holders"] ?? null;
-    $this->fingerprint = $data["fingerprint"] ?? null;
+    $this->_links = isset($data["_links"]) ? $data["_links"] : null;
+    $this->_embedded = isset($data["_embedded"]) ? $data["_embedded"] : null;
+    $this->id = isset($data["id"]) ? $data["id"] : null;
+    $this->status = isset($data["status"]) ? $data["status"] : null;
+    $this->type = isset($data["type"]) ? $data["type"] : null;
+    $this->bank_account_type = isset($data["bank_account_type"]) ? $data["bank_account_type"] : null;
+    $this->name = isset($data["name"]) ? $data["name"] : null;
+    $this->created = isset($data["created"]) ? $data["created"] : null;
+    $this->balance = isset($data["balance"]) ? $data["balance"] : null;
+    $this->removed = isset($data["removed"]) ? $data["removed"] : null;
+    $this->channels = isset($data["channels"]) ? $data["channels"] : null;
+    $this->bank_name = isset($data["bank_name"]) ? $data["bank_name"] : null;
+    $this->iav_account_holders = isset($data["iav_account_holders"]) ? $data["iav_account_holders"] : null;
+    $this->fingerprint = isset($data["fingerprint"]) ? $data["fingerprint"] : null;
   }
 
   public function offsetExists($offset) {

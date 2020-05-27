@@ -48,10 +48,10 @@ class WebhookRetry implements ArrayAccess {
   public $timestamp; /* DateTime */
 
   public function __construct(array $data = null) {
-    $this->_links = $data["_links"] ?? null;
-    $this->_embedded = $data["_embedded"] ?? null;
-    $this->id = $data["id"] ?? null;
-    $this->timestamp = $data["timestamp"] ?? null;
+    $this->_links = isset($data["_links"]) ? $data["_links"] : null;
+    $this->_embedded = isset($data["_embedded"]) ? $data["_embedded"] : null;
+    $this->id = isset($data["id"]) ? $data["id"] : null;
+    $this->timestamp = isset($data["timestamp"]) ? $data["timestamp"] : null;
   }
 
   public function offsetExists($offset) {

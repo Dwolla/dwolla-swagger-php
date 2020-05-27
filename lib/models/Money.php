@@ -42,8 +42,8 @@ class Money implements ArrayAccess {
   public $currency; /* string */
 
   public function __construct(array $data = null) {
-    $this->value = $data["value"] ?? null;
-    $this->currency = $data["currency"] ?? null;
+    $this->value = isset($data["value"]) ? $data["value"] : null;
+    $this->currency = isset($data["currency"]) ? $data["currency"] : null;
   }
 
   public function offsetExists($offset) {

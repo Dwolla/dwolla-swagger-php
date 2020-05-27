@@ -39,7 +39,7 @@ class AddLabelLedgerEntryRequest implements ArrayAccess {
   public $amount; /* Amount */
 
   public function __construct(array $data = null) {
-    $this->amount = $data["amount"] ?? null;
+    $this->amount = isset($data["amount"]) ? $data["amount"] : null;
   }
 
   public function offsetExists($offset) {
