@@ -54,6 +54,29 @@ $customersApi = new DwollaSwagger\CustomersApi($apiClient);
 $myCusties = $customersApi->_list(10);
 ```
 
+Additionally, the schema for adding query string parameters to the Customers endpoint is as follows -  
+ `$customersApi->_list(limit, offset, search, status, email)`
+
+Let's retrieve 10 customer records that have a status of `document`.
+
+```php
+DwollaSwagger\Configuration::$access_token = 'a token';
+$apiClient = new DwollaSwagger\ApiClient("https://api-sandbox.dwolla.com/");
+
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+$myCusties = $customersApi->_list(10, 0, null, document);
+```
+
+Let's retrieve a list of customer records and filter them based on the `email` query string parameter.
+
+```php
+DwollaSwagger\Configuration::$access_token = 'a token';
+$apiClient = new DwollaSwagger\ApiClient("https://api-sandbox.dwolla.com/");
+
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+$myCusties = $customersApi->_list(10, 0, null, null, jane@email.com);
+```
+
 ### Creating a new customer
 
 To create a customer, we can either provide an (associative) `array` with the expected values, or a `CreateCustomer` object.
