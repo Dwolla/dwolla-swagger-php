@@ -8,7 +8,7 @@ Additionally, temporary PHP 7.4 support was added using these replaces:
 
 ## Version
 
-1.4.1
+1.5.0
 
 ## Installation
 
@@ -52,6 +52,29 @@ $apiClient = new DwollaSwagger\ApiClient("https://api-sandbox.dwolla.com/");
 
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
 $myCusties = $customersApi->_list(10);
+```
+
+Additionally, the schema for adding query string parameters to the Customers endpoint is as follows -  
+ `$customersApi->_list(limit, offset, search, status, email)`
+
+Let's retrieve 10 customer records that have a status of `document`.
+
+```php
+DwollaSwagger\Configuration::$access_token = 'a token';
+$apiClient = new DwollaSwagger\ApiClient("https://api-sandbox.dwolla.com/");
+
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+$myCusties = $customersApi->_list(10, 0, null, document);
+```
+
+Let's retrieve a list of customer records and filter them based on the `email` query string parameter.
+
+```php
+DwollaSwagger\Configuration::$access_token = 'a token';
+$apiClient = new DwollaSwagger\ApiClient("https://api-sandbox.dwolla.com/");
+
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+$myCusties = $customersApi->_list(10, 0, null, null, jane@email.com);
 ```
 
 ### Creating a new customer
@@ -160,6 +183,9 @@ Each model represents the different kinds of requests and responses that can be 
 * `WebhookSubscription`
 
 ## Changelog
+
+1.5.0
+* API schema updated, `CustomersApi` updated to add support for `email` parameter on list customers.
 
 1.4.1
 * Fix bug in [#43](https://github.com/Dwolla/dwolla-swagger-php/pull/43) to replace null-coalesce operator with backwards-compatible ternary. 
