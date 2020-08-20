@@ -69,7 +69,7 @@ class CustomersApi {
    * @param string $email Customer email. (optional)
    * @return CustomerListResponse
    */
-   public function _list($limit = null, $offset = null, $search = null, $status = null, $email = null, $headers = null) {
+   public function _list($limit = null, $offset = null, $search = null, $status = null, $headers = null, $email = null) {
 
 
       // parse inputs
