@@ -8,7 +8,7 @@ Additionally, temporary PHP 7.4 support was added using these replaces:
 
 ## Version
 
-1.4.1
+1.5.0
 
 ## Installation
 
@@ -51,7 +51,7 @@ DwollaSwagger\Configuration::$access_token = 'a token';
 $apiClient = new DwollaSwagger\ApiClient("https://api-sandbox.dwolla.com/");
 
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
-$myCusties = $customersApi->_list(10);
+$customers = $customersApi->_list(10);
 ```
 
 ### Creating a new customer
@@ -83,6 +83,36 @@ $location = $customersApi->create($jenny);
 ```
 
 `$location` will contain a URL to your newly created resource (HTTP 201 / Location header).
+
+### Searching and filtering Customers
+
+When searching for Customers, you can pass in **optional** query string parameters to narrow down and filter the list of Customers returned. For more information check out the [Dwolla API reference documentation](https://docs.dwolla.com/#list-and-search-customers). 
+The schema for adding optional query string parameters to the List Customers endpoint is as follows -  
+ `$customersApi->_list(limit, offset, search, status, headers, email)`
+
+Here are some examples: 
+
+Let's retrieve 10 customer records that have a status of `document`.
+
+```php
+DwollaSwagger\Configuration::$access_token = 'a token';
+$apiClient = new DwollaSwagger\ApiClient("https://api-sandbox.dwolla.com/");
+
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+$customers = $customersApi->_list(10, 0, null, 'document');
+```
+
+Let's retrieve a list of customer records and filter them based on the `email` query string parameter. We're also passing in a custom [`Idempotency-key`](https://docs.dwolla.com/#idempotency-key) header. You can pass in `null` if you're not adding any custom headers. 
+
+```php
+DwollaSwagger\Configuration::$access_token = 'a token';
+$apiClient = new DwollaSwagger\ApiClient("https://api-sandbox.dwolla.com/");
+
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+$customers = $customersApi->_list(10, 0, null, null, [
+    'Idempotency-Key' => '51a62-3403-11e6-ac61-9e71128cae77'
+], 'jane@email.com');
+```
 
 ## Modules
 
@@ -160,6 +190,9 @@ Each model represents the different kinds of requests and responses that can be 
 * `WebhookSubscription`
 
 ## Changelog
+
+1.5.0
+* API schema updated, `CustomersApi` updated to add support for `email` parameter on list customers.
 
 1.4.1
 * Fix bug in [#43](https://github.com/Dwolla/dwolla-swagger-php/pull/43) to replace null-coalesce operator with backwards-compatible ternary. 

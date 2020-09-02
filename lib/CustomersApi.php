@@ -66,9 +66,10 @@ class CustomersApi {
    * @param int $offset How many results to skip. (optional)
    * @param string $search Search term. (optional)
    * @param string $status Customer status. (optional)
+   * @param string $email Customer email. (optional)
    * @return CustomerListResponse
    */
-   public function _list($limit = null, $offset = null, $search = null, $status = null, $headers = null) {
+   public function _list($limit = null, $offset = null, $search = null, $status = null, $headers = null, $email = null) {
 
 
       // parse inputs
@@ -101,6 +102,9 @@ class CustomersApi {
       }
       if($status !== null) {
         $queryParams['status'] = $this->apiClient->toQueryValue($status);
+      }
+      if($email !== null) {
+        $queryParams['email'] = $this->apiClient->toQueryValue($email);
       }
 
 
