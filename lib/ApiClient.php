@@ -35,7 +35,7 @@ class ApiClient {
   /*
    * @var string user agent of the HTTP request, set to "PHP-Swagger" by default
    */
-  protected $user_agent = "php-swagger-1.5.0";
+  protected $user_agent = "php-swagger-1.6.0";
 
   /**
    * @param string $host Base url of the API server (optional)
@@ -193,6 +193,11 @@ class ApiClient {
         case 'oauth2':
 
           $headerParams['Authorization'] = 'Bearer ' . Configuration::$access_token;
+          break;
+          
+        case 'basicAuth':
+          $authString = Configuration::$username . ":" . Configuration::$password;
+          $headerParams['Authorization'] = 'Basic ' . base64_encode($authString);
           break;
 
         default:
