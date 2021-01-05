@@ -8,7 +8,7 @@ Additionally, temporary PHP 7.4 support was added using these replaces:
 
 ## Version
 
-1.5.0
+1.6.0
 
 ## Installation
 
@@ -30,10 +30,11 @@ require('../path/to/vendor/autoload.php');
 
 ### Configuring a client
 
-To get started, all you need to set is the `access_token` and `host` values.
+To get started, you need to set the `username`(API Key), `password` (API Secret) and `host` values.
 
 ```php
-DwollaSwagger\Configuration::$access_token = 'a token';
+DwollaSwagger\Configuration::$username = 'API_KEY';
+DwollaSwagger\Configuration::$password = 'API_SECRET';
 
 # For Sandbox
 $apiClient = new DwollaSwagger\ApiClient("https://api-sandbox.dwolla.com");
@@ -42,12 +43,21 @@ $apiClient = new DwollaSwagger\ApiClient("https://api-sandbox.dwolla.com");
 $apiClient = new DwollaSwagger\ApiClient("https://api.dwolla.com");
 ```
 
+### Obtaining an access token
+All requests to the API require a valid OAuth access token in order authenticate succesfully. Refer to the section above on [configuring a client](#configuring-a-client) before making this request.
+
+```php
+$tokensApi = new DwollaSwagger\TokensApi($apiClient);
+
+$appToken = $tokensApi->token();
+```
+
 ### List 10 customers
 
 Now that we've set up our client, we can use it to make requests to the API. Let's retrieve 10 customer records associated with the authorization token used.
 
 ```php
-DwollaSwagger\Configuration::$access_token = 'a token';
+DwollaSwagger\Configuration::$access_token = 'app token';
 $apiClient = new DwollaSwagger\ApiClient("https://api-sandbox.dwolla.com/");
 
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
@@ -119,7 +129,7 @@ $customers = $customersApi->_list(10, 0, null, null, [
 `DwollaSwagger` contains `API` modules which allow the user to make requests, as well as `models` which are [DAOs](https://en.wikipedia.org/wiki/Data_access_object) that the library uses to serialize responses.
 
 ### API
-Each API module is named in accordance to ([Dwolla's API Spec](http://docsv2.dwolla.com/) and encapsulates all of the documented functionality.
+Each API module is named in accordance to ([Dwolla's API Spec](http://docs.dwolla.com/) and encapsulates all of the documented functionality.
 
 * `AccountsApi`
 * `BusinessclassificationsApi`
@@ -136,13 +146,14 @@ Each API module is named in accordance to ([Dwolla's API Spec](http://docsv2.dwo
 * `OndemandauthorizationsApi`
 * `RootApi`
 * `SandboxApi`
+* `TokensApi`
 * `TransfersApi`
 * `WebhooksApi`
 * `WebhooksubscriptionsApi`
 
 ----------
 
-API objects take an `ApiClient` argument, which you created [here](##Configuring a client).
+API objects take an `ApiClient` argument, which you created [here](#configuring-a-client).
 
 ##### Example
 ```php
@@ -151,45 +162,12 @@ $documentsApi = new DwollaSwagger\DocumentsApi($apiClient);
 
 ### Models
 
-Each model represents the different kinds of requests and responses that can be made with the Dwolla API.
-
-* `AccountInfo`
-* `Amount`
-* `ApplicationEvent`
-* `BaseObject`
-* `BusinessClassification`
-* `BusinessClassificationListResponse`
-* `CreateCustomer`
-* `CreateFundingSourceRequest`
-* `CreateWebhook`
-* `Customer`
-* `CustomerListResponse`
-* `Document`
-* `DocumentListResponse`
-* `EventListResponse`
-* `FundingSource`
-* `FundingSourceListResponse`
-* `HalLink`
-* `Money`
-* `Transfer`
-* `TransferListResponse`
-* `TransferRequestBody`
-* `Unit`
-* `UpdateCustomer`
-* `VerificationToken`
-* `VerifyMicroDepositsRequest`
-* `Webhook`
-* `WebhookAttempt`
-* `WebhookEventListResponse`
-* `WebhookHeader`
-* `WebhookHttpRequest`
-* `WebhookHttpResponse`
-* `WebhookListResponse`
-* `WebhookRetry`
-* `WebhookRetryRequestListResponse`
-* `WebhookSubscription`
+Each model represents the different kinds of requests and responses that can be made with the Dwolla API. View the full list in the [models directory](https://github.com/Dwolla/dwolla-swagger-php/tree/master/lib/models).
 
 ## Changelog
+
+1.6.0
+* New `TokenApi` adding support for application access token and client token requests.
 
 1.5.0
 * API schema updated, `CustomersApi` updated to add support for `email` parameter on list customers.
