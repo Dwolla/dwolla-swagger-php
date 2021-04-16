@@ -8,7 +8,7 @@ Additionally, temporary PHP 7.4 support was added using these replaces:
 
 ## Version
 
-1.6.0
+1.7.0
 
 ## Installation
 
@@ -165,6 +165,9 @@ $documentsApi = new DwollaSwagger\DocumentsApi($apiClient);
 Each model represents the different kinds of requests and responses that can be made with the Dwolla API. View the full list in the [models directory](https://github.com/Dwolla/dwolla-swagger-php/tree/master/lib/models).
 
 ## Changelog
+
+1.7.0
+* New `getCustomerCardToken` method added to `CustomersAPI` for creating a card funding sources token for a customer.
 
 1.6.0
 * New `TokenApi` adding support for application access token and client token requests.
