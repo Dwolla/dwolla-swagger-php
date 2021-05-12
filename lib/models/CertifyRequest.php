@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class CertifyRequest implements ArrayAccess {
+class CertifyRequest implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       'status' => 'string'
   );
@@ -40,6 +41,22 @@ class CertifyRequest implements ArrayAccess {
 
   public function __construct(array $data = null) {
     $this->status = isset($data["status"]) ? $data["status"] : null;
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

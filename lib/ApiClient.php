@@ -17,6 +17,8 @@
 
 namespace DwollaSwagger;
 
+use DwollaSwagger\interfaces\ModelInterface;
+
 class ApiClient {
 
   public static $PATCH = "PATCH";
@@ -339,9 +341,10 @@ class ApiClient {
       $sanitized = $data;
     } else if (is_object($data)) {
       $values = array();
-      foreach (array_keys($data::$swaggerTypes) as $property) {
+      /** @var ModelInterface $data */
+      foreach (array_keys($data::getSwaggerTypes()) as $property) {
         if ($data->$property !== null) {
-          $values[$data::$attributeMap[$property]] = $this->sanitizeForSerialization($data->$property);
+          $values[$data::getAttributeMap()[$property]] = $this->sanitizeForSerialization($data->$property);
         }
       }
       $sanitized = $values;
@@ -450,10 +453,11 @@ class ApiClient {
       settype($data, $class);
       $deserialized = $data;
     } else {
+      /** @var ModelInterface $instance */
       $class = "DwollaSwagger\\models\\".$class;
       $instance = new $class();
-      foreach ($instance::$swaggerTypes as $property => $type) {
-        $original_property_name = $instance::$attributeMap[$property];
+      foreach ($instance::getSwaggerTypes() as $property => $type) {
+        $original_property_name = $instance::getAttributeMap()[$property];
         if (isset($original_property_name) && isset($data->$original_property_name)) {
           $instance->$property = self::deserialize($data->$original_property_name, $type);
         }

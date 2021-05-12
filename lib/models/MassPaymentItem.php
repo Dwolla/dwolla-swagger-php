@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class MassPaymentItem implements ArrayAccess {
+class MassPaymentItem implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       '_links' => 'object',
       '_embedded' => 'object',
@@ -64,6 +65,22 @@ class MassPaymentItem implements ArrayAccess {
     $this->amount = isset($data["amount"]) ? $data["amount"] : null;
     $this->metadata = isset($data["metadata"]) ? $data["metadata"] : null;
     $this->correlation_id = isset($data["correlation_id"]) ? $data["correlation_id"] : null;
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class FundingSource implements ArrayAccess {
+class FundingSource implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       '_links' => 'map[string,HalLink]',
       '_embedded' => 'object',
@@ -92,6 +93,22 @@ class FundingSource implements ArrayAccess {
     $this->bank_name = isset($data["bank_name"]) ? $data["bank_name"] : null;
     $this->iav_account_holders = isset($data["iav_account_holders"]) ? $data["iav_account_holders"] : null;
     $this->fingerprint = isset($data["fingerprint"]) ? $data["fingerprint"] : null;
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

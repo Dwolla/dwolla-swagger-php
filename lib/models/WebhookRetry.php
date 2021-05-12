@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class WebhookRetry implements ArrayAccess {
+class WebhookRetry implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       '_links' => 'map[string,HalLink]',
       '_embedded' => 'object',
@@ -52,6 +53,22 @@ class WebhookRetry implements ArrayAccess {
     $this->_embedded = isset($data["_embedded"]) ? $data["_embedded"] : null;
     $this->id = isset($data["id"]) ? $data["id"] : null;
     $this->timestamp = isset($data["timestamp"]) ? $data["timestamp"] : null;
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

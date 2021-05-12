@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class IavToken implements ArrayAccess {
+class IavToken implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       '_links' => 'map[string,HalLink]',
       '_embedded' => 'object',
@@ -48,6 +49,22 @@ class IavToken implements ArrayAccess {
     $this->_links = isset($data["_links"]) ? $data["_links"] : null;
     $this->_embedded = isset($data["_embedded"]) ? $data["_embedded"] : null;
     $this->token = isset($data["token"]) ? $data["token"] : null;
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

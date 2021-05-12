@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class CreateCustomer implements ArrayAccess {
+class CreateCustomer implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       'first_name' => 'string',
       'last_name' => 'string',
@@ -120,6 +121,22 @@ class CreateCustomer implements ArrayAccess {
     $this->website = isset($data["website"]) ? $data["website"] : null;
     $this->controller = isset($data["controller"]) ? $data["controller"] : null;
     $this->correlation_id = isset($data["correlation_id"]) ? $data["correlation_id"] : null;
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {
