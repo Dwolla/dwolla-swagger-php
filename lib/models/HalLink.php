@@ -50,18 +50,22 @@ class HalLink implements ArrayAccess {
     $this->resource_type = isset($data["resource_type"]) ? $data["resource_type"] : null;
   }
 
+  #[\ReturnTypeWillChange]
   public function offsetExists($offset) {
     return isset($this->$offset);
   }
 
+  #[\ReturnTypeWillChange]
   public function offsetGet($offset) {
     return $this->$offset;
   }
 
+  #[\ReturnTypeWillChange]
   public function offsetSet($offset, $value) {
     $this->$offset = $value;
   }
 
+  #[\ReturnTypeWillChange]
   public function offsetUnset($offset) {
     unset($this->$offset);
   }

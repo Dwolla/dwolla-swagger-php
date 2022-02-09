@@ -46,18 +46,22 @@ class AnsweredKbaQuestion implements ArrayAccess {
     $this->answer_id = isset($data["answer_id"]) ? $data["answer_id"] : null;
   }
 
+  #[\ReturnTypeWillChange]
   public function offsetExists($offset) {
     return isset($this->$offset);
   }
 
+  #[\ReturnTypeWillChange]
   public function offsetGet($offset) {
     return $this->$offset;
   }
 
+  #[\ReturnTypeWillChange]
   public function offsetSet($offset, $value) {
     $this->$offset = $value;
   }
 
+  #[\ReturnTypeWillChange]
   public function offsetUnset($offset) {
     unset($this->$offset);
   }

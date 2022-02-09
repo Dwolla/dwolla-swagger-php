@@ -94,18 +94,22 @@ class FundingSource implements ArrayAccess {
     $this->fingerprint = isset($data["fingerprint"]) ? $data["fingerprint"] : null;
   }
 
+  #[\ReturnTypeWillChange]
   public function offsetExists($offset) {
     return isset($this->$offset);
   }
 
+  #[\ReturnTypeWillChange]
   public function offsetGet($offset) {
     return $this->$offset;
   }
 
+  #[\ReturnTypeWillChange]
   public function offsetSet($offset, $value) {
     $this->$offset = $value;
   }
 
+  #[\ReturnTypeWillChange]
   public function offsetUnset($offset) {
     unset($this->$offset);
   }

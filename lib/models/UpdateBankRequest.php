@@ -58,18 +58,22 @@ class UpdateBankRequest implements ArrayAccess {
     $this->bank_account_type = isset($data["bank_account_type"]) ? $data["bank_account_type"] : null;
   }
 
+  #[\ReturnTypeWillChange]
   public function offsetExists($offset) {
     return isset($this->$offset);
   }
 
+  #[\ReturnTypeWillChange]
   public function offsetGet($offset) {
     return $this->$offset;
   }
 
+  #[\ReturnTypeWillChange]
   public function offsetSet($offset, $value) {
     $this->$offset = $value;
   }
 
+  #[\ReturnTypeWillChange]
   public function offsetUnset($offset) {
     unset($this->$offset);
   }
