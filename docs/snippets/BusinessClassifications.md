@@ -1,13 +1,10 @@
 # High-Level Examples (Business Classifications)
-Source Code: [`BusinessclassificationsApi`](https://github.com/Dwolla/dwolla-swagger-php/blob/main/lib/BusinessClassificationsApi.php)
 
-[Complete API reference](https://developers.dwolla.com/api-reference)
+Source Code: [`BusinessClassificationsApi`](https://github.com/Dwolla/dwolla-swagger-php/blob/main/lib/BusinessclassificationsApi.php)
 
-## Retrieve a List of All Business Classifications
+## Retrieve a List of All Business Classifications ([API Reference](https://developers.dwolla.com/api-reference/customers/list-business-classifications))
 
 ```php
-<?php
 $businessClassificationsApi = new DwollaSwagger\BusinessclassificationsApi($apiClient);
-$classiciations = $businessclassificationsApi->list;
-?>
+$classifications = $businessClassificationsApi->_list();
 ```

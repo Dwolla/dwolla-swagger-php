@@ -24,16 +24,16 @@ This repository contains the source code for Dwolla's PHP-based SDK as generated
 
 ### Installation
 
-To begin using this SDK, you will first need to download it to your machine. We use [Packagist](https://packagist.org/packages/dwolla/dwollaswagger) to distribute this package from where you can  download it via [Composer](https://getcomposer.org/).
+To begin using this SDK, you will first need to download it to your machine. We use [Packagist](https://packagist.org/packages/dwolla/dwollaswagger) to distribute this package, which allows it to be downloaded via [Composer](https://getcomposer.org/).
 
 ```shell
 $ composer require dwolla/dwollaswagger
 $ composer install
 ```
 
-To use, just `require` your composer `autoload.php` file.
+To use, just `require` your Composer `autoload.php` file.
 ```php
-require('../path/to/vendor/autoload.php');
+require("../path/to/vendor/autoload.php");
 ```
 
 ### Initialization
@@ -46,13 +46,13 @@ Before any API requests can be made, you must first determine which environment 
 Finally, you can create an instance of `ApiClient` after configuring the `username` and `password` values as the application key and secret that you fetched from one of the aforementioned links, respectively.
 
 ```php
-DwollaSwagger\Configuration::$username = 'API_KEY';
-DwollaSwagger\Configuration::$password = 'API_SECRET';
+DwollaSwagger\Configuration::$username = "API_KEY";
+DwollaSwagger\Configuration::$password = "API_SECRET";
 
 # For Sandbox
 $apiClient = new DwollaSwagger\ApiClient("https://api-sandbox.dwolla.com");
 
-# For production
+# For Production
 $apiClient = new DwollaSwagger\ApiClient("https://api.dwolla.com");
 ```
 
@@ -63,11 +63,10 @@ Application access tokens are used to authenticate against the API on behalf of 
 
 ```php
 $tokensApi = new DwollaSwagger\TokensApi($apiClient);
-
 $appToken = $tokensApi->token();
 ```
 
-_Application access tokens are short-lived: 1 hour. They do not include a `refresh_token`. When it expires, generate a new one using `client.Auth.client()`._
+_Application access tokens are short-lived: 1 hour. They do not include a `refresh_token`. When it expires, generate a new one using `$tokensApi->token()`._
 
 ## Making Requests
 
@@ -75,16 +74,16 @@ The Dwolla client provides high-level methods for interacting with the Dwolla AP
 
 ### High-Level Requests
 
-High-level methods makes things easier by embedding information
-you would typically refer to the docs for in the SDK itself such as endpoints, request parameters, and response parameters. `DwollaSwagger` contains `API` modules which allow the user to make requests, as well as `models` which are [DAOs](https://en.wikipedia.org/wiki/Data_access_object) that the library uses to serialize responses.
+High-level methods make development easier by embedding information you would typically refer to [Dwolla's API reference](https://developers.dwolla.com/api-reference) for in the SDK itself, such as endpoints, request arguments, and response deserialization. `DwollaSwagger` contains the `API` module, which allows the user to make requests, as well as `models`, which are [data access objects](https://en.wikipedia.org/wiki/Data_access_object) that the library uses to deserialize responses.
 
-Each model represents the different kinds of requests and responses that can be made with the Dwolla API. View the full list in the [models directory](https://github.com/Dwolla/dwolla-swagger-php/tree/master/lib/models).
+Each model represents the different kinds of requests and responses that can be made with the Dwolla API. View the full list in the [`models` directory](https://github.com/Dwolla/dwolla-swagger-php/tree/master/lib/models).
 
 The following API modules are available:
 
-* [`AccountsApi`](https://github.com/Dwolla/dwolla-v2-kotlin/blob/main/docs/snippets/accounts.md)
-* [`BeneficialownersApi`](https://github.com/Dwolla/dwolla-v2-kotlin/blob/main/docs/snippets/BeneficialownersApi.md)
-* [`BusinessclassificationsApi`](https://github.com/Dwolla/dwolla-v2-kotlin/blob/main/docs/snippets/BusinessclassificationsApi.md)
+* [`AccountsApi`](https://github.com/Dwolla/dwolla-swagger-php/blob/DEV-1012/docs/snippets/Accounts.md)
+* [`BeneficialownersApi`](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/BeneficialOwnersApi.md)
+* [`BusinessclassificationsApi`](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/BusinessClassifications.md)
+
 * [`CustomersApi`](https://github.com/Dwolla/dwolla-v2-kotlin/blob/main/docs/snippets/Customers.md)
 * [`DocumentsApi`](https://github.com/Dwolla/dwolla-v2-kotlin/blob/main/docs/snippets/Documents.md)
 * [`EventsApi`](https://github.com/Dwolla/dwolla-v2-kotlin/blob/main/docs/snippets/Events.md)

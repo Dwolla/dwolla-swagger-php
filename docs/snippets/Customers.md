@@ -1,22 +1,16 @@
 # High-Level Examples (Customers)
+
 Source Code: [`CustomersApi`](https://github.com/Dwolla/dwolla-swagger-php/blob/main/lib/CustomersApi.php)
 
-[Complete API reference](https://developers.dwolla.com/api-reference)
-
-## Retrieve a Customer 
+## Retrieve a Customer ([API Reference](https://developers.dwolla.com/api-reference/customers/retrieve))
 
 ```php
-<?php
 $customerUrl = 'https://api-sandbox.dwolla.com/customers/07d59716-ef22-4fe6-98e8-f3190233dfb8';
-
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
-
 $customer = $customersApi->getCustomer($customerUrl);
-$customer->firstName; # => "Jane"
-?>
 ```
 
-## Create a Customer
+## Create a Customer ([API Reference](https://developers.dwolla.com/api-reference/customers/create))
 
 ```php
 <?php
