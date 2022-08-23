@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class CreateWebhook implements ArrayAccess {
+class CreateWebhook implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       'url' => 'string',
       'secret' => 'string'
@@ -44,6 +45,22 @@ class CreateWebhook implements ArrayAccess {
   public function __construct(array $data = null) {
     $this->url = isset($data["url"]) ? $data["url"] : null;
     $this->secret = isset($data["secret"]) ? $data["secret"] : null;
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

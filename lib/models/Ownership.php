@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class Ownership implements ArrayAccess {
+class Ownership implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       '_links' => 'map[string,HalLink]',
       'status' => 'string',
@@ -48,6 +49,23 @@ class Ownership implements ArrayAccess {
     $this->_links = isset($data["_links"]) ? $data["_links"] : null;
     $this->status = isset($data["status"]) ? $data["status"] : null;
     $this->_embedded = isset($data["_embedded"]) ? $data["_embedded"] : null;
+  }
+
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

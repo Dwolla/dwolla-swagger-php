@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class VerifyMicroDepositsRequest implements ArrayAccess {
+class VerifyMicroDepositsRequest implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       'amount1' => 'Amount',
       'amount2' => 'Amount'
@@ -44,6 +45,22 @@ class VerifyMicroDepositsRequest implements ArrayAccess {
   public function __construct(array $data = null) {
     $this->amount1 = isset($data["amount1"]) ? $data["amount1"] : null;
     $this->amount2 = isset($data["amount2"]) ? $data["amount2"] : null;
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

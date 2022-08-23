@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class CreateFundingSourceRequest implements ArrayAccess {
+class CreateFundingSourceRequest implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       '_links' => 'object',
       'routing_number' => 'string',
@@ -68,6 +69,22 @@ class CreateFundingSourceRequest implements ArrayAccess {
     $this->name = isset($data["name"]) ? $data["name"] : null;
     $this->verified = isset($data["verified"]) ? $data["verified"] : null;
     $this->channels = isset($data["channels"]) ? $data["channels"] : null;
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

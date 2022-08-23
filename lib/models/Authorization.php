@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class Authorization implements ArrayAccess {
+class Authorization implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       
   );
@@ -35,10 +36,25 @@ class Authorization implements ArrayAccess {
       
   );
 
-  
 
   public function __construct(array $data = null) {
     
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

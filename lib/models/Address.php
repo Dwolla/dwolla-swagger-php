@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class Address implements ArrayAccess {
+class Address implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       'address1' => 'string',
       'address2' => 'string',
@@ -64,6 +65,22 @@ class Address implements ArrayAccess {
     $this->state_province_region = isset($data["state_province_region"]) ? $data["state_province_region"] : null;
     $this->country = isset($data["country"]) ? $data["country"] : null;
     $this->postal_code = isset($data["postal_code"]) ? $data["postal_code"] : null;
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

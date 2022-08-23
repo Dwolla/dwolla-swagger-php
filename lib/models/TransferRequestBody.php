@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class TransferRequestBody implements ArrayAccess {
+class TransferRequestBody implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       '_links' => 'map[string,HalLink]',
       'amount' => 'Amount',
@@ -68,6 +69,22 @@ class TransferRequestBody implements ArrayAccess {
     $this->imad = isset($data["imad"]) ? $data["imad"] : null;
     $this->correlation_id = isset($data["correlation_id"]) ? $data["correlation_id"] : null;
     $this->ach_details = isset($data["ach_details"]) ? $data["ach_details"] : null;
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

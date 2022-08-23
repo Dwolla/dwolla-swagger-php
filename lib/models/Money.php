@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class Money implements ArrayAccess {
+class Money implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       'value' => 'string',
       'currency' => 'string'
@@ -44,6 +45,22 @@ class Money implements ArrayAccess {
   public function __construct(array $data = null) {
     $this->value = isset($data["value"]) ? $data["value"] : null;
     $this->currency = isset($data["currency"]) ? $data["currency"] : null;
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {

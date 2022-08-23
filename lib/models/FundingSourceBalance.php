@@ -25,8 +25,9 @@
 namespace DwollaSwagger\models;
 
 use \ArrayAccess;
+use DwollaSwagger\interfaces\ModelInterface;
 
-class FundingSourceBalance implements ArrayAccess {
+class FundingSourceBalance implements ArrayAccess, ModelInterface {
   static $swaggerTypes = array(
       '_links' => 'map[string,HalLink]',
       '_embedded' => 'object',
@@ -56,6 +57,22 @@ class FundingSourceBalance implements ArrayAccess {
     $this->balance = isset($data["balance"]) ? $data["balance"] : null;
     $this->last_updated = isset($data["last_updated"]) ? $data["last_updated"] : null;
     $this->status = isset($data["status"]) ? $data["status"] : null;
+  }
+
+  /**
+   * @return array static $swaggerTypes swagger types
+   */
+  public static function getSwaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * @return array static $attributeMap attribute map
+   */
+  public static function getAttributeMap()
+  {
+    return self::$attributeMap;
   }
 
   public function offsetExists($offset) {
