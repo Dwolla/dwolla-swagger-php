@@ -153,8 +153,8 @@ $customer; # => "https://api-sandbox.dwolla.com/customers/fc451a7a-ae30-4404-aB9
 
 ## Community
 
-* If you have any feedback, please reach out to us on [our forums](https://discuss.dwolla.com/) or by [creating a GitHub issue](https://github.com/Dwolla/dwolla-v2-php/issues/new).
-* If you would like to contribute to this library, [bug reports](https://github.com/Dwolla/dwolla-v2-php/issues) and [pull requests](https://github.com/Dwolla/dwolla-v2-php/pulls) are always appreciated!
+* If you have any feedback, please reach out to us on [our forums](https://discuss.dwolla.com/) or by [creating a GitHub issue](https://github.com/Dwolla/dwolla-swagger-php/issues/new).
+* If you would like to contribute to this library, [bug reports](https://github.com/Dwolla/dwolla-swagger-php/issues) and [pull requests](https://github.com/Dwolla/dwolla-swagger-php/pulls) are always appreciated!
 
 ## Additional Resources
 
