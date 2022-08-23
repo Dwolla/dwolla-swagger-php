@@ -96,9 +96,9 @@ The following API modules are available:
 * [Root](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/Root.md)
 * [Sandbox](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/Sandbox.md)
 * [Tokens](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/Tokens.md)
-* [Transfers](https://github.com/Dwolla/dwolla-v2-kotlin/blob/main/docs/snippets/Transfers.md)
-* [Webhooks](https://github.com/Dwolla/dwolla-v2-kotlin/blob/main/docs/snippets/Webhooks.md)
-* [Webhook Subscriptions](https://github.com/Dwolla/dwolla-v2-kotlin/blob/main/docs/snippets/WebhookSubscriptions.md)
+* [Transfers](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/Transfers.md)
+* [Webhooks](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/Webhooks.md)
+* [Webhook Subscriptions](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/WebhookSubscriptions.md)
 
 #### Setting Headers
 
