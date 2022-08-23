@@ -92,150 +92,67 @@ The following API modules are available:
 * [Label Reallocations](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/LabelReallocations.md)
 * [Ledger Entries](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/LedgerEntries.md)
 * [Mass Payment Items](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/MassPaymentItems.md)
-* [`MasspaymentsApi`](https://github.com/Dwolla/dwolla-v2-kotlin/blob/main/docs/snippets/Masspayments.md)
-* [`OndemandauthorizationsApi`](https://github.com/Dwolla/dwolla-v2-kotlin/blob/main/docs/snippets/Ondemandauthorizations.md)
-* [`RootApi`](https://github.com/Dwolla/dwolla-v2-kotlin/blob/main/docs/snippets/Root.md)
-* [`SandboxApi`](https://github.com/Dwolla/dwolla-v2-kotlin/blob/main/docs/snippets/Sandbox.md)
-* [`TokensApi`](https://github.com/Dwolla/dwolla-v2-kotlin/blob/main/docs/snippets/Tokens.md)
-* [`TransfersApi`](https://github.com/Dwolla/dwolla-v2-kotlin/blob/main/docs/snippets/Transfers.md)
-* [`WebhooksApi`](https://github.com/Dwolla/dwolla-v2-kotlin/blob/main/docs/snippets/Webhooks.md)
-* [`WebhooksubscriptionsApi`](https://github.com/Dwolla/dwolla-v2-kotlin/blob/main/docs/snippetsWebhooksubscriptions.md)
+* [On-Demand Authorizations](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/OnDemandAuthorizations.md)
+* [Root](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/Root.md)
+* [Sandbox](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/Sandbox.md)
+* [Tokens](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/Tokens.md)
+* [Transfers](https://github.com/Dwolla/dwolla-v2-kotlin/blob/main/docs/snippets/Transfers.md)
+* [Webhooks](https://github.com/Dwolla/dwolla-v2-kotlin/blob/main/docs/snippets/Webhooks.md)
+* [Webhook Subscriptions](https://github.com/Dwolla/dwolla-v2-kotlin/blob/main/docs/snippets/WebhookSubscriptions.md)
 
 #### Setting Headers
 
 You can pass custom headers in your requests as per the schema of the API models. Here is an example of creating a Customer with an [Idempotency-Key](https://developers.dwolla.com/api-reference#idempotency-key) header.
 
 ```php
-<?php
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
 
 $customer = $customersApi->create([
-  'firstName' => 'Jane',
-  'lastName' => 'Merchant',
-  'email' => 'jmerchant@nomail.net',
-  'type' => 'receive-only',
-  'businessName' => 'Jane Corp llc',
-  'ipAddress' => '99.99.99.99'
-], 
-[
-  'Idempotency-Key' => '51a62-3403-11e6-ac61-9e71128cae77'
+  "firstName" => "Jane",
+  "lastName" => "Merchant",
+  "email" => "jmerchant@nomail.net",
+  "type" => "receive-only",
+  "businessName" => "Jane Corp llc",
+  "ipAddress" => "99.99.99.99"
+], [
+  "Idempotency-Key" => "51a62-3403-11e6-ac61-9e71128cae77"
 ]);
 $customer; # => "https://api-sandbox.dwolla.com/customers/fc451a7a-ae30-4404-aB95-e3553fcd733f"
-?>
 ```
 
 ## Changelog
 
-1.7.0
-* New `getCustomerCardToken` method added to `CustomersAPI` for creating a card funding sources token for a customer.
-
-1.6.0
-* New `TokenApi` adding support for application access token and client token requests.
-
-1.5.0
-* API schema updated, `CustomersApi` updated to add support for `email` parameter on list customers.
-
-1.4.1
-* Fix bug in [#43](https://github.com/Dwolla/dwolla-swagger-php/pull/43) to replace null-coalesce operator with backwards-compatible ternary. 
-
-1.4.0
-* Add temporary support fix for PHP 7.4. [Issue #41](https://github.com/Dwolla/dwolla-swagger-php/issues/41). (Thanks @oprypkhantc!)
-
-1.3.0
-* Add support for custom headers on all requests. (e.g. [Idempotency-Key](https://developers.dwolla.com/api-reference#idempotency-key) header)
-
-1.2.0
-* API schema updated, `CustomersApi` updated to support KBA related endpoint.
-* New `KbaApi`.
-* Existing `Document` model updated.
-* New `AnswerKbaQuestionsRequest`, `AnswerKbaQuestionsResponse`, `AnsweredKbaQuestion`, `KbaQuestion.php`, `KbaAnswer` models.
-
-1.1.0
-* API schema updated, `CustomersApi` updated to support Labels related endpoints.
-* New `LabelsApi`, `LabelreallocationsApi`, and `LedgerentriesApi`.
-* Existing `CreateCustomer`, `Customer`, `MassPaymentRequestBody`, `MassPaymentRequestBody`, `Owner`, `Transfer`, `TransferRequestBody` and `UpdateCustomer` models updated.
-* New `AddLabelLedgerEntryRequest`, `CreateCustomerLabelRequest`, `Label`, `LabelListResponse`, `LabelReallocation`, `LabelReallocationRequest`, `LedgerEntry`, and `LedgerEntryListResponse` models.
-
-1.0.20
-* Fix previously patched issue with parsing Location header in 201 response in ApiClient.
-
-1.0.19
-* Patch 201 response in ApiClient.
-
-1.0.18
-* Patch controller in CreateCustomer model.
-
-1.0.17
-* API schema updated, `CustomersApi` updated to support beneficial owner related endpoints, as well as support added for status filter on Customer search.
-* New `BeneficialownersApi`.
-* Existing `CreateCustomer`, `CreateFundingSourceRequest`, `Customer`, `FundingSourceBalance`, `TransferFailure`, and `UpdateCustomer` models updated.
-* New `Address`, `BeneficialOwnerListResponse`, `CertifyRequest`, `CreateOwnerRequest`, `FullAccountInfo`, `Owner`, `Ownership`, `Passport`, and `UpdateOwnerRequest` models.
-
-1.0.16
-* API schema updated, `FundingsourcesApi` updated to support update a funding source. `MasspaymentsApi` and `MasspaymentitemsApi` updated to support filtering by correlationId.
-* New `SandboxApi` which is used to simulate bank transfer processing in the Sandbox.
-* Existing `CreateFundingSourceRequest`, `FundingSource`, `MassPayment`, `MassPaymentItem`, `MassPaymentItemRequestBody`, `MassPaymentRequestBody`, `Transfer`, `TransferFailure`, and `TransferRequestBody` models updated.
-* New `ProcessResult`, `UpdateBankRequest`, and `UpdateJobRequestBody` models.
-
-1.0.15
-* Optional parameters set to null.
-
-1.0.14
-* Trim trailing slash from host url on initialization.
-
-1.0.13
-* Add control over IPV4 and V6 connections.
-
-1.0.12
-* API schema updated, `CustomersApi` updated to allow for null limit, offset, and search. Existing `CreateFundingSourceRequest`, `FundingSource`, `HalLink`, `MicroDepositsInitiated`, `Transfer`, and `TransferRequestBody` models updated. New `Clearing` and `FailureDetails` models.
-* Fix README example for creating a Customer.
-
-1.0.11
-* API schema updated, `WebhooksubscriptionsApi` supports pause a webhook subscription. `FundingsourcesApi` contains support for `removed` parameter on list funding sources.
-* Fix getFeesBySource to support deserialization with new `FeesBySourceResponse` model.
-
-1.0.10
-* Patch soft delete to deserialize with FundingSource model.
-
-1.0.9
-* Add boolean type to fix deserialization
-
-1.0.8
-* API schema updated, `FundingSourcesApi` supports balance check endpoint
-* Fix transfer failure to support deserialization with new transfer failure model.
-
-1.0.7
-* API schema updated, `CustomersAPI` supports Customer search, new softDelete method in `FundingSourcesApi`.
-
-1.0.6
-* API schema updated, `TransfersApi` has new endpoints for cancel a transfer and get a transfer's fees, new `OndemandauthorizationsApi`, new `MasspaymentsApi`.
-* Existing `Document`, `CreateFundingSourceRequest`, and `TransferRequestBody` models updated, new `MassPayment`, `Authorization`, `UpdateTransfer`, and `FacilitatorFeeRequest` models.
-
-1.0.5
-* API schema error fixed, `FundingSource` object now has `_embedded` key to fix serialization issues.
-
-1.0.4
-* Avoid use of function names if found in list of PHP reserved words.
-* API schema updated, `CustomersApi` has new endpoints for IAV verification.
-* Existing `Customer` related models updated, new `VerificationToken` model.
-* (release skipped, features in 1.0.5)
-
-1.0.3
-* API schema updated, `RootApi` now added.
-* Changed `auth_token` to `access_token` in compliance with [RFC-6749](https://tools.ietf.org/html/rfc6749) recommended nomenclature.
-
-1.0.2
-* API schema updated, new methods in `FundingsourcesApi`.
-* All methods which take Swagger variables in `path` (e.g, `/resource/{id}`) can now be passed a resource URL to make it easier for HAL-styled API consumption.
-* More idiomatic response logic for HTTP 201 responses.
-
-1.0.1
-* API schema updated, new methods in `CustomersApi` and `TransfersApi`
-
-1.0.0
-* Initial release.
+* [**1.7.0**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.7.0): New `getCustomerCardToken` method added to `CustomersAPI` for creating a card funding sources token for a customer.
+* [**1.6.0**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.6.0): New `TokenApi` adding support for application access token and client token requests.
+* [**1.5.0**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.5.0): API schema updated, `CustomersApi` updated to add support for `email` parameter on list customers.
+* [**1.4.1**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.4.1): Fix bug in [#43](https://github.com/Dwolla/dwolla-swagger-php/pull/43) to replace null-coalesce operator with backwards-compatible ternary. 
+* [**1.4.0**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.4.0): Add temporary support fix for PHP 7.4. [Issue #41](https://github.com/Dwolla/dwolla-swagger-php/issues/41). (Thanks, [@oprypkhantc](https://github.com/oprypkhantc)!)
+* [**1.3.0**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.3.0): Add support for custom headers on all requests. (e.g. [Idempotency-Key](https://developers.dwolla.com/api-reference#idempotency-key) header)
+* [**1.2.0**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.2.0): Add `KbaApi`. See GitHub Releases for more information.
+* [**1.1.0**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.1.0): Add `LabelsApi`, `LabelreallocationsApi`, and `LedgerentriesApi`.
+* [**1.0.20**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.0.20): Fix previously patched issue with parsing Location header in 201 response in ApiClient.
+* [**1.0.19**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.0.19): Patch 201 response in ApiClient.
+* [**1.0.18**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.0.18): Patch controller in CreateCustomer model.
+* [**1.0.17**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.0.17): Update `CustomersApi` to update support beneficial owners. Update existing models.
+* [**1.0.16**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.0.16): See GitHub Releases for more information.
+* [**1.0.15**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.0.15): Optional parameters set to null.
+* [**1.0.14**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.0.14): Trim trailing slash from host url on initialization.
+* [**1.0.13**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.0.13): Add control over IPV4 and V6 connections.
+* [**1.0.12**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.0.12): Update `CustomersApi` to allow for null `limit`, `offset`, and `search`.
+* [**1.0.11**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.0.11): Allow pausing webhook subscription pause; Added support for `removed` funding source query params; and more.
+* [**1.0.10**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.0.10): Patch soft delete to deserialize with FundingSource model.
+* [**1.0.9**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.0.9): Add boolean type to fix deserialization
+* [**1.0.8**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.0.8): Add balance check endpoint in `FundingSourcesApi`. Fix transfer failure deserialization in transfer model.
+* [**1.0.7**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.0.7): API schema updated, `CustomersAPI` supports Customer search, new softDelete method in `FundingSourcesApi`.
+* [**1.0.6**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.0.6): Update `TransfersApi` to include cancel and getting transfer fees. Added some new models and updated some existing models.
+* **1.0.5**: API schema error fixed, `FundingSource` object now has `_embedded` key to fix serialization issues. Avoid using reserved PHP function names. `CustomersApi` gets endpoint for IAV verification. Added `VerificationToken` model.
+* **1.0.3**: Added `RootApi`. Changed `auth_token` to `access_token` in compliance with [RFC-6749](https://tools.ietf.org/html/rfc6749) nomenclature.
+* **1.0.2**: New methods added for `FundingsourcesApi`. More idiomatic response logic for HTTP 201 responses.
+* **1.0.1**: API schema updated, new methods in `CustomersApi` and `TransfersApi`
+* **1.0.0**: Initial release.
 
 ## Community
+
 * If you have any feedback, please reach out to us on [our forums](https://discuss.dwolla.com/) or by [creating a GitHub issue](https://github.com/Dwolla/dwolla-v2-php/issues/new).
 * If you would like to contribute to this library, [bug reports](https://github.com/Dwolla/dwolla-v2-php/issues) and [pull requests](https://github.com/Dwolla/dwolla-v2-php/pulls) are always appreciated!
 
