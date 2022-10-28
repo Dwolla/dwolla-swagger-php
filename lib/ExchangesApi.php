@@ -26,7 +26,7 @@ use DwollaSwagger\models\CreateExchangeRequest;
 use DwollaSwagger\models\Exchange;
 use DwollaSwagger\models\ExchangeListResponse;
 
-class ExchangeApi {
+class ExchangesApi {
 
   function __construct($apiClient = null) {
     if (null === $apiClient) {
