@@ -122,6 +122,7 @@ $customer; # => "https://api-sandbox.dwolla.com/customers/fc451a7a-ae30-4404-aB9
 
 ## Changelog
 
+* [**1.8.0**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.8.0): Add Exchanges and Exchange Partners API methods.
 * [**1.7.1**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.7.1): Fix bug around on-demand authorizations not parsing Dwolla response correctly.
 * [**1.7.0**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.7.0): New `getCustomerCardToken` method added to `CustomersAPI` for creating a card funding sources token for a customer.
 * [**1.6.0**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.6.0): New `TokenApi` adding support for application access token and client token requests.
