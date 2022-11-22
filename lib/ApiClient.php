@@ -35,7 +35,7 @@ class ApiClient {
   /*
    * @var string user agent of the HTTP request, set to "PHP-Swagger" by default
    */
-  protected $user_agent = "php-swagger-1.7.1";
+  protected $user_agent = "php-swagger-1.8.0";
 
   /**
    * @param string $host Base url of the API server (optional)
