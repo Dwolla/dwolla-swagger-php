@@ -15,7 +15,9 @@ This repository contains the source code for Dwolla's PHP-based SDK as generated
 - [Making Requests](#making-requests)
   - [High-Level Requests](#high-level-requests)
     - [Setting Headers](#setting-headers)
-    - [Errors](#errors)
+    - [Responses](#responses)
+      - [Success](#success)
+      - [Errors](#errors)
 - [Changelog](#changelog)
 - [Community](#community)
 - [Additional Resources](#additional-resources)
@@ -119,6 +121,33 @@ $customer = $customersApi->create([
   "Idempotency-Key" => "51a62-3403-11e6-ac61-9e71128cae77"
 ]);
 $customer; # => "https://api-sandbox.dwolla.com/customers/fc451a7a-ae30-4404-aB95-e3553fcd733f"
+```
+
+### Responses
+
+#### Success
+
+```php
+# Retrieve an Account by ID
+$accountsApi = new DwollaSwagger\AccountsApi($apiClient);
+$account = $accountsApi->id("8a2cdc8d-629d-4a24-98ac-40b735229fe2");
+
+# Retrieve a Customer by ID
+$customerUrl = 'https://api-sandbox.dwolla.com/customers/07d59716-ef22-4fe6-98e8-f3190233dfb8';
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+$customer = $customersApi->getCustomer($customerUrl);
+
+# Create a customer funding source
+$customerUrl = "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C";
+$fsApi = new DwollaSwagger\FundingsourcesApi($apiClient);
+
+$fundingSource = $fsApi->createCustomerFundingSource([
+  "routingNumber" => "222222226",
+  "accountNumber" => "123456789",
+  "bankAccountType" => "checking",
+  "name" => "Jane Doe’s Checking"
+], $customerUrl);
+$fundingSource; # => "https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31"
 ```
 
 #### Errors
