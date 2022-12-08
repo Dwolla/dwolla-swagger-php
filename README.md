@@ -15,6 +15,7 @@ This repository contains the source code for Dwolla's PHP-based SDK as generated
 - [Making Requests](#making-requests)
   - [High-Level Requests](#high-level-requests)
     - [Setting Headers](#setting-headers)
+    - [Errors](#errors)
 - [Changelog](#changelog)
 - [Community](#community)
 - [Additional Resources](#additional-resources)
