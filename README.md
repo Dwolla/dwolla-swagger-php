@@ -166,6 +166,7 @@ try{
 
 ## Changelog
 
+- [**1.9.0**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.9.0): Add support for creating bank funding source using a `plaidToken` for a customer.
 - [**1.8.0**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.8.0): Add Exchanges and Exchange Partners API methods.
 - [**1.7.1**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.7.1): Fix bug around on-demand authorizations not parsing Dwolla response correctly.
 - [**1.7.0**](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.7.0): New `getCustomerCardToken` method added to `CustomersAPI` for creating a card funding sources token for a customer.
