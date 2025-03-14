@@ -74,19 +74,23 @@ class MassPayment implements ArrayAccess {
     $this->correlation_id = isset($data["correlation_id"]) ? $data["correlation_id"] : null;
   }
 
-  public function offsetExists($offset) {
+  #[\ReturnTypeWillChange]
+    public function offsetExists($offset) {
     return isset($this->$offset);
   }
 
-  public function offsetGet($offset) {
+  #[\ReturnTypeWillChange]
+    public function offsetGet($offset) {
     return $this->$offset;
   }
 
-  public function offsetSet($offset, $value) {
+  #[\ReturnTypeWillChange]
+    public function offsetSet($offset, $value) {
     $this->$offset = $value;
   }
 
-  public function offsetUnset($offset) {
+  #[\ReturnTypeWillChange]
+    public function offsetUnset($offset) {
     unset($this->$offset);
   }
 }
