@@ -74,19 +74,23 @@ class CreateFundingSourceRequest implements ArrayAccess {
     $this->plaid_token = isset($data["plaid_token"]) ? $data["plaid_token"] : null;
   }
 
-  public function offsetExists($offset) {
+  #[\ReturnTypeWillChange]
+    public function offsetExists($offset) {
     return isset($this->$offset);
   }
 
-  public function offsetGet($offset) {
+  #[\ReturnTypeWillChange]
+    public function offsetGet($offset) {
     return $this->$offset;
   }
 
-  public function offsetSet($offset, $value) {
+  #[\ReturnTypeWillChange]
+    public function offsetSet($offset, $value) {
     $this->$offset = $value;
   }
 
-  public function offsetUnset($offset) {
+  #[\ReturnTypeWillChange]
+    public function offsetUnset($offset) {
     unset($this->$offset);
   }
 }
