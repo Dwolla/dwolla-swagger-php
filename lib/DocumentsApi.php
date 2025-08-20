@@ -24,6 +24,8 @@ namespace DwollaSwagger;
 
 class DocumentsApi {
 
+  protected $authSettings;
+
   function __construct($apiClient = null) {
     if (null === $apiClient) {
       if (Configuration::$apiClient === null) {

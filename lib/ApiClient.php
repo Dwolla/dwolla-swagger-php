@@ -37,6 +37,8 @@ class ApiClient {
    */
   protected $user_agent = "php-swagger-1.9.1";
 
+  protected $host;
+
   /**
    * @param string $host Base url of the API server (optional)
    */
