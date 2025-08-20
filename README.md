@@ -10,6 +10,8 @@ Temporary PHP 7.4 support was added using these replacements:
 Additionally, temporary PHP 8.1 support was added using these replacements:
 - `([^\n]*public function (offsetExists|offsetGet|offsetSet|offsetUnset))` into `  #\[\\ReturnTypeWillChange\]\n$1`
 
+Temporary PHP 8.2 support has been added
+
 ## Table of Contents
 
 - [Getting Started](#getting-started)
