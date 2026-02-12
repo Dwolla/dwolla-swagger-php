@@ -28,6 +28,8 @@ use DwollaSwagger\models\ExchangeListResponse;
 
 class ExchangesApi {
 
+  protected $authSettings;
+
   function __construct($apiClient = null) {
     if (null === $apiClient) {
       if (Configuration::$apiClient === null) {

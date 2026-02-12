@@ -24,6 +24,8 @@ namespace DwollaSwagger;
 
 class MasspaymentsApi {
 
+  protected $authSettings;
+
   function __construct($apiClient = null) {
     if (null === $apiClient) {
       if (Configuration::$apiClient === null) {
