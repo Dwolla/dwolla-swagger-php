@@ -693,7 +693,7 @@ class CustomersApi {
    * @param string $id ID of customer. (required)
    * @return Unit
    */
-   public function uploadDocument($id, $headers = null) {
+   public function uploadDocument($body, $id, $headers = null) {
 
       // verify the required parameter 'id' is set
       if ($id === null) {
@@ -709,7 +709,7 @@ class CustomersApi {
       $queryParams = array();
       $headerParams = array();
       $formParams = array();
-      $_header_accept = $this->apiClient->selectHeaderAccept(array());
+      $_header_accept = $this->apiClient->selectHeaderAccept(array('application/vnd.dwolla.v1.hal+json'));
       if (!is_null($_header_accept)) {
         $headerParams['Accept'] = $_header_accept;
       }
@@ -732,7 +732,11 @@ class CustomersApi {
                                     $this->apiClient->toPathValue($id), $resourcePath);
       }
 
-
+      // body params
+      $_tempBody = null;
+      if (isset($body)) {
+        $_tempBody = $body;
+      }
 
       // for model (json/xml)
       if (isset($_tempBody)) {
@@ -753,6 +757,7 @@ class CustomersApi {
 
       return $response[0] == 201 ? $response[1] : $this->apiClient->deserialize($response[1],'Unit');
   }
+
 
   /**
    * createFundingSourcesTokenForCustomer
